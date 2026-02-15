@@ -84,6 +84,16 @@ This repo is collaborative — feel free to contribute more questions 🚀
 1. Explain closures in JavaScript.  
    - A closure is when a function remembers its lexical scope even if executed outside of it.  
 
+1. hasOwnProperty vs Object.hasOwn.  
+   -  | Feature                          | `obj.hasOwnProperty(key)` | `Object.hasOwn(obj, key)` |
+      | -------------------------------- | ------------------------- | ------------------------- |
+      | Type                             | Instance method           | Static method             |
+      | Safe?                            | ❌ Can break             | ✅ Always safe            |
+      | Prototype override risk          | YES                       | NO                        |
+      | Works with `Object.create(null)` | ❌ No                    | ✅ Yes                    |
+      | Recommended today                | No                        | Yes (ES2022+)             |
+        
+
 ---
 
 ## 🟢 React
