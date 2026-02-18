@@ -518,3 +518,13 @@ This repo is collaborative — feel free to contribute more questions 🚀
      | Performance                      | May re-render more often                      | Fewer re-renders                           |
      | Use case                         | Complex, dynamic, validated forms             | Simple, non-reactive forms                 |
      | Example hooks                    | `useState`, `useEffect`                       | `useRef`                                   |
+
+
+## 🟠 Node.JS
+
+1. What is the Node.JS Runtime?
+   - Node.js is single-threaded in the sense that the JavaScript execution happens on one thread, but it is multi-threaded under the hood because Libuv manages a thread pool for heavy I/O. This design makes it perfect for I/O-intensive apps (streaming, APIs) but a poor choice for CPU-intensive tasks (image processing, heavy encryption) because those would block the main thread.
+  
+     <img width="1434" height="718" alt="image" src="https://github.com/user-attachments/assets/cc9fe34c-3d53-47e7-b8d2-5a2b7c8073e3" />
+
+
