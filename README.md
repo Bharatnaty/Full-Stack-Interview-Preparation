@@ -117,6 +117,30 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ---
 
+1. JavaScript 2022 (ES2022) New Features
+   - .at() Method (Array & String)
+   ```
+   const arr = [10, 20, 30, 40];
+
+   console.log(arr.at(1));   // 20
+   console.log(arr.at(-1));  // 40
+   ```
+   - **Object.hasOwn()** Safer way to check object properties
+   - Object.hasOwn() better than obj.hasOwnProperty()
+   ```
+   const obj = { name: "John" };
+
+   console.log(Object.hasOwn(obj, "name")); // true
+   ```
+   - Error Cause (error.cause)
+   ```
+   try {
+     JSON.parse("invalid");
+   } catch (err) {
+     throw new Error("Parsing failed", { cause: err });
+   }
+   ```
+
 ## 🟢 React
 
 1. What is the difference between functional and class components?  
