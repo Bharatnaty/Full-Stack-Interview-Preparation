@@ -47,9 +47,9 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 1. What is HTML5?
    - **Semantic tags:**
-   - EX: <header> <footer> <article> <section>
+   - EX: header, footer, article, section
    - **Multimedia:**
-   - EX: <video> <audio>
+   - EX: video, audio
    - **APIs:**
    - EX: Geolocation, Local Storage, Canvas
 
