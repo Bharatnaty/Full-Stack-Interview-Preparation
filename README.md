@@ -526,6 +526,21 @@ This repo is collaborative — feel free to contribute more questions 🚀
      | Example hooks                    | `useState`, `useEffect`                       | `useRef`                                   |
 
 
+1. Tree Shaking?
+
+     - Tree shaking = removing unused code from your bundle
+     - Used by bundlers like Webpack, Rollup, and Vite.
+    ```
+    // math.js
+      export const add = (a, b) => a + b;
+      export const sub = (a, b) => a - b;
+      
+      // app.js
+      import { add } from "./math";
+      
+      add(2, 3);
+    ```
+       
 ## 🟠 Node.JS
 
 
