@@ -531,7 +531,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
      - Tree shaking = removing unused code from your bundle
      - Used by bundlers like Webpack, Rollup, and Vite.
     ```
-    // math.js
+      // math.js
       export const add = (a, b) => a + b;
       export const sub = (a, b) => a - b;
       
@@ -540,6 +540,38 @@ This repo is collaborative — feel free to contribute more questions 🚀
       
       add(2, 3);
     ```
+   
+1. Why do we need to build React?
+- JSX is actually converted to JavaScript even in development, but the difference is that in development it's not optimized, while in production it is fully optimized for performance.
+     - **React code cannot run directly in browser efficiently.**
+     - JSX needs compilation → converted by Babel
+     - Optimize code → minification, tree shaking
+     - Bundle multiple files → using Webpack
+     - Support modern JS in old browsers
+ 
+      | Feature        | 🧪 Development Mode             | 🚀 Production Build                          |
+      | -------------- | ------------------------------- | -------------------------------------------- |
+      | JSX Conversion | Converted instantly (in memory) | Converted during build                       |
+      | Performance    | Not optimized                   | Highly optimized                             |
+      | Minification   | ❌ No                           | ✅ Yes                                        |
+      | Tree Shaking   | ❌ No                           | ✅ Yes (removes unused code)                  |
+      | Bundling       | Minimal / on-demand              | Fully bundled & code-split                   |
+      | Debugging      | ✅ Warnings, error overlays      | ❌ No debugging info                          |
+      | Source Maps    | ✅ Enabled                       | ⚠️ Optional / often disabled                 |
+      | Refresh        | ✅ Fast Refresh (HMR)            | ❌ No HMR                                     |
+      | Build Output   | Stored in memory                  | Physical optimized files (dist/build folder) |
+      | Focus          | Developer Experience              | Performance & Optimization                   |
+
+
+ 1. Lazy Loading?
+
+     - **Load components only when needed**
+     - Improves performance by reducing initial bundle.
+
+ 1. New Features in React 19
+     - **Actions (Server + Client mutations)**
+     - **use() Hook**
+     - **useOptimistic Hook**
        
 ## 🟠 Node.JS
 
