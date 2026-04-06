@@ -45,6 +45,13 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
      ```
 
+1. What is HTML5?
+   - **Semantic tags:**
+   - EX: <header> <footer> <article> <section>
+   - **Multimedia:**
+   - EX: <video> <audio>
+   - **APIs:**
+   - EX: Geolocation, Local Storage, Canvas
 
 ## 🔵 CSS
 
@@ -99,6 +106,14 @@ This repo is collaborative — feel free to contribute more questions 🚀
    Microtasks always run before the next macrotask
    <img width="1049" height="590" alt="image" src="https://github.com/user-attachments/assets/422ed303-58a9-4bae-9b44-4ddac4529cdb" />
 
+1. map vs forEach.  
+
+| Feature      | map()              | forEach()    |
+| ------------ | -----------------  | ------------ |
+| Return value | New array          | undefined    |
+| Purpose      | Transform data     | Side effects |
+| Chainable    | Yes                | No           |
+| React usage  | ✅ Yes (JSX lists) | ❌ No       |
 
 ---
 
