@@ -101,8 +101,8 @@ This repo is collaborative — feel free to contribute more questions 🚀
       | Recommended today                | No                        | Yes (ES2022+)             |
 
 1. Explain Microtask vs Macrotask.  
-   - Microtask (Microtask queue) → “small, high-priority tasks” like promises. EX: Task Queue (setTimeout, setInterval, setImmediate)
-   - Macrotask (Task queue) → “big tasks” like timers, events, I/O EX: Promise
+   - Macrotask  → “small, high-priority tasks” like promises. EX: setTimeout, setInterval, setImmediate
+   - Microtask  → “big tasks” like timers, events, I/O EX: Promise
    Microtasks always run before the next macrotask
    <img width="1049" height="590" alt="image" src="https://github.com/user-attachments/assets/422ed303-58a9-4bae-9b44-4ddac4529cdb" />
 
