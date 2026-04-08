@@ -103,7 +103,8 @@ This repo is collaborative — feel free to contribute more questions 🚀
 1. Explain Microtask vs Macrotask.  
    - Macrotask  → “small, high-priority tasks” like promises. EX: setTimeout, setInterval, setImmediate
    - Microtask  → “big tasks” like timers, events, I/O EX: Promise
-   Microtasks always run before the next macrotask
+   
+   - Microtasks always run before the next macrotask
    <img width="1049" height="590" alt="image" src="https://github.com/user-attachments/assets/422ed303-58a9-4bae-9b44-4ddac4529cdb" />
 
 1. map vs forEach.  
