@@ -142,6 +142,59 @@ This repo is collaborative — feel free to contribute more questions 🚀
    }
    ```
 
+1. Spread operator vs Rest operator  
+
+| Feature   | Spread Operator                 | Rest Operator                  |
+| --------- | ------------------------------- | ------------------------------ |
+| Purpose   | Expands elements                | Collects elements              |
+| Usage     | RHS (right-hand side)           | LHS (left-hand side)           |
+| Use cases | Arrays, objects, function calls | Function params, destructuring |
+
+```
+Example:
+
+Spread operator
+
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];
+
+console.log(arr2); // [1, 2, 3, 4, 5]
+
+Rest operator
+
+const [first, ...rest] = [1, 2, 3, 4];
+
+console.log(first); // 1
+console.log(rest);  // [2, 3, 4]
+```
+1. JavaScript 2022 release
+   - .at() Method (Array & String)
+      Access elements using positive & negative index
+      ```
+      const arr = [10, 20, 30];
+
+      arr.at(0);   // 10
+      arr.at(-1);  // 30 (last element)
+      ```
+   - Object.hasOwn()
+     Safer way to check object properties. Better than hasOwnProperty()
+     ```
+     const obj = { a: 1 };
+
+     Object.hasOwn(obj, "a"); // true
+     ```
+   - Error Cause (error.cause)
+     Chain errors (great for debugging)
+     ```
+      try {
+        throw new Error("DB failed");
+      } catch (err) {
+        throw new Error("App crashed", { cause: err });
+      }
+     ```
+   - 
+---
+
 ## 🟢 React
 
 1. What is the difference between functional and class components?  
