@@ -52,6 +52,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - EX: video, audio
    - **APIs:**
    - EX: Geolocation, Local Storage, Canvas
+   - **Web Workers**
 
 ## 🔵 CSS
 
@@ -167,6 +168,7 @@ const [first, ...rest] = [1, 2, 3, 4];
 console.log(first); // 1
 console.log(rest);  // [2, 3, 4]
 ```
+
 1. JavaScript 2022 release
    - .at() Method (Array & String)
       Access elements using positive & negative index
@@ -192,7 +194,34 @@ console.log(rest);  // [2, 3, 4]
         throw new Error("App crashed", { cause: err });
       }
      ```
-   - 
+
+1. What is WeakMap in JavaScript? 
+   - WeakMap is a collection of key-value pairs.
+   - Keys must be objects only
+   - Keys are weakly referenced (can be garbage collected)
+   ```
+   const wm = new WeakMap();
+
+   let user = { name: "Bharat" };
+   
+   wm.set(user, "data");
+   
+   console.log(wm.get(user)); // "data"
+   
+   user = null; 
+   // Now object can be garbage collected
+   // After user = null, the entry may be removed automatically
+   ```
+   
+1. localStorage vs sessionStorage?
+   - Both are part of the Web Storage API and store data in the browser as key-value pairs
+   | Feature       | localStorage                     | sessionStorage           |
+   | ------------- | -------------------------------- | ------------------------ |
+   | Expiry        | ❌ Never expires                 | ✅ Clears when tab closes |
+   | Scope         | Shared across tabs (same origin) | Only same tab            |
+   | Storage limit | ~5–10MB                          | ~5–10MB                  |
+   | Persistence   | Long-term                        | Temporary                |
+
 ---
 
 ## 🟢 React
