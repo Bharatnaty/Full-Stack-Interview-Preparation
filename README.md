@@ -117,7 +117,6 @@ This repo is collaborative — feel free to contribute more questions 🚀
 | Chainable    | Yes                | No           |
 | React usage  | ✅ Yes (JSX lists) | ❌ No       |
 
----
 
 1. JavaScript 2022 (ES2022) New Features
    - .at() Method (Array & String)
