@@ -35,15 +35,15 @@ This repo is collaborative — feel free to contribute more questions 🚀
    img  { display: inline-block; }  /* inline flow + respects dimensions */
    ```
 
-2. What are semantic HTML tags? Why are they important?
+1. What are semantic HTML tags? Why are they important?
    - Tags that describe meaning, not just presentation (`<header>`, `<article>`, `<footer>`).
    - Improves accessibility & SEO.
 
-3. Difference between `id` and `class` in HTML?
+1. Difference between `id` and `class` in HTML?
    - `id`: Unique identifier (used once per page).
    - `class`: Can be reused for multiple elements.
 
-4. What is `<datalist>` in HTML?
+1. What is `<datalist>` in HTML?
    - Provides predefined suggestions for an `<input>` field — gives users autocomplete options while still allowing free text entry.
    ```html
    <input list="browsers" name="browser" placeholder="Choose or type...">
@@ -56,13 +56,13 @@ This repo is collaborative — feel free to contribute more questions 🚀
    </datalist>
    ```
 
-5. What is HTML5?
+1. What is HTML5?
    - **Semantic tags:** `<header>`, `<footer>`, `<article>`, `<section>`
    - **Multimedia:** `<video>`, `<audio>`
    - **APIs:** Geolocation, Local Storage, Canvas
    - **Web Workers**
 
-6. What is the difference between `<script>`, `<script async>`, and `<script defer>`?
+1. What is the difference between `<script>`, `<script async>`, and `<script defer>`?
 
    | Type | Downloads | Execution |
    | --- | --- | --- |
@@ -77,7 +77,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    <script src="app.js" defer></script>
    ```
 
-7. What is the difference between `src` and `href`?
+1. What is the difference between `src` and `href`?
    - **`src`** (source): Embeds the resource directly — browser fetches and replaces the element. Blocks parsing when used in `<script>`.
    - **`href`** (hyperlink reference): Links to an external resource — creates a relationship without embedding.
 
@@ -88,7 +88,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    <a href="https://example.com">Link</a>   <!-- hyperlink -->
    ```
 
-8. What are void (self-closing) elements in HTML?
+1. What are void (self-closing) elements in HTML?
    - Elements that **cannot have child nodes** and do not need a closing tag.
    - Examples: `<br>`, `<hr>`, `<img>`, `<input>`, `<link>`, `<meta>`, `<area>`, `<base>`, `<col>`, `<embed>`, `<source>`, `<track>`.
 
@@ -98,7 +98,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    <br />
    ```
 
-9. What is the DOM (Document Object Model)?
+1. What is the DOM (Document Object Model)?
    - The DOM is a **programming interface** that represents an HTML page as a **tree of nodes** in memory. The browser parses HTML and builds this tree — JavaScript uses it to read, create, update, and delete elements dynamically.
 
    ```
@@ -137,7 +137,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    | `textContent` | Get/set text (no HTML parsing) |
    | `addEventListener()` | Attach event handler |
 
-10. What are `data-*` attributes in HTML?
+1. What are `data-*` attributes in HTML?
     - Custom attributes that store extra information on HTML elements — accessible in JavaScript via `element.dataset`.
     - Attribute names are automatically camelCased in `dataset`.
 
@@ -151,7 +151,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     console.log(btn.dataset.role);   // "admin"
     ```
 
-11. What is the difference between `<b>` & `<strong>`, and `<i>` & `<em>`?
+1. What is the difference between `<b>` & `<strong>`, and `<i>` & `<em>`?
 
     | Tag | Visual | Semantic Meaning |
     | --- | --- | --- |
@@ -162,7 +162,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - Prefer `<strong>` and `<em>` for **accessibility** and **SEO**.
 
-12. What are `<meta>` tags and what are they used for?
+1. What are `<meta>` tags and what are they used for?
     - Provide **metadata** about the HTML document — placed inside `<head>`, not displayed on the page.
 
     ```html
@@ -172,7 +172,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     <meta property="og:title" content="Interview Guide">
     ```
 
-13. What is the difference between `<section>`, `<article>`, and `<div>`?
+1. What is the difference between `<section>`, `<article>`, and `<div>`?
 
     | Tag | Purpose |
     | --- | --- |
@@ -190,23 +190,23 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - **Fixed:** Always stays at the same place (relative to viewport).
    - **Sticky:** Switches between relative & fixed depending on scroll.
 
-2. What is the difference between inline, internal, and external CSS?
+1. What is the difference between inline, internal, and external CSS?
    - **Inline:** Inside the element (`style=""`).
    - **Internal:** Inside `<style>` tag.
    - **External:** In a separate `.css` file.
 
-3. Explain the difference between `em`, `rem`, `%`, and `px` in CSS.
+1. Explain the difference between `em`, `rem`, `%`, and `px` in CSS.
    - `px`: Fixed pixels.
    - `em`: Relative to parent font-size.
    - `rem`: Relative to root (`html`) font-size.
    - `%`: Relative to parent container.
 
-4. What is the CSS Box Model?
+1. What is the CSS Box Model?
    - Every HTML element is a rectangular box made of four layers (inside out):
      1. **Content** — actual text or image
-     2. **Padding** — space between content and border
-     3. **Border** — surrounds the padding
-     4. **Margin** — space outside the border (gap between elements)
+     1. **Padding** — space between content and border
+     1. **Border** — surrounds the padding
+     1. **Margin** — space outside the border (gap between elements)
 
    ```
    ┌──────────────────────────┐
@@ -239,7 +239,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    * { box-sizing: border-box; } /* common CSS reset */
    ```
 
-5. What are pseudo-classes and pseudo-elements?
+1. What are pseudo-classes and pseudo-elements?
    - **Pseudo-class** (`:`) — selects elements based on their **state** or **position** in the DOM.
    - **Pseudo-element** (`::`) — selects and styles a **specific part** of an element.
 
@@ -260,7 +260,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    input::placeholder { color: #aaa; }
    ```
 
-6. What is Flexbox?
+1. What is Flexbox?
    - A **one-dimensional** layout model for arranging items in a row or column.
    - Parent becomes the **flex container**; direct children become **flex items**.
 
@@ -283,7 +283,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    | `flex-wrap` | Allow items to wrap |
    | `flex: 1` | Shorthand for grow, shrink, basis |
 
-7. What is CSS Grid?
+1. What is CSS Grid?
    - A **two-dimensional** layout system for placing items in rows and columns simultaneously.
 
    ```css
@@ -301,7 +301,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    | Content-driven | Layout-driven |
    | Navigation, toolbars | Page layouts, galleries |
 
-8. What is CSS specificity?
+1. What is CSS specificity?
    - A scoring system that determines which CSS rule applies when multiple rules target the same element.
 
    | Selector Type | Score |
@@ -321,7 +321,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - Higher specificity wins. Equal specificity → last rule wins (cascade order).
    - `!important` overrides all — use sparingly.
 
-9. What is the difference between `display: none`, `visibility: hidden`, and `opacity: 0`?
+1. What is the difference between `display: none`, `visibility: hidden`, and `opacity: 0`?
 
    | Property | Visible | Occupies Space | Events/Accessibility |
    | --- | --- | --- | --- |
@@ -335,7 +335,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    .transparent { opacity: 0; }           /* invisible but still interactive */
    ```
 
-10. What is `z-index` in CSS?
+1. What is `z-index` in CSS?
     - Controls the **stacking order** of positioned elements (`position` other than `static`).
     - Higher value = in front; lower = behind.
 
@@ -347,7 +347,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - `z-index` only works on elements with `position: relative`, `absolute`, `fixed`, or `sticky`.
 
-11. What are CSS variables (custom properties)?
+1. What are CSS variables (custom properties)?
     - Variables defined with `--` prefix, accessed with `var()`. Defined on `:root` to be globally available.
 
     ```css
@@ -364,7 +364,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     .dark-theme { --primary: #1a1a1a; } /* override per scope */
     ```
 
-12. What is a CSS media query?
+1. What is a CSS media query?
     - Applies styles conditionally based on device characteristics (screen width, orientation, etc.).
 
     ```css
@@ -379,7 +379,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     }
     ```
 
-13. What is the difference between `margin` and `padding`?
+1. What is the difference between `margin` and `padding`?
     - **Padding:** Space **inside** the element (between content and border) — inherits background color.
     - **Margin:** Space **outside** the element (between border and neighbors) — always transparent.
 
@@ -392,7 +392,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     div { padding: 10px; margin: 20px; }
     ```
 
-14. What is `overflow` in CSS?
+1. What is `overflow` in CSS?
     - Controls what happens when content is too large to fit its container.
 
     | Value | Behavior |
@@ -407,7 +407,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     .clamp   { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     ```
 
-15. What is the difference between `transition` and `animation`?
+1. What is the difference between `transition` and `animation`?
 
     | Feature | `transition` | `animation` |
     | --- | --- | --- |
@@ -428,7 +428,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     .loader { animation: spin 1s linear infinite; }
     ```
 
-16. What is `calc()` in CSS?
+1. What is `calc()` in CSS?
     - Performs **math calculations** directly in CSS — can mix different units.
 
     ```css
@@ -437,7 +437,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     .box     { padding: calc(1rem + 4px); }
     ```
 
-17. What is `object-fit` in CSS?
+1. What is `object-fit` in CSS?
     - Controls how a replaced element (`<img>`, `<video>`) fits within its container box.
 
     | Value | Behavior |
@@ -466,17 +466,17 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - `let`: Block-scoped, hoisted but not initialized, can be reassigned.
    - `const`: Block-scoped, cannot be reassigned.
 
-2. What is hoisting in JavaScript?
+1. What is hoisting in JavaScript?
    - JavaScript moves variable & function declarations to the top of scope before execution.
 
-3. Difference between `==` and `===`?
+1. Difference between `==` and `===`?
    - `==`: Compares values after type conversion (loose equality).
    - `===`: Compares both value & type (strict equality).
 
-4. Explain closures in JavaScript.
+1. Explain closures in JavaScript.
    - A closure is when a function remembers its lexical scope even if executed outside of it.
 
-5. Spread operator vs Rest operator
+1. Spread operator vs Rest operator
 
    | Feature   | Spread Operator                 | Rest Operator                  |
    | --------- | ------------------------------- | ------------------------------ |
@@ -496,7 +496,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    console.log(rest);  // [2, 3, 4]
    ```
 
-6. `map()` vs `forEach()`
+1. `map()` vs `forEach()`
 
    | Feature      | `map()`             | `forEach()`    |
    | ------------ | ------------------- | -------------- |
@@ -505,7 +505,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    | Chainable    | Yes                 | No             |
    | React usage  | ✅ Yes (JSX lists)  | ❌ No          |
 
-7. Explain Microtask vs Macrotask.
+1. Explain Microtask vs Macrotask.
 
    | Queue     | Description                                       | Examples                                            |
    | --------- | ------------------------------------------------- | --------------------------------------------------- |
@@ -516,7 +516,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
    <img width="1049" height="590" alt="image" src="https://github.com/user-attachments/assets/422ed303-58a9-4bae-9b44-4ddac4529cdb" />
 
-8. `hasOwnProperty` vs `Object.hasOwn`
+1. `hasOwnProperty` vs `Object.hasOwn`
 
    | Feature                          | `obj.hasOwnProperty(key)` | `Object.hasOwn(obj, key)` |
    | -------------------------------- | ------------------------- | ------------------------- |
@@ -526,7 +526,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    | Works with `Object.create(null)` | ❌ No                     | ✅ Yes                    |
    | Recommended today                | No                        | Yes (ES2022+)             |
 
-9. What is WeakMap in JavaScript?
+1. What is WeakMap in JavaScript?
    - A collection of key-value pairs where keys must be **objects** and are **weakly referenced** (can be garbage collected when no other references exist).
    ```js
    const wm = new WeakMap();
@@ -536,7 +536,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    user = null; // entry may be removed automatically by garbage collector
    ```
 
-10. `localStorage` vs `sessionStorage`
+1. `localStorage` vs `sessionStorage`
     - Both are part of the Web Storage API and store data in the browser as key-value pairs.
 
     | Feature       | `localStorage`                    | `sessionStorage`           |
@@ -546,7 +546,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Storage limit | ~5–10MB                           | ~5–10MB                    |
     | Persistence   | Long-term                         | Temporary                  |
 
-11. JavaScript ES2022 New Features
+1. JavaScript ES2022 New Features
     - **`.at()` Method** — Access elements using positive or negative index:
       ```js
       const arr = [10, 20, 30, 40];
@@ -567,7 +567,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
       }
       ```
 
-12. What is the Event Loop?
+1. What is the Event Loop?
     - JavaScript is **single-threaded** but non-blocking. The event loop is the mechanism that allows JS to handle asynchronous operations without freezing the main thread.
 
     **Components:**
@@ -578,9 +578,9 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     **How it works:**
     1. Execute all synchronous code on the Call Stack.
-    2. When the stack is empty, drain the entire **Microtask Queue**.
-    3. Pick **one** task from the Macrotask Queue and run it.
-    4. Repeat from step 2.
+    1. When the stack is empty, drain the entire **Microtask Queue**.
+    1. Pick **one** task from the Macrotask Queue and run it.
+    1. Repeat from step 2.
 
     ```js
     console.log("1");                           // Call Stack → prints 1
@@ -597,7 +597,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Microtask      | `Promise`, `queueMicrotask`           | Before next macrotask |
     | Macrotask      | `setTimeout`, `setInterval`, I/O      | After all microtasks |
 
-13. What is Monkey Patching?
+1. What is Monkey Patching?
     - Modifying or extending existing objects, classes, or prototypes **at runtime** without changing the original source code.
     ```js
     // Adding a custom method to the built-in Array prototype
@@ -623,7 +623,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     }
     ```
 
-14. CommonJS vs ES Modules (ESM)
+1. CommonJS vs ES Modules (ESM)
 
     | Feature            | CommonJS (CJS)                  | ES Modules (ESM)                     |
     | ------------------ | ------------------------------- | ------------------------------------ |
@@ -647,7 +647,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - ESM is the modern standard — preferred for new projects and browser code.
     - CJS is still widely used in older Node.js codebases and packages.
 
-15. Web Workers vs Service Workers
+1. Web Workers vs Service Workers
 
     | Feature              | Web Worker                        | Service Worker                          |
     | -------------------- | --------------------------------- | --------------------------------------- |
@@ -686,7 +686,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     });
     ```
 
-16. What is JavaScript?
+1. What is JavaScript?
     - JavaScript is a **Single-Threaded** and **Synchronous** language by default.
     - **Single-Threaded** — can execute only one task at a time in a single main thread.
     - **Main Thread** — where JavaScript code executes one line at a time.
@@ -721,7 +721,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     console.log(arr) // []
     ```
 
-17. How JavaScript Works?
+1. How JavaScript Works?
     - When JavaScript runs, it creates a **Global Execution Context** inside the Call Stack.
     - Execution context has two phases:
 
@@ -736,7 +736,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     Each time a function is called, a **new execution context** is created and pushed onto the call stack on top of the global execution context.
 
-18. What is Hoisting? (Detailed)
+1. What is Hoisting? (Detailed)
     - Variables and function **declarations** are moved to the top of their scope during compile phase.
 
     ```js
@@ -760,16 +760,16 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - `var`: hoisted and initialized as `undefined`.
     - `let` / `const`: hoisted but NOT initialized — accessing before declaration throws `ReferenceError` (Temporal Dead Zone).
 
-19. Difference between `undefined` and `not defined`?
+1. Difference between `undefined` and `not defined`?
     - `undefined`: Variable is **declared** but not yet assigned a value — JavaScript auto-assigns this.
     - `not defined`: Variable is **never declared** — accessing it throws `ReferenceError`.
 
-20. What is Lexical Environment?
+1. What is Lexical Environment?
     - Created whenever an execution context is created.
     - It is a combination of **local memory** (variable environment) + a **reference to the parent's lexical environment**.
     - The outer environment reference enables access to variables from parent scopes — the foundation of **closures**.
 
-21. What is Scope?
+1. What is Scope?
     - Scope defines where you can access variables, functions, and objects in your code.
 
     | Scope | Lexical Environment |
@@ -787,14 +787,14 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Block Scope | Accessible inside `{}` blocks only (`let` & `const`) |
     | Lexical Scope | Inner function can access outer function's variables |
 
-22. What is Scope Chaining?
+1. What is Scope Chaining?
     - The process where JavaScript searches for variables from the current scope outward until it finds the variable or reaches the global scope.
     1. Search in **current scope** (Local).
-    2. If not found, search in the **parent scope**.
-    3. Continue up the chain to **Global Scope**.
-    4. If still not found → `ReferenceError: not defined`.
+    1. If not found, search in the **parent scope**.
+    1. Continue up the chain to **Global Scope**.
+    1. If still not found → `ReferenceError: not defined`.
 
-23. What is `let`, `const`, and `var`? (Detailed)
+1. What is `let`, `const`, and `var`? (Detailed)
 
     | Feature | `var` | `let` | `const` |
     | --- | --- | --- | --- |
@@ -814,12 +814,12 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | `const` | `SyntaxError` | Missing initialization |
     | `const` | `ReferenceError` | Access before declaration |
 
-24. What is Temporal Dead Zone (TDZ)?
+1. What is Temporal Dead Zone (TDZ)?
     - The time period between the **declaration** of a `let`/`const` variable and its **initialization**, during which the variable cannot be accessed.
     - `let`/`const` variables are hoisted but kept in the TDZ until the initialization line is reached.
     - Accessing them during TDZ throws a `ReferenceError`.
 
-25. What is Shadowing in JavaScript?
+1. What is Shadowing in JavaScript?
     - Occurs when a variable in a local scope has the same name as a variable in an outer scope — the inner variable **overrides (shadows)** the outer one inside its scope.
     - **Illegal Shadowing:** A `let`/`const` variable cannot shadow a `var` variable in the same scope.
 
@@ -828,7 +828,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Shadowing | Local variable overrides outer variable | Local Scope wins |
     | Scope Chain | Search from inner to outer scope | Closest match wins |
 
-26. What is Closure? (Detailed)
+1. What is Closure? (Detailed)
     - A closure is a function **bundled together with references to its surrounding lexical environment**.
     - Gives a function access to its own scope, outer function variables, and global variables — even after the outer function has finished executing.
     - Closures are created every time a function is created in JavaScript.
@@ -843,7 +843,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     closure(); // "I'm in the outer scope!"
     ```
 
-27. Advantages of Closures
+1. Advantages of Closures
     - **Data Encapsulation** — create private variables inaccessible from outside.
     - **`setTimeout` with Loops** — preserve variable values inside loops.
     - **Currying** — closures are the foundation of curried functions.
@@ -873,7 +873,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     // Output: 1 2 3
     ```
 
-28. What is Currying?
+1. What is Currying?
     - A technique where a function takes **one argument at a time**, returning a new function for each additional argument until all arguments are received.
 
     ```js
@@ -900,7 +900,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     console.log(curriedSum(1)(2)(3)); // 6
     ```
 
-29. What is `call()`, `apply()`, and `bind()`?
+1. What is `call()`, `apply()`, and `bind()`?
     - `call()`: Invokes a function **immediately**, passing `this` and arguments one by one.
     - `apply()`: Invokes a function **immediately**, passing `this` and arguments as an **array**.
     - `bind()`: Returns a **new function** with a fixed `this` — does not execute immediately.
@@ -921,7 +921,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     bound();                                       // Nasrutheen from Chennai
     ```
 
-30. What is Garbage Collection?
+1. What is Garbage Collection?
     - An automatic memory management process that frees memory by removing unused objects using the **Mark and Sweep algorithm**.
 
     ```js
@@ -940,7 +940,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     // `name` IS GC'd — no reference in the returned closure
     ```
 
-31. What is a First-Class Function and First-Class Citizen?
+1. What is a First-Class Function and First-Class Citizen?
     - Functions are **First-Class Citizens** — they can be assigned to variables, passed as arguments, and returned from other functions, just like any other value.
 
     | Concept | Meaning |
@@ -960,7 +960,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     console.log(getGreet()()); // "Hello Boss!"
     ```
 
-32. Function Statement vs Expression vs Anonymous vs Named Function Expression
+1. Function Statement vs Expression vs Anonymous vs Named Function Expression
 
     | Term | Description |
     | --- | --- |
@@ -981,12 +981,12 @@ This repo is collaborative — feel free to contribute more questions 🚀
     welcome("Mohamed", 25);                                           // "Mohamed", 25 = arguments
     ```
 
-33. What is a Callback Function, Pure Function, and Higher-Order Function?
+1. What is a Callback Function, Pure Function, and Higher-Order Function?
     - **Callback Function:** A function passed as an argument to another function.
     - **Pure Function:** Always returns the same output for the same input; no side effects.
     - **Higher-Order Function (HOF):** Takes another function as an argument or returns a function.
 
-34. What is the Event Loop? (Detailed)
+1. What is the Event Loop? (Detailed)
     - The Event Loop manages execution of synchronous and asynchronous tasks by checking the Call Stack, Microtask Queue, and Callback Queue (Macrotask Queue).
     - Continuously checks: Call Stack empty? → drain all **Microtasks** → run one **Macrotask** → repeat.
 
@@ -995,11 +995,11 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Microtasks | `Promise.then()`, `async/await`, `MutationObserver` | ⬆ High |
     | Macrotasks (Callback Queue) | `setTimeout()`, `setInterval()`, `setImmediate()` (Node.js) | ⬇ Low |
 
-35. What is JIT (Just-In-Time) Compilation?
+1. What is JIT (Just-In-Time) Compilation?
     - JIT converts JavaScript code into machine code **at runtime** to improve performance.
     - Combines both **Interpretation** and **Compilation** for optimized execution.
 
-36. What is the JavaScript Runtime Environment?
+1. What is the JavaScript Runtime Environment?
     - Provides everything needed to execute JavaScript code. Includes:
       - **JavaScript Engine** (V8 for Chrome/Node.js)
       - **Web APIs** (`setTimeout`, DOM APIs, `fetch`)
@@ -1007,21 +1007,21 @@ This repo is collaborative — feel free to contribute more questions 🚀
       - **Event Loop**
     - Node.js is a popular JavaScript Runtime Environment for server-side development.
 
-37. What is the Memory Heap?
+1. What is the Memory Heap?
     - A region where JavaScript stores dynamic data like objects and functions — unordered, managed by the engine.
     - Primitive values → stored in the **Call Stack**.
     - Objects and functions → stored in the **Heap**.
     - Garbage Collection (Mark and Sweep) automatically frees unused Heap memory.
 
-38. What is Functional Programming in JavaScript?
+1. What is Functional Programming in JavaScript?
     - A programming style using **pure, reusable functions** that operate on data without side effects, promoting immutability and code reusability.
     - Key concepts: **First-Class Functions**, **Higher-Order Functions**, **Pure Functions**, **Immutability**, **Recursion**, **Closures**.
 
-39. What is Immutability?
+1. What is Immutability?
     - Original data **cannot be changed**. Instead, a new copy is created with modifications.
     - Leads to predictable, bug-free code — a core principle of functional programming.
 
-40. What is Callback Hell, and how do Promises and async/await solve it?
+1. What is Callback Hell, and how do Promises and async/await solve it?
     - **Callback Hell:** Multiple nested callbacks making code hard to read and maintain.
 
     | Callback Hell | Promises |
@@ -1072,7 +1072,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     }
     ```
 
-41. What is Inversion of Control?
+1. What is Inversion of Control?
     - Giving control of program flow to another function — instead of managing all logic yourself, you pass the control to another function to decide when and how your code executes.
 
     ```js
@@ -1083,11 +1083,11 @@ This repo is collaborative — feel free to contribute more questions 🚀
     greet(() => console.log("Hello World"));
     ```
 
-42. What is `process.nextTick()`?
+1. What is `process.nextTick()`?
     - A Node.js feature that schedules a callback to execute **immediately after the current operation**, before any I/O events or timers.
     - Runs before `setTimeout()`, `setImmediate()`, and I/O — part of the microtask queue.
 
-43. What is the `this` keyword in JavaScript?
+1. What is the `this` keyword in JavaScript?
     - `this` refers to the **current execution context** — its value depends on how and where the function is called.
 
     ```js
@@ -1115,28 +1115,28 @@ This repo is collaborative — feel free to contribute more questions 🚀
     student.printName.call(student2); // Nasrutheen — call() overrides `this`
     ```
 
-44. What is Inheritance and Prototypal Inheritance?
+1. What is Inheritance and Prototypal Inheritance?
     - **Inheritance:** An OOP concept where a child class acquires properties and methods of a parent class.
     - **Prototypal Inheritance:** JavaScript's mechanism where objects inherit from other objects through the **prototype chain** — if a property/method is not on the object itself, JavaScript looks up `[[Prototype]]`.
 
-45. What is Event Propagation?
+1. What is Event Propagation?
     - How events travel through the DOM. Three phases:
       1. **Capturing Phase** — Parent → Child (top-down)
-      2. **Target Phase** — The exact element clicked
-      3. **Bubbling Phase** — Child → Parent (bottom-up)
+      1. **Target Phase** — The exact element clicked
+      1. **Bubbling Phase** — Child → Parent (bottom-up)
 
-46. What is Event Bubbling?
+1. What is Event Bubbling?
     - Events move from the **target element (child) up to its parents**.
     - Example: clicking a `<button>` inside a `<div>`: `button → div → body → document → window`.
 
-47. What is Event Capturing?
+1. What is Event Capturing?
     - Events move from the **parent down to the target child** before reaching it.
     - Enable capturing by passing `true` as the third argument to `addEventListener`:
     ```js
     element.addEventListener("click", handler, true);
     ```
 
-48. What is Event Delegation? (JavaScript)
+1. What is Event Delegation? (JavaScript)
     - Attach **one event listener to a parent** instead of multiple listeners on individual children.
     - Detect which child triggered the event using `event.target`.
     ```js
@@ -1147,7 +1147,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     });
     ```
 
-49. What is the Prototype Object Model in JavaScript?
+1. What is the Prototype Object Model in JavaScript?
     - Every JavaScript object has an internal `[[Prototype]]` link pointing to another object — its **prototype**.
     - When you access a property, JavaScript first looks on the object itself; if not found, it walks up the **prototype chain** until it finds it or reaches `null`.
 
@@ -1181,7 +1181,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | `Object.create(proto)` | Create an object with a specific prototype |
     | `Constructor.prototype` | Shared object assigned as `[[Prototype]]` of all instances |
 
-50. What is Prototypal Inheritance? (Detailed)
+1. What is Prototypal Inheritance? (Detailed)
     - JavaScript's mechanism where **objects inherit directly from other objects** (not classes). An object can access properties and methods anywhere on its prototype chain.
 
     ```js
@@ -1223,9 +1223,108 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ---
 
+### Objects & Built-in Methods
+
+1. What does `Object.freeze()` do?
+   - Makes an object **fully immutable (shallow)** — no properties can be added, removed, or modified.
+   - `Object.freeze(obj)`:
+     - Prevents adding new properties
+     - Prevents deleting existing properties
+     - Prevents modifying existing property values
+     - Prevents changing property descriptors (`writable`, `configurable`)
+
+   ```js
+   const config = Object.freeze({ host: "localhost", port: 3000 });
+   config.port = 8080;    // silently ignored (TypeError in strict mode)
+   config.debug = true;   // silently ignored
+   delete config.host;    // silently ignored
+   console.log(config);   // { host: "localhost", port: 3000 }
+   ```
+
+   > **Shallow only** — nested objects are NOT frozen:
+   ```js
+   const obj = Object.freeze({ nested: { value: 1 } });
+   obj.nested.value = 99; // ✅ This works — nested object is not frozen
+   ```
+
+1. What does `Object.seal()` do?
+   - Prevents adding or deleting properties, but **allows modifying existing values**.
+   - `Object.seal(obj)`:
+     - Prevents adding new properties
+     - Prevents deleting existing properties
+     - Allows modifying existing property values ✅
+     - Prevents changing property descriptors
+
+   ```js
+   const user = Object.seal({ name: "Alice", age: 25 });
+   user.age = 30;       // ✅ Allowed — modifying existing value
+   user.email = "...";  // ❌ Ignored — cannot add new property
+   delete user.name;    // ❌ Ignored — cannot delete
+   console.log(user);   // { name: "Alice", age: 30 }
+   ```
+
+1. What is the difference between `Object.freeze()` and `Object.seal()`?
+
+   | Feature | `Object.freeze()` | `Object.seal()` |
+   | --- | --- | --- |
+   | Add new properties | ❌ No | ❌ No |
+   | Delete properties | ❌ No | ❌ No |
+   | Modify existing values | ❌ No | ✅ Yes |
+   | Change property descriptors | ❌ No | ❌ No |
+   | Use case | Read-only config/constants | Fixed-shape object with mutable values |
+
+   > Both apply **shallowly** — nested objects require recursive application to be fully immutable/sealed.
+
+1. How do you get a letter (alphabet) from a number in JavaScript?
+   - Use `String.fromCharCode()` with ASCII values: `A = 65`, `B = 66`, ..., `Z = 90`.
+
+   ```js
+   String.fromCharCode(65);      // "A"
+   String.fromCharCode(65 + 1);  // "B"
+   String.fromCharCode(65 + 25); // "Z"
+
+   // Get letter at 0-indexed position
+   const getLetter = (n) => String.fromCharCode(65 + n);
+   getLetter(0); // "A"
+   getLetter(4); // "E"
+   ```
+
+1. What is an Axios Interceptor?
+   - A **middleware function** that intercepts HTTP requests or responses globally — before they are sent or after they are received.
+   - Used for: adding auth tokens, logging, error handling, request/response transformation.
+
+   ```js
+   // Request interceptor — attach auth token to every request
+   axios.interceptors.request.use(
+     (config) => {
+       config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+       return config;
+     },
+     (error) => Promise.reject(error)
+   );
+
+   // Response interceptor — handle 401 Unauthorized globally
+   axios.interceptors.response.use(
+     (response) => response,
+     (error) => {
+       if (error.response?.status === 401) {
+         window.location.href = "/login";
+       }
+       return Promise.reject(error);
+     }
+   );
+   ```
+
+   | Type | Runs when | Common use |
+   | --- | --- | --- |
+   | Request interceptor | Before request is sent | Add auth headers, log requests |
+   | Response interceptor | After response is received | Handle errors globally, transform data |
+
+---
+
 ### Output Questions
 
-51. What is the output? — Event Loop & Async execution order
+1. What is the output? — Event Loop & Async execution order
 
     ```js
     console.log("Start");
@@ -1250,12 +1349,12 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     **Why — step by step:**
     1. `console.log("Start")` → sync, runs immediately.
-    2. `setTimeout(...)` → registered in Web API, callback moves to **Macrotask Queue** after 0ms.
-    3. `queueMicrotask(...)` → callback pushed to **Microtask Queue**.
-    4. `Promise.resolve().then(...)` → `.then` callback pushed to **Microtask Queue**.
-    5. `console.log("End")` → sync, runs immediately.
-    6. Call Stack is empty → drain **Microtask Queue** completely first → `Microtask`, then `Promise`.
-    7. Pick one task from **Macrotask Queue** → `Timeout`.
+    1. `setTimeout(...)` → registered in Web API, callback moves to **Macrotask Queue** after 0ms.
+    1. `queueMicrotask(...)` → callback pushed to **Microtask Queue**.
+    1. `Promise.resolve().then(...)` → `.then` callback pushed to **Microtask Queue**.
+    1. `console.log("End")` → sync, runs immediately.
+    1. Call Stack is empty → drain **Microtask Queue** completely first → `Microtask`, then `Promise`.
+    1. Pick one task from **Macrotask Queue** → `Timeout`.
 
     | Queue | What goes in | Priority |
     | --- | --- | --- |
@@ -1263,7 +1362,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Microtask Queue | `Promise.then`, `queueMicrotask`, `async/await` | Before any macrotask |
     | Macrotask Queue | `setTimeout`, `setInterval`, I/O | After all microtasks |
 
-52. What is the output? — String immutability
+1. What is the output? — String immutability
 
     ```js
     let check = "hello";
@@ -1301,10 +1400,10 @@ This repo is collaborative — feel free to contribute more questions 🚀
    - **Class:** Uses `this`, lifecycle methods.
    - **Functional:** Uses hooks (`useState`, `useEffect`), simpler syntax.
 
-2. What are functional components?
+1. What are functional components?
    - Functional components are JavaScript functions that accept arguments (called props) and return React elements that describe what should appear on the screen.
 
-3. What is an implicit return in functional components?
+1. What is an implicit return in functional components?
    - If a component only contains a single return statement, you can skip the `return` keyword and curly braces by using parentheses:
    ```jsx
    const MyComponent = () => (
@@ -1313,13 +1412,66 @@ This repo is collaborative — feel free to contribute more questions 🚀
    export default MyComponent;
    ```
 
-4. Why must a React component return a single root element?
-   - React requires one root element because the virtual DOM needs a single entry point to represent the component tree.
+1. Why must a React component return a single root element? (JSX, Virtual DOM & Reconciliation)
+   - A React component must return a **single root element** — this is enforced by three interconnected reasons: JSX compilation, Virtual DOM structure, and reconciliation efficiency.
 
-5. Why is JSX not valid JavaScript?
+   **1. JSX compiles to a single JavaScript object**
+
+   JSX is syntactic sugar for `React.createElement()`, which returns **one object**. A function can only return one value — returning two parallel JSX elements tries to return two objects simultaneously, which is invalid:
+   ```jsx
+   // ❌ Invalid — two objects returned
+   function App() {
+     return (
+       <h1>Hello</h1>
+       <p>World</p>
+     );
+   }
+
+   // 👆 compiles to:
+   return React.createElement("h1", null, "Hello"); // two separate calls — error
+          React.createElement("p",  null, "World");
+   ```
+
+   **2. Virtual DOM requires a single root to build a tree**
+
+   React builds a component tree (Virtual DOM) from the returned JSX. A tree by definition has one root node. Multiple sibling roots break the tree structure React's diffing algorithm depends on:
+   ```
+   ✅ Valid tree:        ❌ Invalid — two roots:
+        App                  h1    p
+        / \                (no common root)
+       h1   p
+   ```
+
+   **3. Reconciliation (diffing) requires predictable structure**
+
+   React's reconciler compares old and new Virtual DOM trees. A single root gives React a clear starting point — multiple roots would force React to manage multiple independent trees, making diffing complex and performance worse.
+
+   **Solutions:**
+
+   | Approach | Extra DOM node? | When to use |
+   | --- | --- | --- |
+   | `<div>` wrapper | ✅ Yes | When you need a real container for styling |
+   | `<>...</>` Fragment | ❌ No | Most cases — clean DOM, no layout side-effects |
+   | `<React.Fragment key={...}>` | ❌ No | When you need `key` prop (e.g. inside `.map()`) |
+
+   ```jsx
+   // ✅ Fragment — no extra DOM node (preferred)
+   function App() {
+     return (
+       <>
+         <h1>Hello</h1>
+         <p>World</p>
+       </>
+     );
+   }
+   ```
+
+   Fragment renders `<h1>` and `<p>` directly into the parent — no wrapper `<div>` clutters the DOM or affects CSS layout (e.g. flexbox/grid child counts).
+
+1. Why is JSX not valid JavaScript?
    - Browsers cannot directly interpret JSX. It must be transpiled (commonly by Babel) into JavaScript that React can execute.
 
-6. React Elements vs. HTML Elements
+1. React Elements vs. HTML Elements
 
    | Feature        | React Element                         | HTML Element                              |
    | -------------- | ------------------------------------- | ----------------------------------------- |
@@ -1345,27 +1497,112 @@ This repo is collaborative — feel free to contribute more questions 🚀
    Real HTML Element (browser renders)
    ```
 
+1. What are the advantages of React?
+   - **Component-Based Architecture:** Build UIs as reusable, composable components — improves maintainability and scalability.
+   - **Virtual DOM:** React diffs a lightweight in-memory representation first, then applies only the minimal set of changes to the real DOM — better performance than direct DOM manipulation.
+   - **Declarative UI:** Describe *what* the UI should look like given the current state — React handles *how* to update it. Code is predictable and easier to debug.
+   - **JSX Syntax:** Write HTML-like markup inside JavaScript — more readable and tooling-friendly.
+   - **React Hooks:** Introduced in v16.8 — use state and lifecycle features in function components, eliminating most need for class components.
+   - **Unidirectional Data Flow:** Data flows down via props, events bubble up — makes data flow easier to trace and debug.
+   - **Rich Ecosystem:** React Router, Redux, Zustand, React Query, and more. Integrates easily with existing projects.
+   - **Cross-Platform:** React Native reuses the same mental model for mobile development.
+   - **SEO-Friendly:** Server-side rendering via Next.js improves search engine visibility.
+   - **Large Community:** Extensive libraries, tutorials, and third-party tooling.
+
+1. What are the Rules of Hooks?
+   - There are two core rules enforced by React (and the `eslint-plugin-react-hooks` lint rule):
+
+   **Rule 1 — Only call hooks at the top level**
+   - Never call hooks inside loops, conditions, or nested functions.
+   - **Why:** React identifies hooks by their call order. If call order changes between renders (due to conditional execution), React cannot correctly match state and effects to the right hook slot.
+
+   ```jsx
+   // ❌ Wrong — hook inside condition
+   if (isLoggedIn) {
+     const [user, setUser] = useState(null); // breaks hook order
+   }
+
+   // ✅ Correct — hook at the top, condition inside
+   const [user, setUser] = useState(null);
+   if (isLoggedIn) { /* use user here */ }
+   ```
+
+   **Rule 2 — Only call hooks from React functions**
+   - Call hooks from React function components or custom hooks — never from regular JavaScript functions, class components, or event handlers outside of components.
+   - **Why:** Ensures all stateful logic is clearly visible in the component's source code and stays within React's rendering lifecycle.
+
+   ```jsx
+   // ❌ Wrong — hook called from a plain JS function
+   function fetchUser() {
+     const [data, setData] = useState(null); // not a React function
+   }
+
+   // ✅ Correct — hook called from a function component
+   function UserProfile() {
+     const [data, setData] = useState(null); // ✅
+   }
+
+   // ✅ Correct — hook called from a custom hook
+   function useUser() {
+     const [data, setData] = useState(null); // ✅
+   }
+   ```
+
+1. What is the difference between a Pure Function and a Pure Component?
+
+   **Pure Function**
+   - A function that always returns the **same output for the same input** and has **no side effects** (doesn't modify external state).
+   ```js
+   const add = (a, b) => a + b; // same args → same result, no side effects ✅
+   ```
+
+   **Pure Component (React)**
+   - A React component that **skips re-rendering when props and state haven't changed**, using shallow comparison.
+   - **Class components:** extend `React.PureComponent` instead of `React.Component`.
+   - **Function components:** wrap with `React.memo()` for the equivalent behavior.
+
+   ```jsx
+   // Class — PureComponent
+   class MyList extends React.PureComponent {
+     render() { return <ul>{this.props.items.map(i => <li key={i}>{i}</li>)}</ul>; }
+   }
+
+   // Function — React.memo
+   const MyList = React.memo(({ items }) => (
+     <ul>{items.map(i => <li key={i}>{i}</li>)}</ul>
+   ));
+   ```
+
+   | | Pure Function | Pure Component |
+   | --- | --- | --- |
+   | What it is | General programming concept | React-specific optimization |
+   | Deterministic output | ✅ Always | ✅ Same props/state → same render |
+   | Side effects | ❌ None | ❌ Avoids unnecessary renders |
+   | Comparison | N/A | Shallow prop + state comparison |
+   | Class API | — | `React.PureComponent` |
+   | Function API | — | `React.memo()` |
+
 ---
 
 ### Props & State
 
-7. What are props in React?
+1. What are props in React?
    - Read-only data passed from parent to child to configure components.
 
-8. What is the difference between props and state?
+1. What is the difference between props and state?
    - **Props:** Immutable, passed from parent.
    - **State:** Mutable, managed within the component.
 
-9. Can a child component modify props directly?
+1. Can a child component modify props directly?
    - ❌ No. Props are read-only; children use callback functions to update parent data.
 
-10. What is the `children` prop used for?
+1. What is the `children` prop used for?
     - To render nested JSX elements inside a component.
 
-11. What is the purpose of `defaultProps`?
+1. What is the purpose of `defaultProps`?
     - To define default values when a prop isn't passed.
 
-12. Is `useState` mutable or immutable in React?
+1. Is `useState` mutable or immutable in React?
     - `useState` is **immutable** in React. React always expects you to create new state, not modify the existing state. If the existing state is mutated directly, React may not re-render.
 
     **Wrong approach (direct mutation):**
@@ -1383,11 +1620,152 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
+1. How does React batch state updates? And can you prevent automatic batching? (`flushSync`)
+   - React **batches** multiple state updates into a single re-render instead of triggering a render for each call. It queues all updates, then applies them together in one pass.
+
+   **Why batching matters — stale value trap:**
+   ```jsx
+   const [count, setCount] = useState(0);
+
+   function handleClick() {
+     setCount(count + 1); // queued: 0 + 1
+     setCount(count + 1); // queued: 0 + 1 (same stale value!)
+     setCount(count + 1); // queued: 0 + 1
+   }
+   // Result: count = 1 ❌ (expected 3)
+   ```
+
+   **Fix — use functional updates to always get the latest value:**
+   ```jsx
+   function handleClick() {
+     setCount(prev => prev + 1); // 0 → 1
+     setCount(prev => prev + 1); // 1 → 2
+     setCount(prev => prev + 1); // 2 → 3
+   }
+   // Result: count = 3 ✅
+   ```
+
+   **React 18 automatic batching — works everywhere:**
+
+   | Context | React 17 | React 18 |
+   | --- | --- | --- |
+   | Event handlers | ✅ Batched | ✅ Batched |
+   | `setTimeout` / `setInterval` | ❌ Not batched | ✅ Batched |
+   | Promises / `async/await` | ❌ Not batched | ✅ Batched |
+   | Native DOM events | ❌ Not batched | ✅ Batched |
+
+   ```jsx
+   // React 18 — even inside setTimeout, only ONE re-render
+   setTimeout(() => {
+     setCount(c => c + 1);
+     setFlag(true);
+   }, 1000); // ✅ one render
+   ```
+
+   **Preventing automatic batching — `flushSync` (escape hatch):**
+
+   Use `flushSync` from `react-dom` when you need the DOM updated **immediately** before the next line runs (e.g. to focus an element that doesn't exist until after a render):
+   ```jsx
+   import { flushSync } from "react-dom";
+
+   function handleClick() {
+     flushSync(() => {
+       setOpen(true); // React renders synchronously right now
+     });
+     // DOM is guaranteed up-to-date here
+     document.getElementById("modal").focus();
+
+     flushSync(() => {
+       setCount(c => c + 1); // another immediate render
+     });
+   }
+   // Result: TWO renders instead of one ⚠️
+   ```
+
+   | | Batching (default) | `flushSync` |
+   | --- | --- | --- |
+   | Re-renders | 1 (grouped) | 1 per `flushSync` call |
+   | Performance | ✅ Optimal | ❌ More renders |
+   | Use case | Everything normal | DOM measurement, third-party lib integration |
+
+   - `flushSync` is an escape hatch — prefer `useLayoutEffect` or `useEffect` for most post-render DOM work.
+   - Never use `flushSync` inside `useEffect` or React lifecycle — it can cause infinite loops.
+
+1. What is the `setState` updater function and when should you use it?
+   - The **updater function** is the function form of `setState` — it receives **previous state** as an argument and returns the next state. This guarantees you always operate on the most current value, even when React batches updates.
+
+   **Without updater — stale value problem:**
+   ```jsx
+   setCount(count + 1); // all three read stale count = 0
+   setCount(count + 1);
+   setCount(count + 1);
+   // Result: +1 ❌
+   ```
+
+   **With updater — correct sequential execution:**
+   ```jsx
+   setCount(prev => prev + 1); // 0 → 1
+   setCount(prev => prev + 1); // 1 → 2
+   setCount(prev => prev + 1); // 2 → 3
+   // Result: +3 ✅
+   ```
+
+   | When to use | When NOT needed |
+   | --- | --- |
+   | Counter: `prev => prev + 1` | Static value: `setName("Sudheer")` |
+   | Toggle: `prev => !prev` | User input: `setInput(e.target.value)` |
+   | Array append: `prev => [...prev, item]` | Any value independent of previous state |
+
+   **One-liner:** Use the updater function when the next state depends on the previous state to avoid stale values from batching.
+
+1. Is `useState` synchronous or asynchronous?
+   - `useState` is **neither purely synchronous nor truly asynchronous** — it is **batched and scheduled**: React queues the update and applies it during the next render cycle.
+
+   ```jsx
+   const [count, setCount] = useState(0);
+
+   function handleClick() {
+     setCount(count + 1);
+     console.log(count); // 👉 still 0 — update not applied yet
+   }
+   ```
+
+   - `setCount` does **not** return a Promise — you cannot `await` it.
+   - The new value is only available in the **next render** via `count` from `useState`.
+   - To always use the latest value during the same event, use an updater: `setCount(prev => prev + 1)`.
+
+   **One-liner:** `useState` updates are not immediate — React batches and schedules them, so they behave asynchronously even though they return nothing.
+
+1. How does `useState` work internally?
+   - React stores each component's state in an **internal array (hooks list)** indexed by call order. Each `useState` gets a fixed slot. On re-render, React reads the previous value, applies queued updater functions in sequence, and returns the new state.
+
+   **Simplified mental model:**
+   ```js
+   let hooks = [];
+   let index = 0;
+
+   function useState(initial) {
+     const i = index++;
+     hooks[i] = hooks[i] ?? initial;
+
+     function setState(value) {
+       hooks[i] = typeof value === "function" ? value(hooks[i]) : value;
+       render(); // schedule re-render
+     }
+
+     return [hooks[i], setState];
+   }
+   ```
+
+   - Index resets to `0` before each render — hooks must be called in the **same order every time** (no conditionals or loops).
+   - **Updater queue:** `setCount(prev => prev + 1)` called three times queues functions that run sequentially: `0 → 1 → 2 → 3`.
+   - **Direct value:** `setCount(count + 1)` called three times all read the same stale snapshot → only `+1`.
+
 ---
 
 ### Lifecycle
 
-13. React Component Lifecycle (Class & Functional)
+1. React Component Lifecycle (Class & Functional)
 
     Every React component goes through three main phases: **Mounting → Updating → Unmounting**
 
@@ -1452,7 +1830,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ### Rendering Pipeline
 
-14. Render vs Paint in React
+1. Render vs Paint in React
 
     These are two distinct phases — React owns **Render**, the browser owns **Paint**.
 
@@ -1525,7 +1903,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ### Hooks & Performance
 
-15. What is the difference between `useMemo`, `useCallback`, and `React.memo`?
+1. What is the difference between `useMemo`, `useCallback`, and `React.memo`?
     - `useMemo`: Memoizes a **calculated value**.
     - `useCallback`: Memoizes a **function** reference.
     - `React.memo`: Memoizes a **whole component** to avoid re-renders.
@@ -1594,7 +1972,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     }
     ```
 
-16. Tree Shaking
+1. Tree Shaking
     - Tree shaking = removing unused code from your bundle. Used by bundlers like Webpack, Rollup, and Vite.
     ```js
     // math.js
@@ -1606,10 +1984,10 @@ This repo is collaborative — feel free to contribute more questions 🚀
     add(2, 3);
     ```
 
-17. Lazy Loading
+1. Lazy Loading
     - Load components only when needed. Improves performance by reducing the initial bundle size.
 
-18. Why do we need to build React?
+1. Why do we need to build React?
     - React code cannot run directly in browsers efficiently. JSX needs compilation (Babel), code needs minification and tree shaking (Webpack/Vite), and modern JS must be transpiled for older browsers.
 
     | Feature        | 🧪 Development Mode             | 🚀 Production Build                          |
@@ -1626,9 +2004,752 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ---
 
+### React Hooks
+
+1. How do you update objects inside state?
+   - You cannot update objects in state directly. JavaScript objects are mutable, but treat them as read-only inside state. Always create a fresh copy using spread syntax and pass it to the setter.
+
+   **Wrong — direct mutation (UI won't update):**
+   ```jsx
+   function handleFirstNameChange(e) {
+     user.firstName = e.target.value; // ❌ mutates directly, no re-render
+   }
+   ```
+
+   **Correct — spread and update in one handler:**
+   ```jsx
+   function handleProfileChange(e) {
+     setUser({
+       ...user,
+       [e.target.name]: e.target.value, // ✅ new object
+     });
+   }
+   ```
+
+1. How do you update nested objects inside state?
+   - Spread syntax is **shallow** (copies only one level). For nested objects, create a new copy at each level of nesting.
+
+   ```jsx
+   // user = { name: "John", address: { country: "Singapore", postalCode: 440004 } }
+
+   // ❌ Direct mutation — same reference, won't re-render
+   user.address.country = "Germany";
+
+   // ✅ Spread at each level
+   setUser({
+     ...user,
+     address: {
+       ...user.address,
+       country: "Germany",
+     },
+   });
+   ```
+
+   For deeply nested structures, consider Immer to simplify updates.
+
+1. How do you update arrays inside state?
+   - Arrays are mutable in JavaScript, but treat them as immutable in state. Avoid mutation methods (`push`, `pop`, `splice`, `sort`, `reverse`) — use immutable alternatives.
+
+   **Wrong:**
+   ```jsx
+   todos.push({ id: id + 1, name }); // ❌ mutates original
+   ```
+
+   **Correct:**
+   ```jsx
+   setTodos([...todos, { id: id + 1, name }]); // ✅ new array
+   ```
+
+   | Action | Preferred (immutable) | Non-preferred (mutates) |
+   | --- | --- | --- |
+   | Adding | `concat`, `[...arr, item]` | `push`, `unshift` |
+   | Removing | `filter`, `slice` | `pop`, `shift`, `splice` |
+   | Replacing | `map` | `splice`, `arr[i] = val` |
+   | Sorting | copy first, then sort | `reverse`, `sort` |
+
+1. How do you use the Immer library for state updates?
+   - **Immer** uses a copy-on-write proxy. You write mutation syntax on a `draft`, and Immer produces a new immutable state automatically.
+
+   ```bash
+   npm install use-immer
+   ```
+
+   ```jsx
+   import { useImmer } from "use-immer";
+
+   const [user, setUser] = useImmer({
+     name: "John",
+     address: { country: "Singapore", postalCode: 440004 },
+   });
+
+   setUser((draft) => {
+     draft.address.country = "Germany"; // ✅ mutation syntax is fine on draft
+   });
+   ```
+
+   With Immer, all array methods (`push`, `splice`, `sort`) work safely on the draft.
+
+1. What are the benefits of preventing direct state mutations?
+   - React detects changes by **reference comparison** — mutating an object gives the same reference, so React skips the re-render.
+   - Enables **time-travel debugging** — each state version is a distinct snapshot.
+   - Concurrent rendering reads state multiple times during a render; mutations can produce inconsistent snapshots.
+   - Keeps component behavior **predictable** and side-effect free.
+
+1. Can `useState` take a function as an initial value?
+   - Yes — called **lazy initialization**. Pass a function (not an invocation) so the expensive logic runs only once on mount, not on every render.
+
+   ```jsx
+   // ❌ Runs on every render
+   const [count, setCount] = useState(expensiveComputation());
+
+   // ✅ Runs only once
+   const [count, setCount] = useState(() => expensiveComputation());
+   ```
+
+1. What types of values can `useState` hold?
+   - Any JavaScript value: primitives (`number`, `string`, `boolean`), `null`, `undefined`, arrays, objects, and functions.
+   - Be careful with **reference types** — React compares by reference, so direct mutations won't trigger re-renders:
+
+   ```jsx
+   user.name = "Sudheer"; // ❌ same reference, no re-render
+   setUser(prev => ({ ...prev, name: "Sudheer" })); // ✅
+   ```
+
+1. What happens if you call `useState` conditionally?
+   - React relies on the **fixed call order** of hooks to match them to internal slots. Conditional calls break that order and throw a runtime error.
+
+   ```jsx
+   if (someCondition) {
+     const [state, setState] = useState(0); // ❌ breaks rules of hooks
+   }
+   ```
+
+   Always call hooks at the **top level** of a component, unconditionally.
+
+1. Can Hooks be used inside class components?
+   - No. Hooks are exclusively for **functional components** (and custom hooks). They rely on a predictable call-order within a functional render that class components don't provide. Both component types can coexist in the same app.
+
+1. What will happen if you define nested function components?
+   - React treats a component defined inside another as a **new component type** on every render, causing full unmount/remount, loss of child state, and performance issues.
+
+   ```jsx
+   // ❌ New type on every render
+   function Parent() {
+     function Child() { return <div>Child</div>; }
+     return <Child />;
+   }
+
+   // ✅ Define outside
+   function Child() { return <div>Child</div>; }
+   function Parent() { return <Child />; }
+   ```
+
+1. Can I use keys for non-list items?
+   - Yes. Changing a `key` forces React to **unmount and remount** the component, resetting all its state — without prop drilling.
+
+   ```jsx
+   // Changing userId resets the entire form's state
+   <ProfileForm key={userId} />
+   ```
+
+   Useful for resetting forms, re-triggering animations, or clearing child state.
+
+1. What are the guidelines for writing reducers?
+   - **Reducers must be pure** — same inputs always return the same output. No API calls, no timers, no side effects. They run during rendering.
+   - **One action per user interaction** — even if it causes multiple state changes, use one descriptive action (`"reset_form"`) rather than one per field. This keeps the action log readable and debugging straightforward.
+
+1. What is `useReducer` and why use it?
+   - `useReducer` manages complex state logic by dispatching **actions** to a reducer function that returns new state, similar to Redux.
+
+   ```jsx
+   const [state, dispatch] = useReducer(reducer, initialState);
+   ```
+
+   Use `useReducer` when:
+   - State is complex (nested, multi-field, or interdependent values)
+   - Update logic should live outside the component (separate and testable)
+   - You need undo/redo, multi-step forms, shopping cart, or toggle-heavy logic
+
+1. How does `useReducer` work? Explain with an example.
+   ```jsx
+   function counterReducer(state, action) {
+     switch (action.type) {
+       case "increment": return { count: state.count + 1 };
+       case "decrement": return { count: state.count - 1 };
+       case "reset":     return { count: 0 };
+       default:          return state;
+     }
+   }
+
+   function Counter() {
+     const [state, dispatch] = useReducer(counterReducer, { count: 0 });
+     return (
+       <>
+         <h2>Count: {state.count}</h2>
+         <button onClick={() => dispatch({ type: "increment" })}>+</button>
+         <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+         <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+       </>
+     );
+   }
+   ```
+
+   After each dispatch, React re-renders with the new `state.count`.
+
+1. How is `useReducer` different from `useState`?
+
+   | Feature | `useState` | `useReducer` |
+   | --- | --- | --- |
+   | State complexity | Simple / flat | Complex / multi-part / nested |
+   | Update style | Direct (`setState(x)`) | Through actions (`dispatch({})`) |
+   | Logic location | In component | In reducer function |
+   | Reusability | Less reusable | Highly reusable and testable |
+
+1. Can you combine `useReducer` with `useContext`?
+   - Yes — this is the standard pattern for lightweight global state (Redux-lite) without external libraries.
+
+   ```jsx
+   const AppContext = React.createContext();
+
+   function AppProvider({ children }) {
+     const [state, dispatch] = useReducer(reducer, initialState);
+     return (
+       <AppContext.Provider value={{ state, dispatch }}>
+         {children}
+       </AppContext.Provider>
+     );
+   }
+   ```
+
+   Any component inside `AppProvider` reads state and dispatches actions via `useContext(AppContext)`.
+
+1. Can you dispatch multiple actions in a row with `useReducer`?
+   - Yes — call `dispatch` multiple times. React batches the renders but processes each action through the reducer individually.
+
+   ```jsx
+   dispatch({ type: "increment" });
+   dispatch({ type: "increment" });
+   dispatch({ type: "reset" });
+   ```
+
+   For multiple changes in one shot, define a composite action type:
+
+   ```jsx
+   case "increment_twice":
+     return { count: state.count + 2 };
+   ```
+
+1. Is `dispatch` from `useReducer` asynchronous? Does it update state immediately?
+   - `dispatch` is **synchronous** — the reducer runs immediately. However, the **state variable does not update within the same render cycle**, similar to `useState`. The new value is only available after the next render.
+
+   ```jsx
+   dispatch({ type: "increment" });
+   console.log(state.count); // ❗ still old value
+   ```
+
+   To read the updated value after dispatch, use `useEffect`:
+
+   ```jsx
+   useEffect(() => {
+     console.log("Updated:", state.count);
+   }, [state.count]);
+   ```
+
+   Multiple dispatches in one event handler result in a **single re-render**.
+
+1. What is `useContext` and what are the steps to use it?
+   - `useContext` reads a context value inside a functional component without `<Context.Consumer>`. It eliminates prop drilling for shared data like themes, auth status, or user preferences.
+
+   **Step 1 — Create:**
+   ```jsx
+   export const ThemeContext = createContext(); // optional default value
+   ```
+
+   **Step 2 — Provide:**
+   ```jsx
+   <ThemeContext.Provider value="dark">
+     <MyComponent />
+   </ThemeContext.Provider>
+   ```
+
+   **Step 3 — Consume:**
+   ```jsx
+   const theme = useContext(ThemeContext); // "dark"
+   ```
+
+1. What are the use cases of the `useContext` hook?
+   - **Theme customization** — light/dark mode across the app
+   - **Localization / i18n** — translated strings to all components
+   - **User authentication** — sharing login status and user data globally
+   - **Shared UI state** — modal/sidebar visibility controlled from anywhere
+   - **Global state with `useReducer`** — lightweight Redux replacement
+
+1. How does `useContext` work? Explain with an authentication example.
+   ```jsx
+   // AuthContext.js
+   const AuthContext = createContext();
+   export function AuthProvider({ children }) {
+     const [user, setUser] = useState(null);
+     const login  = (name) => setUser({ name });
+     const logout = () => setUser(null);
+     return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
+   }
+   export const useAuth = () => useContext(AuthContext);
+   ```
+
+   ```jsx
+   // HomePage.js
+   const { user, login } = useAuth();
+   return user ? <p>Welcome {user.name}</p> : <button onClick={() => login("Alice")}>Login</button>;
+   ```
+
+   ```jsx
+   // Dashboard.js
+   const { user, logout } = useAuth();
+   if (!user) return <p>Please login.</p>;
+   return <><p>Logged in as: {user.name}</p><button onClick={logout}>Logout</button></>;
+   ```
+
+1. Can you use multiple contexts in one component?
+   - Yes — call `useContext` once for each context and nest their providers.
+
+   ```jsx
+   const theme = useContext(ThemeContext);
+   const user  = useContext(UserContext);
+   ```
+
+   ```jsx
+   <ThemeContext.Provider value="dark">
+     <UserContext.Provider value={{ name: "Sudheer" }}>
+       <Dashboard />
+     </UserContext.Provider>
+   </ThemeContext.Provider>
+   ```
+
+1. What is a common pitfall when using `useContext` with objects?
+   - Passing a new object literal as the context value creates a **new reference on every render**, causing all consumers to re-render even when data hasn't changed.
+
+   ```jsx
+   // ❌ New object every render → all consumers re-render
+   <MyContext.Provider value={{ user, theme }}>
+
+   // ✅ Fix 1 — memoize the value
+   const value = useMemo(() => ({ user, theme }), [user, theme]);
+   <MyContext.Provider value={value}>
+
+   // ✅ Fix 2 — split into separate contexts for unrelated state
+   <UserContext.Provider value={user}>
+     <ThemeContext.Provider value={theme}>
+   ```
+
+1. What is the context value when no matching provider exists?
+   - The **default value** passed to `createContext(defaultValue)` is returned.
+
+   ```jsx
+   const ThemeContext = createContext("light"); // fallback = "light"
+   // No provider → theme === "light"
+   ```
+
+   If no default is provided (`createContext()`), the value is `undefined`. Treat missing providers as a bug.
+
+1. How do reactive dependencies in the `useEffect` array affect its execution?
+
+   | Dependency array | When effect runs |
+   | --- | --- |
+   | Omitted | After **every** render |
+   | `[]` | Once — after the first render only |
+   | `[a, b]` | After first render + whenever `a` or `b` changes |
+
+   React uses **shallow comparison** (`!==`) on each dependency. Objects/functions need memoization to avoid spurious effect runs.
+
+1. When and how often does React invoke the setup and cleanup functions in `useEffect`?
+   - **Setup runs:** after mount, and after every render where a dependency changed.
+   - **Cleanup runs:** before the next setup (when deps change) and on unmount.
+
+   | Array | Lifecycle equivalent |
+   | --- | --- |
+   | `[]` | `componentDidMount` + `componentWillUnmount` |
+   | `[dep]` | `componentDidUpdate` for that dep |
+   | Omitted | After every render |
+
+1. What happens if you return a Promise from `useEffect`?
+   - React expects the return value to be either `undefined` or a **synchronous cleanup function**. A returned Promise is silently ignored and may produce warnings in Strict Mode.
+
+   ```jsx
+   // ❌ Wrong
+   useEffect(async () => { await fetchData(); }, []);
+
+   // ✅ Correct
+   useEffect(() => {
+     async function load() {
+       const data = await fetch("/api").then(r => r.json());
+       setData(data);
+     }
+     load();
+   }, []);
+   ```
+
+1. Can you have multiple `useEffect` hooks in a single component?
+   - Yes — and it is **recommended** to separate concerns into multiple effects.
+
+   ```jsx
+   useEffect(() => { /* fetch data */ }, [userId]);
+   useEffect(() => { /* attach resize listener */ }, []);
+   ```
+
+   Each effect runs independently, making code easier to read and debug.
+
+1. How do you prevent infinite loops with `useEffect`?
+   - Infinite loops occur when an effect updates state listed in its own dependency array, triggering itself forever.
+
+   ```jsx
+   // ❌ Infinite loop
+   useEffect(() => { setCount(count + 1); }, [count]);
+
+   // ✅ Guard with condition
+   useEffect(() => {
+     if (count < 5) setCount(count + 1);
+   }, [count]);
+   ```
+
+1. How do you handle cleanup in `useEffect`?
+   - Return a cleanup function from the effect. It runs before the next effect execution and on unmount, preventing memory leaks and stale handlers.
+
+   ```jsx
+   // Event listener
+   useEffect(() => {
+     window.addEventListener("resize", handleResize);
+     return () => window.removeEventListener("resize", handleResize);
+   }, []);
+
+   // Timer
+   useEffect(() => {
+     const id = setInterval(() => setCount(c => c + 1), 1000);
+     return () => clearInterval(id);
+   }, []);
+
+   // Abort fetch
+   useEffect(() => {
+     const controller = new AbortController();
+     fetch(url, { signal: controller.signal })
+       .then(r => r.json()).then(setData)
+       .catch(err => { if (err.name !== "AbortError") setError(err); });
+     return () => controller.abort();
+   }, [url]);
+   ```
+
+1. What are the use cases of `useLayoutEffect`?
+   - Use when your effect must run **before the browser paints** to avoid visual flicker: reading DOM dimensions, applying synchronous styles, or integrating third-party DOM libraries.
+
+   ```jsx
+   useLayoutEffect(() => {
+     const width = divRef.current.offsetWidth;
+     if (width < 400) divRef.current.style.background = "blue"; // no flicker
+   }, []);
+   ```
+
+   For everything else, prefer `useEffect`.
+
+1. How does `useLayoutEffect` work during SSR?
+   - It does not run on the server (no DOM). React warns when used in SSR environments. Use an isomorphic pattern:
+
+   ```jsx
+   const useIsomorphicLayoutEffect =
+     typeof window !== "undefined" ? useLayoutEffect : useEffect;
+   ```
+
+1. What happens if you use `useLayoutEffect` for non-layout logic?
+   - It delays the browser paint unnecessarily. Non-layout work (data fetching, analytics, logging) always belongs in `useEffect`, which runs *after* paint.
+
+   ```jsx
+   // ❌ Delays paint for a network request
+   useLayoutEffect(() => { fetch("/log-page-view"); }, []);
+   ```
+
+1. How does `useLayoutEffect` cause layout thrashing?
+   - Repeatedly reading then writing DOM properties inside `useLayoutEffect` forces the browser to recalculate layout (reflow) synchronously after each write, blocking the main thread.
+
+   ```jsx
+   useLayoutEffect(() => {
+     const h = ref.current.offsetHeight; // read → reflow
+     ref.current.style.height = h + 20 + "px"; // write
+     const newH = ref.current.offsetHeight; // read again → another reflow ❌
+   }, []);
+   ```
+
+   Fix: batch all reads first, then all writes.
+
+1. How do you use `useRef` to access a DOM element?
+   - Assign `useRef(null)` to a `ref` prop. The DOM node is available via `.current` after mount.
+
+   ```jsx
+   const inputRef = useRef(null);
+   const handleFocus = () => inputRef.current.focus();
+
+   return (
+     <>
+       <input ref={inputRef} type="text" />
+       <button onClick={handleFocus}>Focus</button>
+     </>
+   );
+   ```
+
+1. Can you use `useRef` to persist values across renders?
+   - Yes — `.current` persists across renders **without causing re-renders**. Useful for tracking render count, interval IDs, or previous values.
+
+   ```jsx
+   const renderCount = useRef(0);
+   useEffect(() => {
+     renderCount.current++;
+     console.log("Renders:", renderCount.current);
+   });
+   ```
+
+1. Can `useRef` store the previous value of state?
+   - Yes — a common pattern for comparing current vs previous values:
+
+   ```jsx
+   const [count, setCount] = useState(0);
+   const prevRef = useRef();
+
+   useEffect(() => { prevRef.current = count; }, [count]);
+
+   return <p>Current: {count} | Previous: {prevRef.current}</p>;
+   ```
+
+1. Is it possible to access a ref in the render method?
+   - You can read `ref.current` during render, but DOM refs are `null` on the **first render** (element hasn't mounted yet). Always access DOM refs inside `useEffect` or event handlers.
+
+   ```jsx
+   const divRef = useRef(null);
+   console.log(divRef.current); // null on initial render ❌
+   return <div ref={divRef}>Hello</div>;
+   ```
+
+1. What are the common use cases of `useRef`?
+   - Auto-focus an input on mount
+   - Scroll to a specific element
+   - Measure element dimensions (`offsetWidth`, `clientHeight`)
+   - Control video/audio playback
+   - Persist an interval ID or timer without causing re-renders
+   - Integrate with non-React libraries (D3, jQuery)
+
+1. What is `useImperativeHandle` and when should you use it?
+   - `useImperativeHandle` (used with `forwardRef`) exposes **specific methods** from a child component to its parent via a ref, rather than exposing the raw DOM node.
+
+   ```jsx
+   const Dialog = forwardRef((props, ref) => {
+     const [isOpen, setIsOpen] = useState(false);
+
+     useImperativeHandle(ref, () => ({
+       open:  () => setIsOpen(true),
+       close: () => setIsOpen(false),
+     }));
+
+     return isOpen ? <div className="dialog">{props.children}</div> : null;
+   });
+
+   function Parent() {
+     const dialogRef = useRef();
+     return (
+       <>
+         <button onClick={() => dialogRef.current.open()}>Open</button>
+         <Dialog ref={dialogRef} />
+       </>
+     );
+   }
+   ```
+
+   Use for: modal open/close, custom input `focus`/`clear`/`validate`, scroll containers, reusable component libraries.
+
+1. Can `useImperativeHandle` be used without `forwardRef`?
+   - No. `useImperativeHandle` only works in combination with `forwardRef`. Without it, the parent has no ref to attach to a child function component.
+
+1. How is `useMemo` different from `useCallback`?
+
+   | Feature | `useMemo` | `useCallback` |
+   | --- | --- | --- |
+   | Returns | A computed **value** | A **function reference** |
+   | Usage | `useMemo(() => compute(), [deps])` | `useCallback(() => fn(), [deps])` |
+   | Primary use | Avoid expensive recalculations | Stable callback for child props |
+   | Common scenario | Filtering, sorting, derived data | Preventing unnecessary child re-renders |
+
+1. Does `useMemo` prevent child component re-renders?
+   - Not by itself. `useMemo` memoizes a value. When paired with `React.memo` on a child, the child skips re-rendering if the memoized value's reference is unchanged.
+
+   ```jsx
+   const filteredList = useMemo(() => items.filter(i => i.active), [items]);
+   return <List data={filteredList} />; // skips re-render when filteredList reference is same
+   ```
+
+1. What is `useCallback` and why is it used?
+   - Returns a **memoized function reference** that only changes when dependencies change. Prevents child components from re-rendering because they received a new function reference on every parent render.
+
+   ```jsx
+   const handleClick = useCallback(() => {
+     doSomething(id);
+   }, [id]); // stable reference as long as id doesn't change
+   ```
+
+1. What is the `useId` hook and when should you use it?
+   - `useId` (React 18+) generates a **stable unique ID** consistent across server and client renders, primarily for accessibility attributes.
+
+   ```jsx
+   function EmailField() {
+     const id = useId();
+     return (
+       <>
+         <label htmlFor={id}>Email:</label>
+         <input id={id} type="email" />
+       </>
+     );
+   }
+   ```
+
+   Use for `htmlFor`, `aria-describedby`, `aria-labelledby`. Do **not** use as a list `key` or CSS selector (IDs contain `:` characters).
+
+1. What is the `useDeferredValue` hook?
+   - Returns a **deferred version of a value** that lags behind the current value. Keeps the UI responsive while an expensive component re-renders in the background.
+
+   ```jsx
+   const [query, setQuery] = useState("");
+   const deferredQuery = useDeferredValue(query);
+   const isStale = query !== deferredQuery;
+
+   return (
+     <>
+       <input value={query} onChange={e => setQuery(e.target.value)} />
+       <div style={{ opacity: isStale ? 0.5 : 1 }}>
+         <SearchResults query={deferredQuery} /> {/* re-renders with a delay */}
+       </div>
+     </>
+   );
+   ```
+
+1. What is the `useTransition` hook and how does it differ from `useDeferredValue`?
+   - `useTransition` marks a state update as **non-urgent** so the UI stays responsive during expensive re-renders. Returns `[isPending, startTransition]`.
+
+   ```jsx
+   const [isPending, startTransition] = useTransition();
+
+   function selectTab(tab) {
+     startTransition(() => setTab(tab)); // won't block typing
+   }
+
+   return isPending ? <Spinner /> : <TabContent tab={tab} />;
+   ```
+
+   | Feature | `useTransition` | `useDeferredValue` |
+   | --- | --- | --- |
+   | Controls | State updates (wraps `setState`) | Values (wraps a value) |
+   | Use when | You control the state update | You receive a value from props/hooks |
+   | Pending indicator | Built-in `isPending` | Must compare value manually |
+
+1. What is the `useSyncExternalStore` hook?
+   - Subscribes to an **external (non-React) data store** in a way safe for concurrent rendering, without tearing (reading inconsistent data across a single render).
+
+   ```jsx
+   function useOnlineStatus() {
+     return useSyncExternalStore(
+       (cb) => {
+         window.addEventListener("online", cb);
+         window.addEventListener("offline", cb);
+         return () => { window.removeEventListener("online", cb); window.removeEventListener("offline", cb); };
+       },
+       () => navigator.onLine, // client snapshot
+       () => true              // server snapshot
+     );
+   }
+   ```
+
+1. What is the `useInsertionEffect` hook?
+   - For **CSS-in-JS library authors** only. Fires synchronously before DOM mutations — before `useLayoutEffect` and `useEffect` — to inject styles before any layout reads occur.
+
+   ```jsx
+   useInsertionEffect(() => {
+     const style = document.createElement("style");
+     style.textContent = ".btn { background: blue; }";
+     document.head.appendChild(style);
+   }, []);
+   ```
+
+   Not intended for application code.
+
+1. What is the `useDebugValue` hook?
+   - Displays a custom label for a custom hook in **React DevTools**. Use in shared library hooks to make debugging easier.
+
+   ```jsx
+   function useOnlineStatus() {
+     const [isOnline, setIsOnline] = useState(true);
+     useDebugValue(isOnline ? "Online" : "Offline");
+     return isOnline;
+   }
+   ```
+
+   Pass an optional formatter for expensive formatting (only runs when DevTools is open):
+
+   ```jsx
+   useDebugValue(user, u => u ? `User: ${u.name}` : "Loading...");
+   ```
+
+1. How do you share state logic between components using custom hooks?
+   - Extract `useState`/`useEffect` logic into a function starting with `use`. Each component using the hook gets its **own isolated state** — the logic is shared, not the state itself.
+
+   ```jsx
+   function useLocalStorage(key, initialValue) {
+     const [value, setValue] = useState(() => {
+       try { return JSON.parse(localStorage.getItem(key)) ?? initialValue; }
+       catch { return initialValue; }
+     });
+
+     useEffect(() => {
+       localStorage.setItem(key, JSON.stringify(value));
+     }, [key, value]);
+
+     return [value, setValue];
+   }
+
+   // Both components have independent state backed by localStorage
+   function ThemeToggle() {
+     const [theme, setTheme] = useLocalStorage("theme", "light");
+     return <button onClick={() => setTheme(t => t === "light" ? "dark" : "light")}>{theme}</button>;
+   }
+   ```
+
+1. How does React Fiber work?
+   - React Fiber is the core reconciliation engine (React 16+). It replaces the previous recursive call-stack approach with a **linked list of fiber nodes**, enabling interruptible, prioritized rendering.
+
+   Each **fiber node** stores: component type, props, state, effects, and pointers to parent/child/sibling.
+
+   | Phase | Description | Interruptible? |
+   | --- | --- | --- |
+   | Render (work-in-progress) | Builds new fiber tree, diffs against current tree | ✅ Yes |
+   | Commit | Applies changes to real DOM, runs effects | ❌ No |
+
+   - **Double buffering:** React keeps a *current* tree (on screen) and a *work-in-progress* tree (in memory). After work completes, they swap.
+   - **Priority scheduling:** Urgent updates (clicks, input) are processed before background work (data prefetching) — the foundation of Concurrent Mode.
+
+1. How does ReactJS work behind the scenes?
+   - **Component rendering:** React executes your component function → registers hooks in order → builds a Virtual DOM tree (plain JS objects describing the desired UI).
+   - **Reconciliation (diffing):** When state/props change, React re-runs the component and compares the new virtual DOM to the previous one using a fast diffing algorithm, computing the minimal set of real DOM changes.
+   - **Commit phase:** React applies only the calculated changes to the real DOM, then runs `useEffect` / `useLayoutEffect` callbacks. This is the only time React touches the browser DOM.
+   - **Fiber scheduler:** Breaks rendering into small units of work. Urgent tasks (user input) are prioritized over background work (data loading), keeping the UI responsive.
+   - **Hooks state:** Each component has an internal hooks list. Hooks are identified by call order — re-renders run them in the same order to match slots, which is why hooks cannot be called conditionally.
+
+1. What are the best practices for using React Hooks?
+   - **Follow the Rules of Hooks:** only call hooks at the top level; only call from React functions or custom hooks.
+   - **Use the ESLint plugin** (`eslint-plugin-react-hooks`) to catch violations automatically.
+   - **Separate concerns** — one focused hook per responsibility instead of one large hook.
+   - **Name custom hooks descriptively:** `useUserAuthentication`, `useFetchProducts`.
+   - **List all dependencies accurately** — never suppress `exhaustive-deps` warnings without a clear reason.
+   - **Memoize object/function dependencies** — inline objects and functions create new references every render, causing spurious effect runs. Use `useMemo`/`useCallback`.
+   - **Always clean up** — return a cleanup function from `useEffect` for event listeners, timers, and subscriptions.
+
+---
+
 ### Forms & Events
 
-19. Controlled vs. Uncontrolled Components
+1. Controlled vs. Uncontrolled Components
 
     | Feature              | Controlled Component                | Uncontrolled Component             |
     | -------------------- | ----------------------------------- | ---------------------------------- |
@@ -1681,7 +2802,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     }
     ```
 
-20. Event Delegation vs Event Handling
+1. Event Delegation vs Event Handling
 
     - **Event Handling (Normal DOM Way):** Attaches event listeners directly to individual DOM elements. Simple, but inefficient for many elements.
     - **Event Delegation:** Attaches a single listener to a common ancestor and lets events bubble up.
@@ -1708,20 +2829,253 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ### Next.js
 
-21. What is the difference between client and server components in Next.js?
-    - **Client:** Runs in the browser, can use state/effects.
-    - **Server:** Rendered on the server, better performance, can fetch data directly.
+1. What is Next.js and how is it different from React?
+   - **React** is a UI library for building components — it handles rendering but leaves routing, data fetching, and SSR to you.
+   - **Next.js** is a full-stack React framework built on top of React that provides these out of the box:
 
-22. Explain SSR, SSG, and ISR in Next.js.
-    - **SSR:** Rendered on each request.
-    - **SSG:** Rendered at build time.
-    - **ISR:** Rebuilds pages after a set interval.
+   | Feature | React (alone) | Next.js |
+   | --- | --- | --- |
+   | Routing | Manual (e.g., React Router) | File-system based (built-in) |
+   | SSR / SSG / ISR | Not built-in | Native support |
+   | API routes | Not built-in | Built-in (`/api` or route handlers) |
+   | Code splitting | Manual | Automatic per page |
+   | Image optimization | Not built-in | `<Image>` component |
+   | SEO | Client-only by default | SSR/SSG enable better SEO |
+
+1. When should you use client vs server components in Next.js?
+
+   | Use **Client Components** when | Use **Server Components** when |
+   | --- | --- |
+   | Need interactivity / event listeners (`onClick`, `onChange`) | Fetching data from a database or API |
+   | Using state (`useState`, `useReducer`) or lifecycle effects | Accessing backend resources directly |
+   | Using browser-only APIs | Keeping sensitive info (API keys, tokens) on the server |
+   | Custom hooks that depend on state/effects/browser APIs | Reducing client-side JavaScript bundle size |
+   | React class components | Large dependencies that don't need to be on the client |
+
+   Server components are the default in the App Router (`app/` directory). Add `"use client"` at the top to opt into a client component.
+
+1. What are the differences between the Page Router and App Router in Next.js?
+
+   | Feature | Page Router (`pages/`) | App Router (`app/`) |
+   | --- | --- | --- |
+   | Default component type | Client Components | Server Components |
+   | Layouts | `_app.js` / `_document.js` | Native `layout.js` (nested) |
+   | Data fetching | `getServerSideProps`, `getStaticProps` | `async/await` in Server Components |
+   | Loading states | Manual | Built-in `loading.js` (Suspense) |
+   | Error handling | `_error.js` | Built-in `error.js` at any level |
+   | Streaming | Limited | Built-in (Suspense) |
+   | Server Actions | Not available | Native support |
+   | Metadata | `<Head>` component | `metadata` object / `generateMetadata` |
+
+   **Page Router structure:**
+   ```
+   pages/
+   ├── index.js          // /
+   ├── about.js          // /about
+   ├── _app.js
+   └── posts/[id].js     // /posts/:id
+   ```
+
+   **App Router structure:**
+   ```
+   app/
+   ├── page.js           // /
+   ├── layout.js         // Root layout
+   ├── loading.js
+   ├── error.js
+   ├── about/page.js     // /about
+   └── posts/[id]/page.js // /posts/:id
+   ```
+
+   The App Router is recommended for new Next.js applications.
+
+1. Explain the rendering methods in Next.js (CSR, SSR, SSG, ISR).
+
+   | Method | When HTML is generated | Data freshness | Use case |
+   | --- | --- | --- | --- |
+   | **CSR** (Client-Side Rendering) | In the browser at runtime | Always fresh | Dashboards, authenticated pages |
+   | **SSR** (Server-Side Rendering) | On every request | Always fresh | Real-time personalized pages |
+   | **SSG** (Static Site Generation) | At build time | Stale until next build | Blogs, marketing pages |
+   | **ISR** (Incremental Static Regeneration) | At build time + background revalidation | Fresh after revalidation window | E-commerce, large content sites |
+
+   ```js
+   // SSG — data fetched once at build time
+   export async function getStaticProps() {
+     const data = await fetchPosts();
+     return { props: { data } };
+   }
+
+   // SSR — data fetched on every request
+   export async function getServerSideProps(context) {
+     const data = await fetchUser(context.params.id);
+     return { props: { data } };
+   }
+
+   // ISR — revalidate every 60 seconds
+   export async function getStaticProps() {
+     const data = await fetchProducts();
+     return { props: { data }, revalidate: 60 };
+   }
+   ```
+
+1. What are `getStaticProps`, `getServerSideProps`, and `getStaticPaths`?
+   - These are **Page Router** data-fetching functions (not available in the App Router — use `async/await` in Server Components instead).
+
+   **`getStaticProps`** — fetches data at **build time**, generates static HTML:
+   ```js
+   export async function getStaticProps() {
+     const posts = await fetch("https://api.example.com/posts").then(r => r.json());
+     return { props: { posts }, revalidate: 60 }; // ISR: refresh every 60s
+   }
+   ```
+
+   **`getServerSideProps`** — fetches data on **every request**, renders on the server:
+   ```js
+   export async function getServerSideProps(context) {
+     const { params, req, res } = context;
+     const user = await fetchUser(params.id);
+     return { props: { user } };
+   }
+   ```
+
+   **`getStaticPaths`** — used alongside `getStaticProps` for dynamic routes; tells Next.js which paths to pre-render:
+   ```js
+   export async function getStaticPaths() {
+     const posts = await fetch("https://api.example.com/posts").then(r => r.json());
+     const paths = posts.map(post => ({ params: { id: String(post.id) } }));
+     return { paths, fallback: "blocking" }; // or false / true
+   }
+   ```
+
+   | | `getStaticProps` | `getServerSideProps` | `getStaticPaths` |
+   | --- | --- | --- | --- |
+   | Runs at | Build time | Every request | Build time |
+   | Output | Static HTML | Server-rendered HTML | Path list for static generation |
+   | Use with | Static pages | Dynamic, personalized pages | Dynamic routes + `getStaticProps` |
+
+1. What are API routes in Next.js?
+   - **API routes** are serverless functions built into Next.js that let you create backend endpoints within the same application — no separate backend server needed.
+
+   **Page Router** — files inside `pages/api/`:
+   ```js
+   // pages/api/hello.js → accessible at /api/hello
+   export default function handler(req, res) {
+     if (req.method === "GET") {
+       res.status(200).json({ message: "Hello World" });
+     } else {
+       res.status(405).end(); // Method Not Allowed
+     }
+   }
+   ```
+
+   **App Router** — `route.ts` files inside `app/api/`:
+   ```ts
+   // app/api/hello/route.ts → accessible at /api/hello
+   export async function GET() {
+     return Response.json({ message: "Hello World" });
+   }
+
+   export async function POST(request: Request) {
+     const body = await request.json();
+     return Response.json({ received: body });
+   }
+   ```
+
+   - API routes run server-side — safe for database queries, secret keys, and auth logic.
+   - Each route is deployed as a standalone **serverless function** by default.
+
+1. What is a Serverless Function in Next.js?
+   - A **serverless function** is a lightweight, stateless function deployed in the cloud that runs only when requested — no always-on server needed. It scales automatically.
+   - In Next.js, every API route and Server Action is deployed as a serverless function.
+
+   ```ts
+   // app/api/hello/route.ts — deployed as a standalone serverless function
+   export async function GET() {
+     return Response.json({ status: "ok" });
+   }
+
+   // Run at Edge (ultra-low latency, globally distributed)
+   export const runtime = "edge";
+   ```
+
+   | Runtime | Where it runs | Cold start | Use case |
+   | --- | --- | --- | --- |
+   | Node.js (default) | Regional server | ~100–300ms | Full Node.js APIs, DB access |
+   | Edge | CDN edge nodes | <50ms | Auth checks, redirects, A/B tests |
+
+1. How do you implement protected routes in Next.js?
+   - Use **middleware** (`middleware.ts` at the project root) to intercept requests and redirect unauthenticated users before the page loads.
+
+   ```ts
+   // middleware.ts
+   import { NextResponse } from "next/server";
+   import type { NextRequest } from "next/server";
+
+   export function middleware(request: NextRequest) {
+     const token = request.cookies.get("auth-token")?.value;
+
+     if (!token) {
+       return NextResponse.redirect(new URL("/login", request.url));
+     }
+
+     return NextResponse.next(); // allow request to continue
+   }
+
+   // Apply middleware only to these routes
+   export const config = {
+     matcher: ["/dashboard/:path*", "/profile/:path*"],
+   };
+   ```
+
+   - Middleware runs at the **Edge** — before the request reaches the page/API route.
+   - For more complex auth, combine with a session library like `next-auth` or `iron-session`.
+
+1. How does `font-display: swap` help with font optimization (LCP and CLS)?
+   - **`font-display: swap`** tells the browser to show fallback text immediately using a system font, then swap in the custom font once it loads.
+
+   | Web Vital | Without swap | With swap |
+   | --- | --- | --- |
+   | **LCP** (Largest Contentful Paint) | Text invisible until font loads → slower perceived load | Text appears immediately → faster LCP |
+   | **CLS** (Cumulative Layout Shift) | Font loads late → content jumps/shifts | Layout stabilizes faster → lower CLS |
+
+   ```css
+   @font-face {
+     font-family: "MyFont";
+     src: url("/fonts/myfont.woff2") format("woff2");
+     font-display: swap; /* show fallback immediately, swap when ready */
+   }
+   ```
+
+   **Next.js** handles this automatically via the `next/font` module:
+   ```js
+   import { Inter } from "next/font/google";
+   const inter = Inter({ subsets: ["latin"], display: "swap" });
+   ```
+   - `next/font` also self-hosts fonts, eliminating the extra DNS lookup to Google Fonts.
+
+1. How do you run a production build locally in Next.js?
+   - Build the app for production and then start it:
+   ```bash
+   # Build production bundle
+   next build
+
+   # Start the production server locally
+   next start
+   ```
+
+   - To use `.env.production` variables during the local production run:
+   ```bash
+   NODE_ENV=production next build && next start
+   ```
+
+   - `next build` runs at `NODE_ENV=production` by default — `.env.production` is loaded automatically.
+   - `next start` serves the pre-built `.next` folder — you must run `next build` first.
 
 ---
 
 ### React 19
 
-23. New Features in React 19
+1. New Features in React 19
     - **Actions** — Server + client mutations
     - **`use()` Hook**
     - **`useOptimistic` Hook**
@@ -1730,7 +3084,40 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ### Advanced Concepts
 
-24. What are Error Boundaries in React?
+1. What is a React data leak?
+   - A **data leak** occurs when data stays in memory longer than needed or becomes visible to the wrong user or component.
+   - Common causes in React:
+
+   | Cause | Example |
+   | --- | --- |
+   | **State update after unmount** | async fetch resolves after the component is removed — `setState` on an unmounted component |
+   | **One user seeing another's data** | Server-cached state shared across requests (SSR without request-scoped state) |
+   | **Sensitive data sent to browser** | Passing secret keys or private DB data into client component props |
+   | **Uncleaned subscriptions/timers** | `setInterval` or WebSocket not removed → keeps component alive in memory |
+
+   **Fix: cleanup async operations in `useEffect`:**
+   ```jsx
+   useEffect(() => {
+     let cancelled = false;
+     fetchUser(userId).then(data => {
+       if (!cancelled) setUser(data); // guard against unmounted component
+     });
+     return () => { cancelled = true; }; // cleanup
+   }, [userId]);
+   ```
+
+   **Fix: use `AbortController` for fetch:**
+   ```jsx
+   useEffect(() => {
+     const controller = new AbortController();
+     fetch(`/api/user/${userId}`, { signal: controller.signal })
+       .then(r => r.json()).then(setUser)
+       .catch(err => { if (err.name !== "AbortError") setError(err); });
+     return () => controller.abort();
+   }, [userId]);
+   ```
+
+1. What are Error Boundaries in React?
     - Error Boundaries catch JavaScript errors anywhere in their child component tree, log them, and display a fallback UI instead of crashing.
     - ⚠️ **Error Boundaries can ONLY be class components** — there is no function component equivalent for `componentDidCatch`. You cannot build an error boundary with hooks.
 
@@ -1763,7 +3150,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - Error boundaries do **not** catch: errors in event handlers, async code (`setTimeout`), SSR errors, or errors thrown inside the boundary itself.
 
-25. What are the types of components in React?
+1. What are the types of components in React?
 
     | Type | Description |
     | --- | --- |
@@ -1791,7 +3178,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
-26. What is React Fiber?
+1. What is React Fiber?
     - React Fiber is the **reimplementation of React's reconciliation engine** (React 16+). It breaks rendering into small units of work that can be **paused, resumed, or discarded** based on priority.
 
     | Before Fiber (Stack Reconciler) | After Fiber |
@@ -1803,7 +3190,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - Powers **Concurrent Mode**, **Suspense**, **Error Boundaries**, and **Time Slicing**.
     - High-priority updates (user input) can interrupt low-priority renders (data fetching).
 
-27. What are React optimization techniques?
+1. What are React optimization techniques?
     - **`React.memo`** — skip re-render of a component when its props haven't changed.
     - **`useMemo`** — memoize expensive computed values.
     - **`useCallback`** — memoize function references passed as props.
@@ -1814,7 +3201,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - **Debounce/throttle** — limit expensive event handler execution rate.
     - **Production build** — `npm run build` enables minification and dead-code removal.
 
-28. What is debouncing and throttling?
+1. What is debouncing and throttling?
     - **Debouncing:** Delays execution until after a pause since the last call. Only the final call fires.
     - **Throttling:** Limits execution to **at most once** per time interval regardless of call frequency.
 
@@ -1844,7 +3231,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
-29. Throttle a button click using only arrow functions (no `useRef`)
+1. Throttle a button click using only arrow functions (no `useRef`)
     - Use a **module-level variable** outside the component as the timestamp store — it persists across re-renders without triggering them, and without needing `useRef`.
 
     ```jsx
@@ -1863,7 +3250,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
-30. Custom Hook — `useToggle`
+1. Custom Hook — `useToggle`
     - A custom hook is a JS function starting with `use` that calls other hooks internally. It extracts and reuses stateful logic across components without changing the component tree.
 
     ```jsx
@@ -1890,7 +3277,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - The hook encapsulates the `useState` + toggle logic — any component can reuse it with one line.
 
-31. Does React create a new Virtual DOM or update the existing one on re-render?
+1. Does React create a new Virtual DOM or update the existing one on re-render?
     - React creates a **brand-new Virtual DOM tree** on every re-render.
     - It then **diffs** the new tree against the previous snapshot (**reconciliation**).
     - Only the actual differences are flushed to the **real DOM** — the old Virtual DOM is discarded.
@@ -1910,7 +3297,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - Building a new Virtual DOM is fast — it's just creating JS objects in memory.
     - The real DOM is only touched for the actual differences, which is the expensive part that React minimizes.
 
-32. What is lifting state up in React?
+1. What is lifting state up in React?
     - When sibling components need to share state, **move the state to their closest common parent** and pass it down as props with a callback to update it.
 
     ```jsx
@@ -1934,7 +3321,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - `Input` fires the parent's setter via the `onChange` prop — it owns no state.
     - `Display` reads the value from the parent — both siblings stay in sync through shared parent state.
 
-33. What are `Suspense` and `React.lazy`? How do they enable code splitting?
+1. What are `Suspense` and `React.lazy`? How do they enable code splitting?
     - **`React.lazy()`** — dynamically imports a component, splitting it into a separate bundle chunk that loads only when first rendered.
     - **`<Suspense>`** — wraps lazy components and shows a **fallback UI** while the chunk is being fetched.
 
@@ -1967,7 +3354,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - `<Suspense>` boundaries can be nested — each shows its own fallback independently.
     - Result: smaller initial bundle — chunks download on demand as users navigate.
 
-34. `React.memo` vs `useMemo`
+1. `React.memo` vs `useMemo`
 
     | | `React.memo` | `useMemo` |
     | --- | --- | --- |
@@ -1999,7 +3386,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - Use `React.memo` to prevent a child component from re-rendering when its props are the same.
     - Use `useMemo` to avoid recalculating an expensive value on every render.
 
-35. What is the difference between `useEffect` and `useLayoutEffect`?
+1. What is the difference between `useEffect` and `useLayoutEffect`?
     - Both run after React updates the DOM — the difference is **when** they fire relative to the browser paint.
 
     | | `useEffect` | `useLayoutEffect` |
@@ -2027,7 +3414,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - Prefer `useEffect` by default. Only reach for `useLayoutEffect` when you see a visible flicker caused by DOM measurements.
 
-36. What are React lifecycle methods? (Quick Reference)
+1. What are React lifecycle methods? (Quick Reference)
     - Every React component goes through **Mounting → Updating → Unmounting**.
 
     | Phase | Class Method | Functional Equivalent |
@@ -2058,7 +3445,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
-37. What are design patterns in React?
+1. What are design patterns in React?
     - Design patterns in React are **proven, reusable solutions to common structural and logic problems** in component architecture.
 
     | Pattern | Purpose | Example |
@@ -2088,7 +3475,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     </Tabs>
     ```
 
-38. What are design patterns? (General Definition)
+1. What are design patterns? (General Definition)
     - Design patterns are **reusable, named solutions to recurring problems** in software design. They are not finished code — they are templates that describe how to solve a class of problems.
     - Coined by the "Gang of Four" (GoF) in *Design Patterns: Elements of Reusable Object-Oriented Software* (1994).
 
@@ -2101,7 +3488,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - **Why use them?** Common vocabulary between developers, proven solutions, improved maintainability.
     - In React: HOC = Decorator, Context = Observer, Render Props = Strategy.
 
-39. What is the difference between Babel and Webpack?
+1. What is the difference between Babel and Webpack?
 
     | | Babel | Webpack |
     | --- | --- | --- |
@@ -2123,7 +3510,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - Modern tools like **Vite** use **esbuild** (for dev) + **Rollup** (for prod) and handle both roles, replacing the Babel + Webpack combo for many projects.
 
-40. What are the rules for creating custom hooks in React?
+1. What are the rules for creating custom hooks in React?
     - **1. Name must start with `use`** — React uses this convention to identify hooks and enforce the rules of hooks linting.
     - **2. Only call hooks at the top level** — never inside loops, conditions, or nested functions.
     - **3. Only call hooks from function components or other custom hooks** — not from regular JS functions or class components.
@@ -2153,7 +3540,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     };
     ```
 
-41. How does event propagation work in React?
+1. How does event propagation work in React?
     - React uses a **synthetic event system** — all events are delegated to the React root, not attached directly to DOM elements.
     - Events still propagate through the same three phases: **Capture → Target → Bubble**.
 
@@ -2182,7 +3569,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - `e.preventDefault()` — prevents default browser behavior (form submit, link navigate).
     - `e.nativeEvent` — access the raw browser event if needed.
 
-42. How to do event delegation in React (optimized way)?
+1. How to do event delegation in React (optimized way)?
     - React already applies event delegation internally at the root — individual element listeners bubble up to one root handler.
     - For dynamic lists, use `data-*` attributes + `closest()` to identify which item was clicked without attaching per-item handlers.
 
@@ -2210,7 +3597,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - `closest("[data-id]")` walks up the DOM from the clicked element — safe even if the user clicks a nested `<span>` inside `<li>`.
     - One handler for the entire list — O(1) listeners regardless of list size.
 
-43. What are Synthetic Events in React?
+1. What are Synthetic Events in React?
     - A **SyntheticEvent** is React's cross-browser wrapper around the browser's native event. It normalizes event properties and behavior so they work consistently across all browsers.
     - Same API as native events: `preventDefault()`, `stopPropagation()`, `target`, `currentTarget`, etc.
     - In React 17+, events are **no longer pooled** (prior to React 17, event objects were reused from a pool and nullified after the handler — accessing them async would give `null`).
@@ -2240,7 +3627,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | `event.which`, `keyCode` (legacy) | `event.key` (standardized) |
     | Manual cleanup needed | Handled by React automatically |
 
-44. How to track scroll position in React?
+1. How to track scroll position in React?
     - Three common approaches depending on whether you need global or element-level scroll tracking.
 
     ```jsx
@@ -2307,7 +3694,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
 ### Best Practices & Patterns
 
-45. Is this a correct HOC syntax? How does HOC work?
+1. Is this a correct HOC syntax? How does HOC work?
     - Yes, the syntax is valid. There are two ways to write HOCs — the user's inline prop style, and the classic function-wrapping style.
 
     ```jsx
@@ -2348,7 +3735,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - Classic HOC convention: name the wrapping function `withSomething` and spread `{...props}` to avoid breaking the wrapped component's own props.
 
-46. Single Responsibility Principle (SRP) in React
+1. Single Responsibility Principle (SRP) in React
     - **One component should do ONE job.** If a component is fetching data, managing form state, and rendering a list all at once — break it apart.
 
     ```jsx
@@ -2398,7 +3785,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - **Rule of thumb:** If you need to say "and" to describe what a component does, it's doing too much.
 
-47. State mutation rules — never mutate directly
+1. State mutation rules — never mutate directly
     - React uses **reference equality** to detect changes. If you mutate the existing object/array, the reference stays the same — React won't know the state changed and **won't re-render**.
 
     ```jsx
@@ -2430,7 +3817,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | Form input values | Data derived from other state (compute in render) |
     | Toggle flags (isOpen, isLoading) | Data needed by many distant components (use Context) |
 
-48. Hooks rules — top level, dependencies, and cleanup
+1. Hooks rules — top level, dependencies, and cleanup
     - **Rule 1 — Top level only:** Never call hooks inside `if`, `for`, or nested functions. React relies on the order hooks are called — changing order breaks things.
 
     ```jsx
@@ -2465,10 +3852,10 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
     - **Rule 3 — Extract reusable logic:** If two components share the same `useEffect` + `useState` pattern, extract it into a custom hook.
 
-49. When does the `useEffect` cleanup function run?
+1. When does the `useEffect` cleanup function run?
     - The function you `return` from `useEffect` runs in **two situations**:
       1. **Before the component unmounts** (removed from DOM).
-      2. **Before the effect runs again** — when a dependency changes, the previous cleanup runs first, then the new effect runs.
+      1. **Before the effect runs again** — when a dependency changes, the previous cleanup runs first, then the new effect runs.
 
     ```jsx
     useEffect(() => {
@@ -2507,7 +3894,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     | WebSocket / subscription | `.close()` / `.unsubscribe()` |
     | Fetch (to cancel in-flight request) | `AbortController.abort()` |
 
-50. Performance optimizations — `React.memo`, `useCallback`, `useMemo`, debounce, lazy
+1. Performance optimizations — `React.memo`, `useCallback`, `useMemo`, debounce, lazy
     - **`React.memo`** — wraps a component to skip re-render if props haven't changed (shallow compare).
 
     ```jsx
@@ -2552,7 +3939,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     <Suspense fallback={<Spinner />}><Settings /></Suspense>
     ```
 
-51. Avoid inline functions and objects in JSX
+1. Avoid inline functions and objects in JSX
     - Every time a component renders, a new function or object literal is created in memory. When passed as props to a child wrapped in `React.memo`, it breaks memoization — the child always sees a "new" prop.
 
     ```jsx
@@ -2588,7 +3975,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     return <div><Content /></div>;
     ```
 
-52. XSS (Cross-Site Scripting) in React — what it is and how to prevent it
+1. XSS (Cross-Site Scripting) in React — what it is and how to prevent it
     - **XSS** is an attack where a hacker injects malicious JavaScript into your app. When other users load the page, the script runs in their browser — stealing cookies, tokens, or performing actions on their behalf.
 
     **How a hacker injects values:**
@@ -2618,7 +4005,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
     - React's `{}` JSX expressions **automatically escape** HTML — `<`, `>`, `&`, `"` become safe text entities.
     - Only `dangerouslySetInnerHTML` bypasses this — treat it like `eval()` and always sanitize the input.
 
-53. React Do's and Don'ts
+1. React Do's and Don'ts
 
     | ✅ Do | ❌ Don't |
     | --- | --- |
@@ -2645,7 +4032,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
    <img width="1434" height="718" alt="image" src="https://github.com/user-attachments/assets/cc9fe34c-3d53-47e7-b8d2-5a2b7c8073e3" />
 
-2. What is REPL in Node?
+1. What is REPL in Node?
    - An interactive shell that cycles through four steps:
      - **Read:** Reads the user's input, parses it into a JavaScript data structure, and stores it in memory.
      - **Eval:** Takes the data structure and evaluates the code.
@@ -2677,7 +4064,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    add("5", 3); // ❌ Error: Argument of type 'string' is not assignable to parameter of type 'number'
    ```
 
-2. What is type inference in TypeScript?
+1. What is type inference in TypeScript?
    - TypeScript can **automatically determine the type** of a variable from its initial value — you don't always need to annotate explicitly.
 
    ```ts
@@ -2695,7 +4082,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    let result: string | null = null; // needed — can't infer union from null alone
    ```
 
-3. What are the data types in TypeScript?
+1. What are the data types in TypeScript?
 
    **Primitive types:**
 
@@ -2736,7 +4123,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    const user: { name: string; age: number } = { name: "Mohamed", age: 25 };
    ```
 
-4. What is the difference between `any`, `unknown`, and `never`?
+1. What is the difference between `any`, `unknown`, and `never`?
 
    | | `any` | `unknown` | `never` |
    | --- | --- | --- | --- |
@@ -2767,7 +4154,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    }
    ```
 
-5. What is the difference between `type` and `interface`?
+1. What is the difference between `type` and `interface`?
 
    | Feature | `type` | `interface` |
    | --- | --- | --- |
@@ -2799,7 +4186,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 
    - **Rule of thumb:** Use `interface` for class/object shapes. Use `type` for everything else (unions, tuples, mapped types).
 
-6. What are generics in TypeScript?
+1. What are generics in TypeScript?
    - Generics let you write **reusable code that works with different types** while keeping full type safety. Think of `<T>` as a type placeholder that gets filled in when the function/class is used.
 
    ```ts
@@ -2839,7 +4226,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    const p = pair("name", "Mohamed"); // [string, string]
    ```
 
-7. What are optional properties, optional chaining, and nullish coalescing?
+1. What are optional properties, optional chaining, and nullish coalescing?
    - **Optional property (`?`)** — marks an object field as `type | undefined`.
    - **Optional chaining (`?.`)** — safely accesses nested properties; returns `undefined` instead of throwing if the chain is `null`/`undefined`.
    - **Non-null assertion (`!`)** — tells TypeScript "I guarantee this is not null/undefined" (use sparingly).
@@ -2874,7 +4261,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    console.log(count ?? 10);  // 0  — correct! 0 is not null/undefined
    ```
 
-8. What is the `never` type and when is it used?
+1. What is the `never` type and when is it used?
    - `never` represents a **value that can never occur**. It is the **bottom type** — assignable to every type, but nothing is assignable to `never`.
 
    **Case 1 — Function that always throws:**
@@ -2912,7 +4299,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
    // never means control NEVER leaves normally (always throws or loops forever)
    ```
 
-9. What is the exhaustive check pattern with `never`?
+1. What is the exhaustive check pattern with `never`?
    - Assign the leftover value to `never` in a `switch` default case. If you add a new variant to the union but forget to handle it, TypeScript gives a **compile-time error** — catching the bug before runtime.
 
    ```ts
