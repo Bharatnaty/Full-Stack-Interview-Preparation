@@ -12,6 +12,7 @@ This repo is collaborative — feel free to contribute more questions 🚀
 - [React](#react)
 - [Node.js](#nodejs)
 - [TypeScript](#typescript)
+- [Pattern Based Questions](#pattern-based-questions)
 
 ---
 
@@ -874,22 +875,71 @@ This repo is collaborative — feel free to contribute more questions 🚀
     ```
 
 1. What is Currying?
-    - A technique where a function takes **one argument at a time**, returning a new function for each additional argument until all arguments are received.
+
+    **Core Idea:** Currying = converting a function with multiple arguments into a sequence of functions, each taking one argument at a time.
+
+    **Key transformation:**
+    ```
+    f(a, b, c)  →  f(a)(b)(c)
+    ```
 
     ```js
-    // Without Currying
-    function add(a, b, c) { return a + b + c; }
-    console.log(add(2, 3, 4)); // 9
+    // Normal function
+    function sum(a, b, c) { return a + b + c; }
+    sum(1, 2, 3); // 6
 
-    // With Currying
-    function add(a) {
+    // Curried version
+    function sum(a) {
       return function(b) {
         return function(c) { return a + b + c; };
       };
     }
-    console.log(add(2)(3)(4)); // 9
+    sum(1)(2)(3); // 6 — same result, different argument style
+    ```
 
-    // Generic curry helper
+    **How it works internally — closures:**
+    - First function stores `a` in its closure
+    - Second function remembers `a` and takes `b`
+    - Third function uses all three: `a + b + c`
+
+    **Method 1 (closures) — Arrow function (most common in interviews):**
+    ```js
+    const multiply = (a) => (b) => (c) => a * b * c;
+    multiply(2)(3)(4); // 24
+    ```
+
+    **Method 2 — Using `bind()` (partial application style):**
+    ```js
+    function multiply(a, b) { return a * b; }
+    const double = multiply.bind(null, 2);
+    double(5); // 10
+    ```
+
+    **Why currying is used:**
+
+    *1. Reusability — create specialized functions from a general one:*
+    ```js
+    const add = (a) => (b) => a + b;
+    const add10 = add(10);
+    add10(5);  // 15
+    add10(20); // 30
+    ```
+
+    *2. Avoid repetition — preset a fixed argument once, vary the rest.*
+
+    *3. Functional programming — enables composable, pipeline-style code.*
+
+    **Real-world use case — event handlers:**
+    ```js
+    const handleClick = (type) => (event) => {
+      console.log(type, event);
+    };
+    button.addEventListener("click", handleClick("submit"));
+    // "submit" is preset; the event object is passed by the browser
+    ```
+
+    **Generic curry helper:**
+    ```js
     function curry(fn) {
       return function curried(...args) {
         if (args.length >= fn.length) return fn.apply(this, args);
@@ -897,29 +947,126 @@ This repo is collaborative — feel free to contribute more questions 🚀
       };
     }
     const curriedSum = curry((a, b, c) => a + b + c);
-    console.log(curriedSum(1)(2)(3)); // 6
+    curriedSum(1)(2)(3); // 6
     ```
 
+    | | Normal | Curried |
+    | --- | --- | --- |
+    | Call style | `sum(1, 2, 3)` | `sum(1)(2)(3)` |
+    | Argument passing | All at once | One at a time |
+    | Flexibility | Less reusable | More reusable |
+
+    **Currying vs Partial Application:**
+    - **Currying** — always one argument at a time (`f(a)(b)(c)`)
+    - **Partial Application** — fix *some* arguments, pass the rest later (`f(a, b)(c)`)
+    - Currying is a special case of partial application.
+
+    **One-line intuition:** Currying = breaking one big function into small chained functions.
+
+    **Interview answer:** "Currying is a functional programming technique where a function with multiple arguments is transformed into a sequence of functions, each taking one argument at a time. It uses closures to remember earlier arguments and enables reusability, partial application, and cleaner composable code."
+
 1. What is `call()`, `apply()`, and `bind()`?
-    - `call()`: Invokes a function **immediately**, passing `this` and arguments one by one.
-    - `apply()`: Invokes a function **immediately**, passing `this` and arguments as an **array**.
-    - `bind()`: Returns a **new function** with a fixed `this` — does not execute immediately.
+
+    All three methods control the value of `this` inside a function.
+
+    - **`call()`** — Invokes the function **immediately**; arguments passed one by one.
+      ```js
+      // fn.call(thisArg, arg1, arg2)
+      const person = { name: "Bharat" };
+      function greet(age) { console.log(this.name, age); }
+      greet.call(person, 25); // Bharat 25
+      ```
+
+    - **`apply()`** — Invokes the function **immediately**; arguments passed as an **array**.
+      ```js
+      // fn.apply(thisArg, [args])
+      greet.apply(person, [25]); // Bharat 25
+      ```
+
+    - **`bind()`** — Does **not** execute immediately; returns a **new function** with `this` pre-bound.
+      ```js
+      // const newFn = fn.bind(thisArg, arg1)
+      const boundFn = greet.bind(person, 25);
+      boundFn(); // Bharat 25
+      ```
 
     | Method | Execution | Arguments | Return Value |
     | --- | --- | --- | --- |
     | `call()` | Immediately | Comma-separated | Function result |
-    | `apply()` | Immediately | Array format | Function result |
-    | `bind()` | Later | Comma-separated | New Function |
+    | `apply()` | Immediately | Array | Function result |
+    | `bind()` | Delayed | Comma-separated | New function |
+
+    **When to use:**
+    - `call()` → quick one-time invocation with a custom context
+    - `apply()` → when arguments are already in an array (e.g. `Math.max.apply(null, arr)`)
+    - `bind()` → reusable bound function, especially for event handlers and callbacks
 
     ```js
-    const person = { name: "Mohamed", greet(city) { console.log(`${this.name} from ${city}`); } };
-    const person2 = { name: "Nasrutheen" };
-
-    person.greet.call(person2, "Chennai");        // Nasrutheen from Chennai
-    person.greet.apply(person2, ["Chennai"]);      // Nasrutheen from Chennai
-    const bound = person.greet.bind(person2, "Chennai");
-    bound();                                       // Nasrutheen from Chennai
+    // Real-world: without bind, `this` inside method loses context
+    button.addEventListener("click", obj.method.bind(obj));
     ```
+
+1. How to write a Polyfill for `bind()`?
+
+    A polyfill replicates native behavior for environments where it's missing or to understand internals — a very common frontend interview question.
+
+    **Basic polyfill:**
+    ```js
+    Function.prototype.myBind = function(context, ...args1) {
+      const fn = this; // 'this' refers to the original function
+      return function(...args2) {
+        return fn.apply(context, [...args1, ...args2]);
+      };
+    };
+
+    // Usage
+    const obj = { name: "Bharat" };
+    function greet(age) { console.log(this.name, age); }
+
+    const boundFn = greet.myBind(obj, 25);
+    boundFn(); // Bharat 25
+    ```
+
+    **How it works internally:**
+    1. `this` inside `myBind` → the original function (`greet`) — store it in `fn` to preserve the reference.
+    2. Return a new function that, when called, uses `apply()` to set `this` to `context` and merge pre-filled args (`args1`) with later args (`args2`).
+
+    | Inside `myBind` | Role |
+    | --- | --- |
+    | `this` | The original function being bound |
+    | `context` | The new `this` to lock to |
+    | `args1` | Pre-filled arguments (partial application) |
+    | `args2` | Arguments passed when the bound function is called |
+
+    **Why `apply()` inside the polyfill?**
+    - `apply()` lets us dynamically set `this` AND spread a merged array of arguments — `call()` won't work here because we can't spread the combined `[...args1, ...args2]` as individual args without knowing the count at write time.
+
+    **Advanced: handling `new` keyword (differentiates strong candidates):**
+
+    Real `bind()` ignores the bound `this` when used as a constructor with `new`. The polyfill must detect this and preserve the prototype chain:
+
+    ```js
+    Function.prototype.myBind = function(context, ...args1) {
+      const fn = this;
+      function boundFn(...args2) {
+        // If called with 'new', 'this' is a new instance — ignore bound context
+        return fn.apply(this instanceof boundFn ? this : context, [...args1, ...args2]);
+      }
+      // Preserve prototype chain so 'instanceof' and inherited methods work correctly
+      boundFn.prototype = Object.create(fn.prototype);
+      return boundFn;
+    };
+    ```
+
+    | Candidate Level | What to demonstrate |
+    | --- | --- |
+    | Basic | Working polyfill using `apply()` |
+    | Strong | Handle `new` keyword + preserve prototype chain |
+    | Expert | Explain why `call()` alone can't replace `apply()` here |
+
+    **Interlinks:** Uses the same `apply()` from `call/apply/bind` above. Partial application here is the same concept as in Currying (`bind(null, 2)` style). Writing to `Function.prototype` is Monkey Patching.
+
+    **Interview answer:** "A `bind()` polyfill stores the original function and context, then returns a new function that uses `apply()` to invoke the original with the bound context and merged arguments. To handle `new`, check `this instanceof boundFn` — if true, ignore the bound context so the constructor sets `this` normally."
 
 1. What is Garbage Collection?
     - An automatic memory management process that frees memory by removing unused objects using the **Mark and Sweep algorithm**.
@@ -4039,6 +4186,32 @@ This repo is collaborative — feel free to contribute more questions 🚀
      - **Print:** Prints the result of the evaluation to the console.
      - **Loop:** Loops the entire process until the user terminates the session.
 
+1. What is the difference between PUT and PATCH?
+   - Both are HTTP methods used to update a resource, but they differ in **how much** of the resource they replace.
+   - **PUT** replaces the **entire** resource with the request body. Fields omitted from the body are removed/reset.
+   - **PATCH** applies a **partial** update — only the fields sent in the request body are changed; everything else stays as-is.
+
+   | Feature | PUT | PATCH |
+   |---------|-----|-------|
+   | Scope | Full replacement | Partial update |
+   | Idempotent | ✅ Yes | ✅ Usually yes |
+   | Body required | All fields | Only changed fields |
+   | Use case | Overwrite entire record | Update one or a few fields |
+
+   ```js
+   // Resource: { id: 1, name: "Alice", age: 30, city: "Delhi" }
+
+   // PUT /users/1  → replaces the whole object
+   // Body: { name: "Alice", age: 31 }
+   // Result: { id: 1, name: "Alice", age: 31 }  ← city is GONE
+
+   // PATCH /users/1  → merges only sent fields
+   // Body: { age: 31 }
+   // Result: { id: 1, name: "Alice", age: 31, city: "Delhi" }  ← city preserved
+   ```
+
+   > **Rule of thumb:** Use **PUT** when you control the full object; use **PATCH** when updating a single field like a status, toggle, or counter.
+
 ---
 
 ## 🔷 TypeScript
@@ -4337,4 +4510,82 @@ This repo is collaborative — feel free to contribute more questions 🚀
          return _exhaustive;
      }
    }
+   ```
+
+---
+
+## 🔺 Pattern Based Questions
+
+1. Print a triangle and an inverted triangle using `*`.
+
+   **Triangle (left-aligned)**
+   ```
+   *
+   **
+   ***
+   ****
+   *****
+   ```
+   ```js
+   function triangle(n) {
+     for (let i = 1; i <= n; i++) {
+       console.log('*'.repeat(i));
+     }
+   }
+   triangle(5);
+   ```
+
+   **Inverted Triangle (left-aligned)**
+   ```
+   *****
+   ****
+   ***
+   **
+   *
+   ```
+   ```js
+   function invertedTriangle(n) {
+     for (let i = n; i >= 1; i--) {
+       console.log('*'.repeat(i));
+     }
+   }
+   invertedTriangle(5);
+   ```
+
+   **Centered Triangle (pyramid)**
+   ```
+       *
+      ***
+     *****
+    *******
+   *********
+   ```
+   ```js
+   function pyramid(n) {
+     for (let i = 1; i <= n; i++) {
+       const spaces = ' '.repeat(n - i);
+       const stars  = '*'.repeat(2 * i - 1);
+       console.log(spaces + stars);
+     }
+   }
+   pyramid(5);
+   ```
+
+   **Centered Inverted Pyramid**
+   ```
+   *********
+    *******
+     *****
+      ***
+       *
+   ```
+   ```js
+   function invertedPyramid(n) {
+     for (let i = n; i >= 1; i--) {
+       const spaces = ' '.repeat(n - i);
+       const stars  = '*'.repeat(2 * i - 1);
+       console.log(spaces + stars);
+     }
+   }
+   invertedPyramid(5);
    ```
